@@ -61,11 +61,19 @@ def getAllUsers():
     return users.getUsers()
 
 
+@app.route("/login", methods=['POST'])  # Login user
+def userLogin():
+    if request.method == 'POST':
+        username = request.form['username']
+        pwd = request.form['password']
+
+    return users.login(username, pwd)
+
+
 @app.route("/resources", methods=['GET'])  # Get all resources
 def getAllResources():
     if request.method == 'GET':
         category = request.args.get('category')
-        print('category', category)
 
     return resources.getResources(category)
 

@@ -10,7 +10,6 @@ CORS(app)
 
 
 def getResources(category):
-    print('category =====', category)
     query = '''SELECT resource_id, resource_category, resource_name, resource_city_code, resource_address, resource_details, resource_price, resource_review, resource_images, resource_is_active, modified_date, created_date FROM resource_master'''
 
     if category:
