@@ -61,9 +61,13 @@ def getAllUsers():
     return users.getUsers()
 
 
-@app.route("/resources")  # Get all resources
+@app.route("/resources", methods=['GET'])  # Get all resources
 def getAllResources():
-    return resources.getResources()
+    if request.method == 'GET':
+        category = request.args.get('category')
+        print('category', category)
+
+    return resources.getResources(category)
 
 
 @app.route("/resources/allbnbs")  # Get all Bnbs

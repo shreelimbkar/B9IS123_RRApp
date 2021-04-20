@@ -9,9 +9,16 @@ app = Flask(__name__)
 CORS(app)
 
 
-def getResources():
+def getResources(category):
+    print('category =====', category)
+    query = '''SELECT resource_id, resource_category, resource_name, resource_city_code, resource_address, resource_details, resource_price, resource_review, resource_images, resource_is_active, modified_date, created_date FROM resource_master'''
+
+    if category:
+        query = f'''SELECT resource_id, resource_category, resource_name, resource_city_code, resource_address, resource_details, resource_price, resource_review, resource_images, resource_is_active, modified_date, created_date FROM resource_master WHERE resource_category = {category}'''
+
+    print(query)
     cur = mysql.connection.cursor()  # SQL instance
-    cur.execute('''SELECT resource_id, resource_category, resource_name, resource_city_code, resource_address, resource_details, resource_price, resource_review, resource_images, resource_is_active, modified_date, created_date FROM resource_master''')  # execute an SQL statment
+    cur.execute(query)  # execute an SQL statment
     rv = cur.fetchall()  # Retreive all rows returend by the SQL statment
     Results = []
     for row in rv:  # Format the Output Results and add to return string
