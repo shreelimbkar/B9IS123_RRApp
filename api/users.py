@@ -8,6 +8,10 @@ app = Flask(__name__)
 CORS(app)
 
 
+def addUser():
+    return 'add users'
+
+
 def getUsers():  # Name of the method
     cur = mysql.connection.cursor()  # create a connection to the SQL instance
     cur.execute('''SELECT * FROM user_table''')  # execute an SQL statment

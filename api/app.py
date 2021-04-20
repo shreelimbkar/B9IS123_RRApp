@@ -2,6 +2,7 @@ from flask import Flask
 from flask import request
 from flask_mysqldb import MySQL
 from flask_cors import CORS
+import datetime
 import json
 import users
 mysql = MySQL()
@@ -35,6 +36,26 @@ def initApp():
 #     mysql.connection.commit()
 
 #     return '{"Result":"Success"}'
+
+
+@app.route("/users/add", methods=['GET', 'POST'])
+def index():
+    if request.method == 'POST':
+        role = "003"
+        token = "29347skdfhsdhf"
+        username = request.form['username']
+        email = request.form['email']
+        pwd = request.form['password']
+        avatar = 'avatar.img'
+        contact = request.form['contact']
+        modifiedDate = datetime.datetime.now()
+        # print(username, email, pwd)
+        cur = mysql.connection.cursor()  # create a connection to the SQL instance
+        s = '''INSERT INTO user_table(user_role_id, user_token, user_password, user_name, user_avatar_img, user_email_id, user_contact, modified_date, created_date ) VALUES('{}','{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}');'''.format(
+            role, token, pwd, username, avatar, email, contact, modifiedDate, modifiedDate)
+        cur.execute(s)
+        mysql.connection.commit()
+    return {"msg": "User created Successfully"}, 200
 
 
 @app.route("/users")  # Get all users
