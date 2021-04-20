@@ -1,0 +1,154 @@
+.menus-item{
+  text-align: right;
+}
+.hm-topbar-wrapper{
+  position: sticky;
+  position: -webkit-sticky; /* For macOS/iOS Safari */
+  top: 0; /* Sets the sticky toolbar to be on top */
+  z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
+}
+
+mat-toolbar.mat-toolbar-single-row img {
+  width: 52%;
+}
+.menus-item button{
+  margin-right: 30px;
+}
+.hm-content{
+  margin-top: 80px;
+}
+.hm-content carousel.carousel {
+  z-index: 100;
+}
+/* .owl-theme .owl-nav{
+  padding: 4px 10px !important;
+  background: #444444 !important;
+} */
+.hm-inner-body-wrapper .hm-browser-section{
+ margin: 30px 0px;
+}
+.hm-inner-body-wrapper .hm-browser-section button{
+  margin: 10px;
+  padding: 5px 30px;
+}
+.hm-most-view-wrapper .short-card img{
+  margin-bottom: 10px;
+}
+.hm-most-view-wrapper .short-card span.category, .hm-bnb-wrapper .short-card span.category, .hm-club-wrapper .short-card span.category {
+  border: 1px solid #000;
+  padding: 3px;
+  border-radius: 5px;
+}
+.hm-most-view-wrapper .short-card{
+  margin: 10px;
+  border: 1px solid #ccc;
+}
+.hm-most-view-wrapper .short-card h2{
+  margin-bottom: 0px;
+  margin-top: 10px;
+}
+.hm-most-view-wrapper .short-card h2 span{
+  font-size: 12px;
+  font-weight: 500;
+}
+.hm-most-view-wrapper .hm-heading span{
+  float: right;
+}
+.hm-bnb-wrapper .isBNBVisible, .hm-club-wrapper .isBNBVisible{
+  display: inherit;
+}
+.hm-bnb-wrapper .isBNBVisible-slider, .hm-club-wrapper .isBNBVisible-slider{
+  display: none;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 767px) {
+
+  .card-container > *:not(.circle-link) ,
+  .terminal {
+    width: 100%;
+  }
+
+  .card:not(.highlight-card) {
+    height: 16px;
+    margin: 8px 0;
+  }
+
+  .card.highlight-card span {
+    margin-left: 72px;
+  }
+
+  svg#rocket-smoke {
+    right: 120px;
+    transform: rotate(-5deg);
+  }
+}
+
+
+
+/*==================================================================
+  RESPONSIVE RESPONSIVE RESPONSIVE RESPONSIVE RESPONSIVE RESPONSIVE
+==================================================================*/
+
+/*//////////////////////////////////////////////////////////////////
+[ XL ]*/
+@media (max-width: 1200px) {
+
+}
+
+/*//////////////////////////////////////////////////////////////////
+[ LG ]*/
+@media (max-width: 992px) {
+
+}
+
+/*//////////////////////////////////////////////////////////////////
+[ MD ]*/
+@media (max-width: 768px) {
+  .mat-toolbar-row, .mat-toolbar-single-row{
+    height: 80px;
+  }
+  mat-toolbar.mat-toolbar-single-row img {
+    width: 80%;
+  }
+  .hm-content carousel.carousel{
+    height: 350px !important;
+  }
+}
+
+/*//////////////////////////////////////////////////////////////////
+[ SM ]*/
+@media screen and (max-width: 575px) {
+
+  mat-toolbar.mat-toolbar-single-row img {
+    width: 80%;
+  }
+  .menus-item button{
+    margin-right: 20px;
+  }
+  .hm-inner-body-wrapper .hm-browser-section button {
+    margin: 12px 8px;
+    padding: 5px 20px;
+  }
+  .hm-bnb-wrapper .isBNBVisible, .hm-club-wrapper .isBNBVisible{
+    display: none;
+  }
+  .hm-bnb-wrapper .isBNBVisible-slider, .hm-club-wrapper .isBNBVisible-slider{
+    display: block;
+  }
+
+}
+
+/*//////////////////////////////////////////////////////////////////
+[ SSM ]*/
+@media screen and (max-width: 480px) {
+  mat-toolbar.mat-toolbar-single-row img {
+    width: 80%;
+  }
+  .menus-item button{
+    margin-right: 20px !important;
+  }
+  .menus-item{
+    text-align: inherit;
+  }
+}

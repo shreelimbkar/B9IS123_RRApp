@@ -1,0 +1,18 @@
+.form-field-width {
+  width: 50%;
+  padding: 0px 10px;
+  margin-bottom: 15px;
+}
+
+.booking-wrapper h2{
+  text-align: center;
+}
+
+
+/*//////////////////////////////////////////////////////////////////
+[ SSM ]*/
+@media screen and (max-width: 480px) {
+  .form-field-width {
+    width: 85%;
+  }
+}

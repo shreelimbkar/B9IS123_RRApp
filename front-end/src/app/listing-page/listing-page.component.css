@@ -1,0 +1,40 @@
+.block-wrapper .example-card{
+  margin : 10px 0px;
+}
+.block-wrapper .example-card:hover{
+  transform: translateY(-5%);
+  transition-timing-function: ease-out;
+  transition-timing-function: ease-in;
+  transition: 0.8s;
+  background-color:lightcyan;
+}
+
+.filter-wrapper{
+  position: fixed;
+  z-index: 1;
+  top: 80px;
+  left: 0px;
+}
+
+
+/*//////////////////////////////////////////////////////////////////
+[ SM ]*/
+@media screen and (max-width: 575px) {
+
+  .block-wrapper .example-card{
+    margin : 15px 0px;
+  }
+.filter-wrapper{
+  width:100%;
+  }
+
+}
+
+/*//////////////////////////////////////////////////////////////////
+[ SSM ]*/
+@media screen and (max-width: 480px) {
+
+  .block-wrapper .example-card{
+    margin : 15px 0px;
+  }
+}
