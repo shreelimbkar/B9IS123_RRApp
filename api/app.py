@@ -5,6 +5,7 @@ from flask_cors import CORS
 import datetime
 import json
 import users
+import resources
 mysql = MySQL()
 app = Flask(__name__)
 CORS(app)
@@ -58,6 +59,16 @@ def index():
 @app.route("/users")  # Get all users
 def getAllUsers():
     return users.getUsers()
+
+
+@app.route("/resources")  # Get all resources
+def getAllResources():
+    return resources.getResources()
+
+
+@app.route("/resources/allbnbs")  # Get all Bnbs
+def getAllBnbs():
+    return resources.getAllBnbs()
 
 
 if __name__ == "__main__":

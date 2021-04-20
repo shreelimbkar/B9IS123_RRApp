@@ -16,7 +16,6 @@ def addUser(userData):
     cur.execute(s)
     mysql.connection.commit()
     return {"msg": "User created Successfully"}, 200
-    return ''
 
 
 def getUsers():  # Name of the method
