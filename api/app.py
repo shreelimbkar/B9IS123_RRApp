@@ -2,51 +2,85 @@ from flask import Flask
 from flask import request
 from flask_mysqldb import MySQL
 from flask_cors import CORS
+import datetime
 import json
+import users
+import resources
 mysql = MySQL()
 app = Flask(__name__)
 CORS(app)
-# My SQL Instance configurations
-# Change the HOST IP and Password to match your instance configurations
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = ''
-app.config['MYSQL_DB'] = 'student'
-app.config['MYSQL_HOST'] = 'localhost'  # for now
-mysql.init_app(app)
 
 
-@app.route("/add")  # Add Student
-def add():
-    name = request.args.get('name')
-    email = request.args.get('email')
-    cur = mysql.connection.cursor()  # create a connection to the SQL instance
-    s = '''INSERT INTO students(studentName, email) VALUES('{}','{}');'''.format(
-        name, email)
-    cur.execute(s)
-    mysql.connection.commit()
-
-    return '{"Result":"Success"}'
+# Initialize the Database connection
+def initDB():
+    app.config['MYSQL_USER'] = 'web'
+    app.config['MYSQL_PASSWORD'] = 'webPass'
+    app.config['MYSQL_DB'] = 'rating_db'
+    app.config['MYSQL_HOST'] = 'localhost'  # for now
+    mysql.init_app(app)
 
 
-@app.route("/")  # Default - Show Data
-def hello():  # Name of the method
-    cur = mysql.connection.cursor()  # create a connection to the SQL instance
-    cur.execute('''SELECT * FROM students''')  # execute an SQL statment
-    rv = cur.fetchall()  # Retreive all rows returend by the SQL statment
-    Results = []
-    for row in rv:  # Format the Output Results and add to return string
-        Result = {}
-        Result['Name'] = row[0].replace('\n', ' ')
-        Result['Email'] = row[1]
-        Result['ID'] = row[2]
-        Results.append(Result)
-    response = {'Results': Results, 'count': len(Results)}
-    ret = app.response_class(
-        response=json.dumps(response),
-        status=200,
-        mimetype='application/json'
-    )
-    return ret  # Return the data in a string format
+initDB()
+
+
+@app.route("/")
+def initApp():
+    return("Welcome to Rating App API Page")
+# @app.route("/add")  # Add Student
+# def add():
+#     name = request.args.get('name')
+#     email = request.args.get('email')
+#     cur = mysql.connection.cursor()  # create a connection to the SQL instance
+#     s = '''INSERT INTO students(studentName, email) VALUES('{}','{}');'''.format(
+#         name, email)
+#     cur.execute(s)
+#     mysql.connection.commit()
+
+#     return '{"Result":"Success"}'
+
+
+@app.route("/users/add", methods=['GET', 'POST'])
+def index():
+    if request.method == 'POST':
+        role = "003"
+        token = "29347skdfhsdhf"
+        username = request.form['username']
+        email = request.form['email']
+        pwd = request.form['password']
+        avatar = 'avatar.img'
+        contact = request.form['contact']
+        modifiedDate = datetime.datetime.now()
+        userData = [
+            role, token, username, email, pwd, avatar, contact, modifiedDate
+        ]
+    return users.addUser(userData)
+
+
+@app.route("/users")  # Get all users
+def getAllUsers():
+    return users.getUsers()
+
+
+@app.route("/login", methods=['POST'])  # Login user
+def userLogin():
+    if request.method == 'POST':
+        username = request.form['username']
+        pwd = request.form['password']
+
+    return users.login(username, pwd)
+
+
+@app.route("/resources", methods=['GET'])  # Get all resources
+def getAllResources():
+    if request.method == 'GET':
+        category = request.args.get('category')
+
+    return resources.getResources(category)
+
+
+@app.route("/resources/allbnbs")  # Get all Bnbs
+def getAllBnbs():
+    return resources.getAllBnbs()
 
 
 if __name__ == "__main__":
