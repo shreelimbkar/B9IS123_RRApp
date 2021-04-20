@@ -49,13 +49,10 @@ def index():
         avatar = 'avatar.img'
         contact = request.form['contact']
         modifiedDate = datetime.datetime.now()
-        # print(username, email, pwd)
-        cur = mysql.connection.cursor()  # create a connection to the SQL instance
-        s = '''INSERT INTO user_table(user_role_id, user_token, user_password, user_name, user_avatar_img, user_email_id, user_contact, modified_date, created_date ) VALUES('{}','{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}');'''.format(
-            role, token, pwd, username, avatar, email, contact, modifiedDate, modifiedDate)
-        cur.execute(s)
-        mysql.connection.commit()
-    return {"msg": "User created Successfully"}, 200
+        userData = [
+            role, token, username, email, pwd, avatar, contact, modifiedDate
+        ]
+    return users.addUser(userData)
 
 
 @app.route("/users")  # Get all users
