@@ -51,9 +51,15 @@ export class ListingPageComponent implements OnInit, OnDestroy  {
 
     this.observ = this._observableDataService.detailPageData.subscribe((requestData)=>{
       if(requestData != null){
-        this.listingService.listBySection(requestData.param).subscribe((responseData)=>{
-          this.responseBody = responseData;
-        })
+        if(requestData == 'allbnb'){
+          this.listingService.listBySectionBNB(requestData.param).subscribe((responseData)=>{
+            this.responseBody = responseData.body;
+          })
+        }else {
+          this.listingService.listBySection(requestData.param).subscribe((responseData)=>{
+            this.responseBody = responseData.body;
+          })
+        }
       } else {
         this.onLoadBinding();
       }
@@ -65,13 +71,14 @@ export class ListingPageComponent implements OnInit, OnDestroy  {
   }
 
   ngOnDestroy() {
-    this.observ.unsubscribe()
-    this.responseBody = []
+    // this.observ.unsubscribe()
+    // this.responseBody = []
 }
 
   onLoadBinding(){
     this.listingService.listingProperty().subscribe((responseData)=>{
-        this.responseBody = responseData;
+      console.log("onLoad binding responseData ",responseData)
+        this.responseBody = responseData.body;
     })
   }
 
@@ -85,6 +92,9 @@ export class ListingPageComponent implements OnInit, OnDestroy  {
   }
 
   reset(){
+    this.filterValidateForm.reset()
+    this.filterValidateForm.controls['location'].setErrors(null);
+    this.filterValidateForm.controls['price'].setErrors(null);
   }
 
   filterByPrice(e){
