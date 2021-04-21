@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RegexConstant } from '../shared/constant/regex-constant';
-
+import { SignUpService } from './sign-up.service'
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
@@ -13,15 +13,15 @@ export class SignUpComponent implements OnInit {
   signUpValidateForm;
   otpForm;
 
-  constructor( public formBuilder: FormBuilder, private _route: Router) {
+  constructor( public formBuilder: FormBuilder, private _service : SignUpService, private _route: Router) {
   }
 
   ngOnInit(): void {
 
     this.signUpValidateForm = this.formBuilder.group({
-      userName : ['', [Validators.required]],
+      username : ['', [Validators.required]],
       email : ['', [Validators.required, Validators.email]],
-      contactNo : ['', [Validators.required, this.mobileNumber]],
+      contact : ['', [Validators.required, this.mobileNumber]],
       password : ['', [Validators.required,this.passwordPattern]],
       confirmPassword : ['', [Validators.required, this.matchPassword]]
     })
@@ -33,6 +33,18 @@ export class SignUpComponent implements OnInit {
 
   submitForm(value){
     console.log("submit Form ",value);
+    let paramObj = {
+      username : value.username,
+      email : value.email,
+      contact : value.contact,
+      password : value.password
+    }
+    console.log("submit Form ",value);
+
+    this._service.signUp(paramObj).subscribe((responseObject)=>{
+     console.log("responseObject+++++ ",responseObject);
+
+    })
   }
 
   backToLogin(){
