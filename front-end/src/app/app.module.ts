@@ -40,6 +40,7 @@ import { RatingModule } from 'ng-starrating';
   ],
   imports: [
     BrowserModule,
+    RatingModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     CarouselModule,
@@ -50,8 +51,7 @@ import { RatingModule } from 'ng-starrating';
     FormsModule,
     MaterialModule,
     NgxSpinnerModule,
-    HttpClientModule,
-    RatingModule
+    HttpClientModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

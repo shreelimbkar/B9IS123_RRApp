@@ -129,6 +129,7 @@ clubHouse = [{
 ]
 
 
+
   constructor(private _route: Router, private _service : HomeService, private _observableDataService : ObservableDataService) { }
 
   ngOnInit(): void {
@@ -136,18 +137,27 @@ clubHouse = [{
   }
 
   onLoadBidding(){
-    // this._service.mightBeLike().subscribe((resposneData)=>{
-    //   console.log("+++++++++++++",resposneData)
+    this._service.mightBeLike().subscribe((resposneData)=>{
+      console.log("+++++++++++++",resposneData)
 
-    //   let responseBody = resposneData;
-    //   this.mostViewedBody = responseBody;
-    //   // this.imageTest = responseBody[0].images[0]
-    // })
+      let responseBody = resposneData.body[0].resource_details[0].split(',')
+      .map(x => x.split(':').map(y => y.trim()))
+      .reduce((a, x) => {
+        a[x[0]] = x[1];
+        return a;
+      }, {});
+      console.log(",+++++++++++++++++",responseBody);
+
+      // this.mostViewedBody = responseBody;
+      // this.imageTest = responseBody[0].images[0]
+    })
   }
 
   writeReviewForm(){
     this._route.navigate(["write-review"])
   }
+
+
 
   bannerImages = [
 		{
