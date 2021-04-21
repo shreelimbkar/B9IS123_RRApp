@@ -51,7 +51,7 @@ def login(username, pwd):
     if len(pwd.strip()) <= 0:
         return {"msg": "Invalid Password. Please try again!"}, 500
 
-    token = jwt.encode({'username': username, 'exp': datetime.datetime.utcnow(
+    encoded = jwt.encode({'username': username, 'exp': datetime.datetime.utcnow(
     ) + datetime.timedelta(minutes=20)}, app.config['SECRET_KEY'])
     cur = mysql.connection.cursor()  # SQL instance
     cur.execute(
@@ -61,7 +61,7 @@ def login(username, pwd):
     for row in rv:  # Format the Output Results and add to return string
         Result = {}
         Result['user_id'] = row[0]
-        Result['user_token'] = token
+        Result['user_token'] = encoded
         Result['user_name'] = row[2]
         # Result['user_avatar_img'] = row[3]
         # Result['user_email_id'] = row[4]
