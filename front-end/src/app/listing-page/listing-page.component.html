@@ -14,7 +14,7 @@
       </mat-expansion-panel-header>
   <form name="validateForm" [formGroup]="filterValidateForm" novalidate (ngSubmit)="submitForm(filterValidateForm.value)">
       <section>
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="fill" class="full-width">
           <mat-label>Filter By Price</mat-label>
           <mat-select formControlName="price" (selectionChange)="filterByPrice($event)">
             <mat-option value=0>Low to High</mat-option>
@@ -22,24 +22,24 @@
           </mat-select>
         </mat-form-field>
       </section>
-      <section class="category-section">
+      <section class="category-section full-width">
         <p><b>By Categorys</b></p>
         <mat-checkbox  class="mr-3" formControlName="hotel" name="hotel">Hotels</mat-checkbox>
         <mat-checkbox  name="BnB" formControlName="BnB">B&B</mat-checkbox><br>
         <mat-checkbox  name="bar" formControlName="bar">Bar</mat-checkbox><br>
-        <mat-checkbox  name="club"formControlName="club">Clubs</mat-checkbox>
+        <mat-checkbox  name="club" class="mr-3" formControlName="club">Clubs</mat-checkbox>
         <mat-checkbox  name="Restaurant"formControlName="Restaurant">Restaurants</mat-checkbox>
       </section>
       <section class="category-section">
         <p><b>By Location</b></p>
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="fill" class="full-width">
           <mat-label>location</mat-label>
           <mat-select formControlName="location" (selectionChange)="filterByPrice($event)">
             <mat-option *ngFor="let element of location" value={{element.value}}>{{element.name}}</mat-option>
           </mat-select>
         </mat-form-field>
       </section>
-      <section class="category-section">
+      <section class="category-section full-width">
         <p><b>By Popularity</b></p>
         <mat-checkbox  class="mr-3" formControlName="fiveStar" name="fiveStar">5 star</mat-checkbox>
         <mat-checkbox  formControlName="fourStar" name="fourStar">4 star</mat-checkbox><br>
@@ -59,14 +59,14 @@
     <div class="row">
       <div class="col-md-4" *ngFor="let element of responseBody">
         <mat-card class="example-card">
-          <img mat-card-image src="{{element.listingImg}}" alt="Property Photo">
+          <img mat-card-image src="../assets/image/bars/bar_1.jpeg" alt="Property Photo">
           <mat-card-content>
-            <p><b>{{element.type}}</b></p>
-          <h2>€ {{element.Price}}</h2>
-          <p>{{element.address}}</p>
+            <p><b>{{element.resource_category}}</b></p>
+          <h2>€ {{element.resource_price}} <span>(for 2)</span></h2>
+          <p>{{element.resource_address}}</p>
           </mat-card-content>
           <mat-card-actions>
-            <button mat-stroked-button color="accent" (click)="detailPage(element.id,element.param)">View More</button>
+            <button mat-stroked-button color="accent" (click)="detailPage(element.resource_id,element.param)">View More</button>
           </mat-card-actions>
         </mat-card>
     </div>
