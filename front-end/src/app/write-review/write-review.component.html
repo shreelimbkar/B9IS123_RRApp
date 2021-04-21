@@ -1,5 +1,7 @@
 <div class="container review-wrapper">
-  <div class="row">
+  <mat-card class="review-card">
+
+  <div class="row mb-4">
     <div class="col-md-4">
       <img src="../assets/image/hotels/hotel_4.jpeg">
       </div>
@@ -11,13 +13,6 @@
   <hr>
   <p>Your overall rating of this property</p>
 
-  <div style="text-align:center">
-    <h1>
-      ng-starrating demo
-    </h1>
-    <star-rating value="5" totalstars="5" checkedcolor="red" uncheckedcolor="black" size="24px" readonly="false" (rate)="onRate($event)"></star-rating>
-  </div>
-
   <mat-radio-group aria-label="Select rating">
     <mat-radio-button value="1">1</mat-radio-button>
     <mat-radio-button value="2">2</mat-radio-button>
@@ -25,17 +20,29 @@
     <mat-radio-button value="4">4</mat-radio-button>
     <mat-radio-button value="5">5</mat-radio-button>
   </mat-radio-group>
-  <div class="rating-body-wrapper">
+  <div class="rating-body-wrapper mt-3">
   <h4>Title of your review</h4>
-  <mat-form-field appearance="outline">
+  <mat-form-field class="full-width" appearance="outline">
     <mat-label>Title</mat-label>
     <input matInput placeholder="Placeholder" maxlength="100">
   </mat-form-field>
   <h4>Your review Tips for writing a great review</h4>
-  <mat-form-field appearance="outline">
+  <mat-form-field class="full-width" appearance="outline">
     <mat-label>Tell about your experience</mat-label>
     <textarea matInput></textarea>
   </mat-form-field>
   </div>
 
+  <div class="budget-wrapper mb-5">
+    <section>
+      <h4>How expensive is this was ?</h4>
+      <mat-button-toggle-group aria-label="Font Style">
+        <mat-button-toggle value="budget">Budget</mat-button-toggle>
+        <mat-button-toggle value="mid-range">Mid-range</mat-button-toggle>
+        <mat-button-toggle value="luxury">Luxury</mat-button-toggle>
+      </mat-button-toggle-group>
+    </section>
+  </div>
+  <button mat-raised-button color="primary">Submit Your Review</button>
+</mat-card>
 </div>

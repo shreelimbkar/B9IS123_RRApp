@@ -47,25 +47,55 @@ INNER JOIN city as c ON r.resource_city_code=c.city_code WHERE resource_category
     return retData  # Return the data in a string format
 
 
+#def getAllBnbs():
+#    cur = mysql.connection.cursor()  # SQL instance
+#    cur.execute('''SELECT bnb_booking_id, from_date, to_date, bnb_resource_id, bnb_book_user_id, number_of_adult, number_of_child, number_of_beds, special_requirement, is_status, modified_date, created_date FROM bnb_booking''')  # execute an SQL statment
+#    rv = cur.fetchall()  # Retreive all rows returend by the SQL statment
+#    Results = []
+#    for row in rv:  # Format the Output Results and add to return string
+#        Result = {}
+#        Result['bnb_booking_id'] = row[0]
+#        Result['from_date'] = row[1]
+#        Result['to_date'] = row[2]
+#        Result['bnb_resource_id'] = row[3]
+#        Result['bnb_book_user_id'] = row[4]
+#       Result['number_of_adult'] = row[5]
+#        Result['number_of_child'] = row[6]
+#        Result['number_of_beds'] = row[7]
+#        Result['special_requirement'] = row[8]
+#        Result['is_status'] = row[9]
+#       # Result['modified_date'] = row[10]
+#        # Result['created_date'] = row[11]
+#        Results.append(Result)
+#    response = {'data': Results, 'count': len(Results)}
+#    retData = app.response_class(
+#        response=json.dumps(response),
+#        status=200,
+#        mimetype='application/json'
+#    )
+#    return retData  # Return the data in a string format
+
 def getAllBnbs():
     cur = mysql.connection.cursor()  # SQL instance
-    cur.execute('''SELECT bnb_booking_id, from_date, to_date, bnb_resource_id, bnb_book_user_id, number_of_adult, number_of_child, number_of_beds, special_requirement, is_status, modified_date, created_date FROM bnb_booking''')  # execute an SQL statment
+    cur.execute('''SELECT bnb_id, bnb_name, bnb_amenities, bnb_room_features, bnb_review, bnb_about, bnb_meals, bnb_city_code, bnb_address, modified_date, created_date, contact_number, bnb_price_range, bnb_is_available FROM bnb_master''')  # execute an SQL statment
     rv = cur.fetchall()  # Retreive all rows returend by the SQL statment
     Results = []
     for row in rv:  # Format the Output Results and add to return string
         Result = {}
-        Result['bnb_booking_id'] = row[0]
-        Result['from_date'] = row[1]
-        Result['to_date'] = row[2]
-        Result['bnb_resource_id'] = row[3]
-        Result['bnb_book_user_id'] = row[4]
-        Result['number_of_adult'] = row[5]
-        Result['number_of_child'] = row[6]
-        Result['number_of_beds'] = row[7]
-        Result['special_requirement'] = row[8]
-        Result['is_status'] = row[9]
-        # Result['modified_date'] = row[10]
-        # Result['created_date'] = row[11]
+        Result['bnb_id'] = row[0]
+        Result['bnb_name'] = row[1]
+        Result['bnb_amenities'] = row[2]
+        Result['bnb_room_features'] = row[3]
+        Result['bnb_review'] = row[4]
+        Result['bnb_about'] = row[5]
+        Result['bnb_meals'] = row[6]
+        Result['bnb_city_code'] = row[7]
+        Result['bnb_address'] = row[8]
+        Result['modified_date'] = row[9]
+        Result['created_date'] = row[10]
+        Result['contact_number'] = row[11]
+        Result['bnb_price_range'] = row[12]
+        Result['bnb_is_available'] = row[13]
         Results.append(Result)
     response = {'status': 200, 'responseMessage': 'Success', 'body': Results}
     retData = app.response_class(
