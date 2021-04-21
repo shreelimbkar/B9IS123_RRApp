@@ -10,10 +10,12 @@ CORS(app)
 
 
 def getResources(category):
-    query = '''SELECT resource_id, resource_category, resource_name, resource_city_code, resource_address, resource_details, resource_price, resource_review, resource_images, resource_is_active, modified_date, created_date FROM resource_master'''
+    query = '''SELECT r.resource_id, r.resource_category, r.resource_name, r.resource_city_code, c.city_name, r.resource_address, r.resource_details, r.resource_price, r.resource_review, r.resource_images, r.resource_is_active, r.modified_date, r.created_date, r.contact_number FROM resource_master as r 
+INNER JOIN city as c ON r.resource_city_code=c.city_code'''
 
     if category:
-        query = f'''SELECT resource_id, resource_category, resource_name, resource_city_code, resource_address, resource_details, resource_price, resource_review, resource_images, resource_is_active, modified_date, created_date FROM resource_master WHERE resource_category = {category}'''
+        query = f'''SELECT r.resource_id, r.resource_category, r.resource_name, r.resource_city_code, c.city_name, r.resource_address, r.resource_details, r.resource_price, r.resource_review, r.resource_images, r.resource_is_active, r.modified_date, r.created_date, r.contact_number FROM resource_master as r 
+INNER JOIN city as c ON r.resource_city_code=c.city_code WHERE resource_category = {category}'''
 
     print(query)
     cur = mysql.connection.cursor()  # SQL instance
@@ -26,16 +28,17 @@ def getResources(category):
         Result['resource_category'] = row[1]
         Result['resource_name'] = row[2]
         Result['resource_city_code'] = row[3]
-        Result['resource_address'] = row[4]
-        Result['resource_details'] = [row[5].replace("\"", "")]
-        Result['resource_price'] = row[6]
-        Result['resource_review'] = row[7]
-        Result['resource_images'] = row[8]
-        Result['resource_is_active'] = row[9]
-        # Result['modified_date'] = row[10]
-        # Result['created_date'] = row[11]
+        Result['city_name'] = row[4]
+        Result['resource_address'] = row[5]
+        Result['resource_details'] = row[6]
+        Result['resource_price'] = row[7]
+        Result['resource_review'] = row[8]
+        Result['resource_images'] = row[9]
+        Result['resource_is_active'] = row[10]
+        # Result['modified_date'] = row[11]
+        # Result['created_date'] = row[12]
         Results.append(Result)
-    response = {'data': Results, 'count': len(Results)}
+    response = {'status': 200, 'responseMessage': 'Success', 'body': Results}
     retData = app.response_class(
         response=json.dumps(response),
         status=200,
@@ -64,7 +67,7 @@ def getAllBnbs():
         # Result['modified_date'] = row[10]
         # Result['created_date'] = row[11]
         Results.append(Result)
-    response = {'data': Results, 'count': len(Results)}
+    response = {'status': 200, 'responseMessage': 'Success', 'body': Results}
     retData = app.response_class(
         response=json.dumps(response),
         status=200,
