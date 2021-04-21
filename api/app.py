@@ -87,10 +87,10 @@ def getAllUsers():
 @app.route("/login", methods=['POST'])  # Login user
 def userLogin():
     if request.method == 'POST':
-        username = request.form['username']
+        email = request.form['email']
         pwd = request.form['password']
 
-    return users.login(username, pwd)
+    return users.login(email, pwd)
 
 
 @app.route("/resources", methods=['GET'])  # Get all resources

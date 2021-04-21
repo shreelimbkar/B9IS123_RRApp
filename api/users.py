@@ -42,20 +42,20 @@ def getUsers():  # Name of the method
     return retData  # Return the data in a string format
 
 
-def login(username, pwd):
+def login(email, pwd):
     # print('username, pwd = ', username, pwd)
 
-    if len(username.strip()) <= 0:
+    if len(email.strip()) <= 0:
         return {"msg": "Invalid Username. Please try again!"}, 500
 
     if len(pwd.strip()) <= 0:
         return {"msg": "Invalid Password. Please try again!"}, 500
 
-    encoded = jwt.encode({'username': username, 'exp': datetime.datetime.utcnow(
+    encoded = jwt.encode({'email': email, 'exp': datetime.datetime.utcnow(
     ) + datetime.timedelta(minutes=20)}, app.config['SECRET_KEY'])
     cur = mysql.connection.cursor()  # SQL instance
     cur.execute(
-        f"""SELECT user_id, user_token, user_name, user_avatar_img, user_email_id, user_contact FROM user_table WHERE user_name = '{username}' and user_password = '{pwd}'""")
+        f"""SELECT user_id, user_token, user_name, user_avatar_img, user_email_id, user_contact FROM user_table WHERE user_email_id = '{email}' and user_password = '{pwd}'""")
     rv = cur.fetchall()  # Retreive all rows returend by the SQL statment
     Results = []
     for row in rv:  # Format the Output Results and add to return string
