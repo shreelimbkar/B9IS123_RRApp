@@ -20,7 +20,7 @@
 
             <mat-form-field appearance="outline" class="full-width">
               <mat-label>Full Name</mat-label>
-              <input matInput formControlName="userName">
+              <input matInput formControlName="username">
               <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
               <mat-error>
                   Name is required
@@ -29,14 +29,14 @@
 
             <mat-form-field appearance="outline" class="full-width  mt-2">
               <mat-label>Mobile Number</mat-label>
-              <input matInput formControlName="contactNo">
+              <input matInput formControlName="contact">
               <mat-icon matSuffix class="secondary-text">phone</mat-icon>
-              <mat-error *ngIf="signUpValidateForm.get('contactNo').hasError('required')">
+              <mat-error *ngIf="signUpValidateForm.get('contact').hasError('required')">
                   Mobile number is required!
               </mat-error>
               <mat-error
-                  *ngIf="!signUpValidateForm.get('contactNo').hasError('required') &&
-                          signUpValidateForm.get('contactNo').hasError('mobileErr')">
+                  *ngIf="!signUpValidateForm.get('contact').hasError('required') &&
+                          signUpValidateForm.get('contact').hasError('mobileErr')">
                   Please enter a valid mobile number!
               </mat-error>
             </mat-form-field>
