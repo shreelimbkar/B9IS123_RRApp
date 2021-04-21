@@ -253,7 +253,6 @@ clubHouse = [{
   }
 
   browserSection(param){
-
     let obj = {
       "param" : param
     }
