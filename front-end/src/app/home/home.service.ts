@@ -17,6 +17,10 @@ export class HomeService {
     return this._restService.get(RestUrl.mostViewedProperty)
   }
 
+  mightBeLike(): Observable<any> {
+    return this._restService.get(RestUrl.mightBeLike)
+  }
+
 
 
 }
