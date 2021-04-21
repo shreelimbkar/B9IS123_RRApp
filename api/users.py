@@ -19,7 +19,7 @@ def addUser(userData):
         role, token, pwd, username, avatar, email, contact, modifiedDate, modifiedDate)
     cur.execute(s)
     mysql.connection.commit()
-    return {"msg": "User created Successfully"}, 200
+    return {'status': 200, 'responseMessage': 'Success'}, 200
 
 
 def getUsers():  # Name of the method
@@ -32,10 +32,10 @@ def getUsers():  # Name of the method
         Result['user_id'] = row[0]
         Result['user_token'] = row[2]
         Result['user_name'] = row[3]
-        Result['user_email_id'] = row[6]
-        Result['user_contact'] = row[7]
+        Result['user_email_id'] = row[5]
+        Result['user_contact'] = row[6]
         Results.append(Result)
-    response = {'data': Results, 'count': len(Results)}
+    response = {'status': 200, 'responseMessage': 'Success', 'body': Results}
     retData = app.response_class(
         response=json.dumps(response),
         status=200,
@@ -48,10 +48,10 @@ def login(email, pwd):
     # print('username, pwd = ', username, pwd)
 
     if len(email.strip()) <= 0:
-        return {"msg": "Invalid Username. Please try again!"}, 500
+        return {'status': 500, 'responseMessage': 'Invalid Username. Please try again!'}, 500
 
     if len(pwd.strip()) <= 0:
-        return {"msg": "Invalid Password. Please try again!"}, 500
+        return {'status': 500, 'responseMessage': 'Invalid Password. Please try again!'}, 500
 
     encoded = jwt.encode({'email': email, 'exp': datetime.datetime.utcnow(
     ) + datetime.timedelta(minutes=20)}, app.config['SECRET_KEY'])
@@ -69,7 +69,7 @@ def login(email, pwd):
         # Result['user_email_id'] = row[4]
         # Result['user_contact'] = row[5]
         Results.append(Result)
-    response = {'data': Results, 'count': len(Results)}
+    response = {'status': 200, 'responseMessage': 'Success', 'body': Results}
     retData = app.response_class(
         response=json.dumps(response),
         status=200,
