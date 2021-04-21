@@ -76,6 +76,59 @@ export class HomeComponent implements OnInit {
     address: "Waterford"
   }
 ]
+
+
+clubHouse = [{
+  id: "1",
+  image : ["https://material.angular.io/assets/img/examples/shiba2.jpg"],
+  Price : "500",
+  type: "Club",
+  name: "Name",
+  address: "Dublin"
+},
+{
+  id: "2",
+  image : ["https://material.angular.io/assets/img/examples/shiba2.jpg"],
+  Price : "500",
+  type: "Club",
+  name: "Name",
+  address: "Dublin"
+},
+{
+  id: "3",
+  image : ["https://material.angular.io/assets/img/examples/shiba2.jpg"],
+  Price : "500",
+  type: "Club",
+  name: "Name",
+  address: "Dublin"
+},
+{
+  id: "4",
+  image : ["https://material.angular.io/assets/img/examples/shiba2.jpg"],
+  Price : "500",
+  type: "Club",
+  name: "Name",
+  address: "Dublin"
+},
+{
+  id: "5",
+  image : ["https://material.angular.io/assets/img/examples/shiba2.jpg"],
+  Price : "500",
+  type: "Club",
+  name: "Name",
+  address: "Dublin"
+},
+{
+  id: "6",
+  image : ["https://material.angular.io/assets/img/examples/shiba2.jpg"],
+  Price : "500",
+  type: "Club",
+  name: "Name",
+  address: "Dublin"
+}
+]
+
+
   constructor(private _route: Router, private _service : HomeService, private _observableDataService : ObservableDataService) { }
 
   ngOnInit(): void {
@@ -83,11 +136,17 @@ export class HomeComponent implements OnInit {
   }
 
   onLoadBidding(){
-    // this._service.mostViewed().subscribe((resposneData)=>{
+    // this._service.mightBeLike().subscribe((resposneData)=>{
+    //   console.log("+++++++++++++",resposneData)
+
     //   let responseBody = resposneData;
-    //   this.mostViewedBody = resposneData;
-    //   this.imageTest = responseBody[0].images[0]
+    //   this.mostViewedBody = responseBody;
+    //   // this.imageTest = responseBody[0].images[0]
     // })
+  }
+
+  writeReviewForm(){
+
   }
 
   bannerImages = [

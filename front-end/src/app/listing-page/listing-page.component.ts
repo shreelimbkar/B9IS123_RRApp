@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { SubscriptionLike } from 'rxjs';
 import { ObservableDataService } from '../observable/behaviourSubject.service';
 import { ListingService } from './listing.service'
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+
 @Component({
   selector: 'app-listing-page',
   templateUrl: './listing-page.component.html',
@@ -21,10 +23,31 @@ export class ListingPageComponent implements OnInit, OnDestroy  {
   isStudentAccomodationDisabled : boolean = false;
   isShareAccomodationDisabled : boolean = false;
   observ: SubscriptionLike;
-  constructor(private _router : Router, private listingService : ListingService, private _observableDataService : ObservableDataService) { }
+  filterValidateForm;
+  location = [
+    {name:'Dublin',value:'c-001'},
+    {name:'Cork',value:'c-002'},
+    {name:'Galway',value:'c-003'},
+    {name:'Limerick',value:'c-004'},
+    {name:'Waterford',value:'c-005'}
+  ]
+
+  constructor(private _router : Router, public formBuilder: FormBuilder, private listingService : ListingService, private _observableDataService : ObservableDataService) { }
 
   ngOnInit(): void {
-    localStorage.clear();
+      this.filterValidateForm = this.formBuilder.group({
+        price : ['', [Validators.required, Validators.email]],
+        hotel : ['', [Validators.required]],
+        BnB : ['', [Validators.required]],
+        bar : ['', [Validators.required]],
+        club : ['', [Validators.required]],
+        Restaurant : ['', [Validators.required]],
+        location : ['', [Validators.required]],
+        fiveStar : ['', [Validators.required]],
+        fourStar : ['', [Validators.required]],
+        threeStar : ['', [Validators.required]],
+        twoStar : ['', [Validators.required]]
+      })
 
     this.observ = this._observableDataService.detailPageData.subscribe((requestData)=>{
       if(requestData != null){
@@ -35,6 +58,10 @@ export class ListingPageComponent implements OnInit, OnDestroy  {
         this.onLoadBinding();
       }
     })
+  }
+
+  submitForm(value){
+    console.log("++++++++++++++ value ",value)
   }
 
   ngOnDestroy() {
@@ -58,56 +85,14 @@ export class ListingPageComponent implements OnInit, OnDestroy  {
   }
 
   reset(){
-    this.isApartmentDisabled = false;
-    this.apartment = false;
-    this.isHouseDisabled = false;
-    this.house = false;
-    this.isStudentAccomodationDisabled = false;
-    this.studentAccommodation = false;
-    this.isShareAccomodationDisabled = false;
-    this.shareAccommodation = false;
-    this.onLoadBinding();
   }
 
   filterByPrice(e){
-    let url = localStorage.getItem('endUrl');
-    if(e.value == 0 && url != null){
-      this.listingService.listByPriceFilterURLAsc(url).subscribe((responseData)=>{
-        this.responseBody = responseData
-      })
-    } else if(e.value == 1 && url != null) {
-      this.listingService.listByPriceFilterURLDesc(url).subscribe((responseData)=>{
-        this.responseBody = responseData
-      })
-    } else if(e.value == 0) {
-      this.listingService.listByPriceFilterAsc('/mostViewedProperty').subscribe((responseData)=>{
-        this.responseBody = responseData
-      })
-    } else {
-      this.listingService.listByPriceFilterDesc('/mostViewedProperty').subscribe((responseData)=>{
-        this.responseBody = responseData
-      })
-    }
+
   }
 
   sort(reqParam){
-    this.apartment ? this.isApartmentDisabled = true : !this.isApartmentDisabled;
-    this.house ? this.isHouseDisabled = true : !this.isHouseDisabled;
-    this.studentAccommodation ? this.isStudentAccomodationDisabled = true : !this.isStudentAccomodationDisabled;
-    this.shareAccommodation ? this.isShareAccomodationDisabled = true : !this.isShareAccomodationDisabled;
-    localStorage.setItem('endUrl',reqParam)
-      if(reqParam.length > 0){
-        this.listingService.listByFilter(reqParam).subscribe((responseData)=>{
-              if(responseData.length > 0){
-                this.responseBody = responseData
-              } else {
-                this.responseBody = []
-                this.onLoadBinding()
-              }
-          })
-      } else {
-        this.responseBody = []
-        this.onLoadBinding()
-      }
-       }
+
+  }
+
 }

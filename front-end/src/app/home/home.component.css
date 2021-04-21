@@ -61,6 +61,10 @@ mat-toolbar.mat-toolbar-single-row img {
   display: none;
 }
 
+.hm-hotel-heading h2 span {
+  margin-left: 10px;
+}
+
 /* Responsive Styles */
 @media screen and (max-width: 767px) {
 

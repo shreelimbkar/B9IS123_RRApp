@@ -20,6 +20,7 @@
 <button mat-stroked-button color="accent" (click)="browserSection('sharing')">Bars</button>
 <button mat-stroked-button color="accent" (click)="browserSection('houseForSale')">Restaurants</button>
 <button mat-stroked-button color="accent" (click)="browserSection('holidayHomes')">Clubs</button>
+<button mat-stroked-button color="accent" (click)="writeReviewForm()">Write Review</button>
 </div>
 <!-- Diver line -->
 <hr>
@@ -39,7 +40,7 @@
   </ng-template> -->
 
   <ng-template carouselSlide *ngFor="let element of mostViewedBody; let i = index" >
-    <mat-card class="short-card" (click)="mostViewDetailPage(element.id)">
+    <mat-card class="short-card" (click)="mostViewDetailPage(element.resource_id)">
       <img src={{element.images[0]}}>
       <mat-card-content>
         <span class="category">{{element.type}}</span>
@@ -65,95 +66,21 @@
     </div>
     <div class="col-md-8">
       <div class="row">
-        <div class="isBNBVisible mb-3">
-          <div class="col-4">
+          <div class="isBNBVisible mb-3 col-md-4" *ngFor="let element of clubHouse">
             <mat-card class="example-card">
-              <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+              <img mat-card-image src="{{element.image[0]}}" alt="Property Photo">
               <mat-card-content>
-                <p>
-                  The Shiba Inu is the smallest of the
-                </p>
+                <p><b>{{element.type}}</b></p>
+              <h2>€ {{element.Price}}</h2>
+              <p>{{element.address}}</p>
               </mat-card-content>
               <mat-card-actions>
-                <button mat-button>LIKE</button>
-                <button mat-button>SHARE</button>
+                <button mat-stroked-button color="accent">View More</button>
               </mat-card-actions>
             </mat-card>
-          </div>
-          <div class="col-4">
-            <mat-card class="example-card">
-              <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-              <mat-card-content>
-                <p>
-                  The Shiba Inu is the smallest of the
-                </p>
-              </mat-card-content>
-              <mat-card-actions>
-                <button mat-button>LIKE</button>
-                <button mat-button>SHARE</button>
-              </mat-card-actions>
-            </mat-card>
-          </div>
-          <div class="col-4">
-            <mat-card class="example-card">
-              <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-              <mat-card-content>
-                <p>
-                  The Shiba Inu is the smallest of the
-                </p>
-              </mat-card-content>
-              <mat-card-actions>
-                <button mat-button>LIKE</button>
-                <button mat-button>SHARE</button>
-              </mat-card-actions>
-            </mat-card>
-          </div>
         </div>
-        <div class="isBNBVisible">
-          <div class="col-4">
-            <mat-card class="example-card">
-              <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-              <mat-card-content>
-                <p>
-                  The Shiba Inu is the smallest of the
-                </p>
-              </mat-card-content>
-              <mat-card-actions>
-                <button mat-button>LIKE</button>
-                <button mat-button>SHARE</button>
-              </mat-card-actions>
-            </mat-card>
-          </div>
-          <div class="col-4">
-            <mat-card class="example-card">
-              <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-              <mat-card-content>
-                <p>
-                  The Shiba Inu is the smallest of the
-                </p>
-              </mat-card-content>
-              <mat-card-actions>
-                <button mat-button>LIKE</button>
-                <button mat-button>SHARE</button>
-              </mat-card-actions>
-            </mat-card>
-          </div>
-          <div class="col-4">
-            <mat-card class="example-card">
-              <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-              <mat-card-content>
-                <p>
-                  The Shiba Inu is the smallest of the
-                </p>
-              </mat-card-content>
-              <mat-card-actions>
-                <button mat-button>LIKE</button>
-                <button mat-button>SHARE</button>
-              </mat-card-actions>
-            </mat-card>
-          </div>
-        </div>
-      </div>
+  </div>
+
       <owl-carousel-o class="isBNBVisible-slider" [options]="customOptions">
         <!-- <ng-template carouselSlide *ngFor="let element of mostViewedBody; let i = index" >
           <mat-card class="short-card" (click)="mostViewDetailPage(element.id)">
@@ -177,7 +104,6 @@
           </mat-card>
         </ng-template>
       </owl-carousel-o>
-  </div>
   </div>
 </div>
 </div><!-- end of hm-bnb-wrapper -->
@@ -192,121 +118,19 @@
   <div class="container">
     <div class="row">
     <div class="col-md-8 order-2 order-md-1">
-      <div class="row">
-        <div class="isBNBVisible mb-3">
-          <div class="col-4" *ngFor="let element of mostViewedBody; let i = index">
-            <mat-card class="example-card">
-              <img mat-card-image src={{element.images[0]}} alt="Photo of a Shiba Inu">
+        <owl-carousel-o [options]="customOptions">
+          <ng-template carouselSlide *ngFor="let element of mostViewedBody; let i = index" >
+            <mat-card class="short-card" (click)="mostViewDetailPage(element.id)">
+              <img class="mb-2" src={{element.images[0]}}>
               <mat-card-content>
                 <span class="category">{{element.type}}</span>
                 <h2>{{element.name}}</h2>
                 <h3>€ {{element.Price}} <span>(for 2)</span></h3>
                 <p>{{element.address}}</p>
-              </mat-card-content>
-              <mat-card-actions>
-                <button mat-button>LIKE</button>
-                <button mat-button>SHARE</button>
-              </mat-card-actions>
+                </mat-card-content>
             </mat-card>
-          </div>
-          <!-- <div class="col-4">
-            <mat-card class="example-card">
-              <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-              <mat-card-content>
-                <p>
-                  The Shiba Inu is the smallest of the
-                </p>
-              </mat-card-content>
-              <mat-card-actions>
-                <button mat-button>LIKE</button>
-                <button mat-button>SHARE</button>
-              </mat-card-actions>
-            </mat-card>
-          </div>
-          <div class="col-4">
-            <mat-card class="example-card">
-              <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-              <mat-card-content>
-                <p>
-                  The Shiba Inu is the smallest of the
-                </p>
-              </mat-card-content>
-              <mat-card-actions>
-                <button mat-button>LIKE</button>
-                <button mat-button>SHARE</button>
-              </mat-card-actions>
-            </mat-card>
-          </div> -->
-        </div>
-
-        <!-- <div class="isBNBVisible">
-          <div class="col-4">
-            <mat-card class="example-card">
-              <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-              <mat-card-content>
-                <p>
-                  The Shiba Inu is the smallest of the
-                </p>
-              </mat-card-content>
-              <mat-card-actions>
-                <button mat-button>LIKE</button>
-                <button mat-button>SHARE</button>
-              </mat-card-actions>
-            </mat-card>
-          </div>
-          <div class="col-4">
-            <mat-card class="example-card">
-              <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-              <mat-card-content>
-                <p>
-                  The Shiba Inu is the smallest of the
-                </p>
-              </mat-card-content>
-              <mat-card-actions>
-                <button mat-button>LIKE</button>
-                <button mat-button>SHARE</button>
-              </mat-card-actions>
-            </mat-card>
-          </div>
-          <div class="col-4">
-            <mat-card class="example-card">
-              <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-              <mat-card-content>
-                <p>
-                  The Shiba Inu is the smallest of the
-                </p>
-              </mat-card-content>
-              <mat-card-actions>
-                <button mat-button>LIKE</button>
-                <button mat-button>SHARE</button>
-              </mat-card-actions>
-            </mat-card>
-          </div>
-        </div> -->
-      </div>
-      <owl-carousel-o class="isBNBVisible-slider" [options]="customOptions">
-        <!-- <ng-template carouselSlide *ngFor="let element of mostViewedBody; let i = index" >
-          <mat-card class="short-card" (click)="mostViewDetailPage(element.id)">
-            <img src={{element.images[0]}}>
-            <mat-card-content>
-              <h2>€ {{element.Price}} <span>(for {{element.type}})</span></h2>
-              <p>{{element.address}}</p>
-              </mat-card-content>
-          </mat-card>
-        </ng-template> -->
-
-        <ng-template carouselSlide *ngFor="let element of mostViewedBody; let i = index" >
-          <mat-card class="short-card" (click)="mostViewDetailPage(element.id)">
-            <img class="mb-2" src={{element.images[0]}}>
-            <mat-card-content>
-              <span class="category">{{element.type}}</span>
-              <h2>{{element.name}}</h2>
-              <h3>€ {{element.Price}} <span>(for 2)</span></h3>
-              <p>{{element.address}}</p>
-              </mat-card-content>
-          </mat-card>
-        </ng-template>
-      </owl-carousel-o>
+          </ng-template>
+        </owl-carousel-o>
     </div>
     <div class="col-md-4 order-1 order-md-2">
       <h1>Clubs Near you</h1>
@@ -316,6 +140,57 @@
 </div>
 </div><!-- end of hm-club-wrapper -->
 
+<!-- Diver line -->
+<hr>
+<!-- Diver line -->
+
+<!-- hm-restaurant Start -->
+<div class="hm-restaurant-wrapper d-lg-flex">
+  <div class="container">
+  <div class="row">
+  <div class="col-md-2">
+      <div class="hm-heading"><h2>Explore Popular Restaurant near you<span><a (click)="ViewAll()" href="javascript:;" mat-stroked-button color="accent">Explore in Ireland<mat-icon>chevron_right</mat-icon></a></span></h2></div>
+  </div>
+  <div class="col-md-10">
+        <owl-carousel-o [options]="customOptions">
+          <ng-template carouselSlide *ngFor="let element of mostViewedBody; let i = index" >
+            <mat-card class="short-card" (click)="mostViewDetailPage(element.id)">
+              <img class="mb-2" src={{element.images[0]}}>
+              <mat-card-content>
+                <span class="category">{{element.type}}</span>
+                <h2>{{element.name}}</h2>
+                <h3>€ {{element.Price}} <span>(for 2)</span></h3>
+                <p>{{element.address}}</p>
+                </mat-card-content>
+            </mat-card>
+          </ng-template>
+        </owl-carousel-o>
+  </div>
+</div>
+</div>
+</div><!-- end of hm-restaurant-wrapper -->
+
+<!-- hm-hotel Start -->
+<div class="hm-hotel-wrapper d-lg-flex">
+  <div class="container">
+    <div class="hm-hotel-heading"><h2>Explore Popular Hotels near you<span><a (click)="ViewAll()" href="javascript:;" mat-stroked-button color="accent">View More<mat-icon>chevron_right</mat-icon></a></span></h2></div>
+
+        <owl-carousel-o [options]="customOptions">
+          <ng-template carouselSlide *ngFor="let element of mostViewedBody; let i = index" >
+            <mat-card class="short-card" (click)="mostViewDetailPage(element.id)">
+              <img class="mb-2" src={{element.images[0]}}>
+              <mat-card-content>
+                <span class="category">{{element.type}}</span>
+                <h2>{{element.name}}</h2>
+                <h3>€ {{element.Price}} <span>(for 2)</span></h3>
+                <p>{{element.address}}</p>
+                </mat-card-content>
+            </mat-card>
+          </ng-template>
+        </owl-carousel-o>
+
+</div>
+</div><!-- end of hm-hotel-wrapper -->
 
 </div>
 </div>
