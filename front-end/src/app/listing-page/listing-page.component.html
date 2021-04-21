@@ -1,5 +1,7 @@
 <div class="container block-wrapper">
-  <!-- Filter Accordion start -->
+<div class="row">
+  <div class="col-md-4">
+      <!-- Filter Accordion start -->
   <mat-accordion class="filter-wrapper">
     <mat-expansion-panel hideToggle class="filter-wrapper">
       <mat-expansion-panel-header>
@@ -7,14 +9,14 @@
           <mat-icon>filter_alt</mat-icon>
         </mat-panel-title>
         <mat-panel-description>
-          Filter By Price and Category
+          Filter
         </mat-panel-description>
       </mat-expansion-panel-header>
-
+  <form name="validateForm" [formGroup]="filterValidateForm" novalidate (ngSubmit)="submitForm(filterValidateForm.value)">
       <section>
         <mat-form-field appearance="fill">
           <mat-label>Filter By Price</mat-label>
-          <mat-select (selectionChange)="filterByPrice($event)">
+          <mat-select formControlName="price" (selectionChange)="filterByPrice($event)">
             <mat-option value=0>Low to High</mat-option>
             <mat-option value=1>High to Low</mat-option>
           </mat-select>
@@ -22,40 +24,57 @@
       </section>
       <section class="category-section">
         <p><b>By Categorys</b></p>
-        <mat-checkbox [disabled]="isApartmentDisabled" class="mr-3" name="apartment" ngDefaultControl
-         [(ngModel)]="apartment" (ngModelChange)="sort('apartmentForRent')">Apartment</mat-checkbox>
-
-        <mat-checkbox [disabled]="isHouseDisabled" name="house" ngDefaultControl [(ngModel)]="house"
-        (ngModelChange)="sort('houseForRent')">House</mat-checkbox><br>
-        <mat-checkbox [disabled]="isStudentAccomodationDisabled" name="studentAccomodation"
-        ngDefaultControl [(ngModel)]="studentAccommodation" (ngModelChange)="sort('studentAccommodation')">Student Accommodation</mat-checkbox><br>
-        <mat-checkbox [disabled]="isShareAccomodationDisabled" name="shareAccomodation" ngDefaultControl
-        [(ngModel)]="shareAccommodation" (ngModelChange)="sort('sharing')">Share Accommodation</mat-checkbox>
+        <mat-checkbox  class="mr-3" formControlName="hotel" name="hotel">Hotels</mat-checkbox>
+        <mat-checkbox  name="BnB" formControlName="BnB">B&B</mat-checkbox><br>
+        <mat-checkbox  name="bar" formControlName="bar">Bar</mat-checkbox><br>
+        <mat-checkbox  name="club"formControlName="club">Clubs</mat-checkbox>
+        <mat-checkbox  name="Restaurant"formControlName="Restaurant">Restaurants</mat-checkbox>
       </section>
+      <section class="category-section">
+        <p><b>By Location</b></p>
+        <mat-form-field appearance="fill">
+          <mat-label>location</mat-label>
+          <mat-select formControlName="location" (selectionChange)="filterByPrice($event)">
+            <mat-option *ngFor="let element of location" value={{element.value}}>{{element.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </section>
+      <section class="category-section">
+        <p><b>By Popularity</b></p>
+        <mat-checkbox  class="mr-3" formControlName="fiveStar" name="fiveStar">5 star</mat-checkbox>
+        <mat-checkbox  formControlName="fourStar" name="fourStar">4 star</mat-checkbox><br>
+        <mat-checkbox  formControlName="threeStar" name="threeStar">3 star</mat-checkbox><br>
+        <mat-checkbox  formControlName="twoStar" name="twoStar">2 star</mat-checkbox>
+      </section>
+      <button class="mt-2" mat-stroked-button color="primary">Submit</button>
       <button class="mt-2" mat-stroked-button color="accent" (click)="reset()">Reset</button>
+    </form>
     </mat-expansion-panel>
   </mat-accordion>
   <!-- Filter Accordion end -->
+    </div>
+  <div class="col-md-8">
+   <!-- Listing Wrapper start -->
+   <div class="listing-wrapper">
+    <div class="row">
+      <div class="col-md-4" *ngFor="let element of responseBody">
+        <mat-card class="example-card">
+          <img mat-card-image src="{{element.listingImg}}" alt="Property Photo">
+          <mat-card-content>
+            <p><b>{{element.type}}</b></p>
+          <h2>€ {{element.Price}}</h2>
+          <p>{{element.address}}</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-stroked-button color="accent" (click)="detailPage(element.id,element.param)">View More</button>
+          </mat-card-actions>
+        </mat-card>
+    </div>
+    </div>
 
-  <!-- Listing Wrapper start -->
-  <div class="listing-wrapper">
-  <div class="row">
-    <div class="col-md-3" *ngFor="let element of responseBody">
-      <mat-card class="example-card">
-        <img mat-card-image src="{{element.listingImg}}" alt="Property Photo">
-        <mat-card-content>
-          <p><b>{{element.type}}</b></p>
-        <h2>€ {{element.Price}}</h2>
-        <p>{{element.address}}</p>
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-stroked-button color="accent" (click)="detailPage(element.id,element.param)">View More</button>
-        </mat-card-actions>
-      </mat-card>
-  </div>
-  </div>
+    </div>
+    <!-- Listing Wrapper ends -->
 
-  </div>
-  <!-- Listing Wrapper ends -->
-
+    </div>
+</div>
 </div>

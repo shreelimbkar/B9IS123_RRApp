@@ -11,21 +11,37 @@
             <h2 class="mb-4 mt-4">Sign in to unlock the best of GoSolo.</h2>
             <h3 class="mb-4">Welcome back.</h3>
           </div>
-          <form action="#" method="post">
+          <form name="validateForm" [formGroup]="loginValidateForm" novalidate (ngSubmit)="submitForm(loginValidateForm.value)">
                      <!-- Email address -->
             <mat-form-field appearance="outline" class="full-width">
               <mat-label>Email ID</mat-label>
-              <input matInput>
+              <input matInput formControlName="email">
               <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-              <mat-hint>Hint</mat-hint>
+              <mat-hint>example@domain.com</mat-hint>
+              <mat-error *ngIf="loginValidateForm.get('email').hasError('required')">
+                Email is required
+            </mat-error>
+            <mat-error *ngIf="loginValidateForm.get('email').hasError('email')">
+                Please enter a valid email address
+            </mat-error>
             </mat-form-field>
                      <!-- Password -->
             <mat-form-field appearance="outline" class="full-width mb-3">
               <mat-label>password</mat-label>
-              <input matInput [type]="hide ? 'password' : 'text'">
+              <input matInput formControlName="password" [type]="hide ? 'password' : 'text'">
               <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
               <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
               </button>
+              <mat-error *ngIf="loginValidateForm.get('password').hasError('required')">
+                Password is required!
+              </mat-error>
+              <mat-error
+              *ngIf="!loginValidateForm.get('password').hasError('required') &&
+                      loginValidateForm.get('password').hasError('passErr')">
+              *Please enter a valid password! <br>
+              *minimum length should be 8 digit <br>
+              *must contain Numeric and Alpha characters
+        </mat-error>
             </mat-form-field>
 
             <div class="d-flex mb-5 align-items-center">

@@ -1,4 +1,11 @@
 export class RestUrl {
+  public static get login(): string { return `login`; }
+  public static get mightBeLike(): string { return `resources`; }
+
+
+
+
+
   public static get getDetail(): string { return `/`; }
   public static get mostViewedProperty(): string { return `/mostViewedProperty`; }
   public static get home(): string { return `/houseForRent`; }

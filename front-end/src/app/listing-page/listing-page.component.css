@@ -10,10 +10,9 @@
 }
 
 .filter-wrapper{
-  position: fixed;
+  position: sticky;
   z-index: 1;
   top: 80px;
-  left: 0px;
 }
 
 

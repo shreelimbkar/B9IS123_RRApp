@@ -22,7 +22,8 @@ import { LoaderInterceptorService } from './shared/loader-interceptor.service';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
-
+import { WriteReviewComponent } from './write-review/write-review.component';
+import { RatingModule } from 'ng-starrating';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     BookingComponent,
     SpinnerComponent,
     LoginComponent,
-    SignUpComponent
+    SignUpComponent,
+    WriteReviewComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,7 +50,8 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     FormsModule,
     MaterialModule,
     NgxSpinnerModule,
-    HttpClientModule
+    HttpClientModule,
+    RatingModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

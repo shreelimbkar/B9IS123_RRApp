@@ -19,11 +19,11 @@ export class RestService {
   }
 
   public create = (route: string, body) => {
-    return this.http.post(environment.urlAddress + route, body);
+    return this.http.post(environment.DevUrlAddress + route, body);
   };
 
   public get = (route: string) => {
-    return this.http.get(environment.urlAddress + route);
+    return this.http.get(environment.DevUrlAddress + route);
   };
 
 

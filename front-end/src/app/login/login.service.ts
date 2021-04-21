@@ -8,19 +8,13 @@ import { RestService } from '../shared/rest.service';
   providedIn: 'root'
 })
 
-export class HomeService {
+export class LoginService {
 
   constructor( private _restService : RestService) {
   }
 
-  mostViewed(): Observable<any> {
-    return this._restService.get(RestUrl.mostViewedProperty)
+  login(param): Observable<any> {
+    return this._restService.create(RestUrl.login,param)
   }
-
-  mightBeLike(): Observable<any> {
-    return this._restService.get(RestUrl.mightBeLike)
-  }
-
-
 
 }
