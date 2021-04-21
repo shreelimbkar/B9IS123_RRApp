@@ -1,0 +1,61 @@
+<div class="container block-wrapper">
+  <!-- Filter Accordion start -->
+  <mat-accordion class="filter-wrapper">
+    <mat-expansion-panel hideToggle class="filter-wrapper">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <mat-icon>filter_alt</mat-icon>
+        </mat-panel-title>
+        <mat-panel-description>
+          Filter By Price and Category
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <section>
+        <mat-form-field appearance="fill">
+          <mat-label>Filter By Price</mat-label>
+          <mat-select (selectionChange)="filterByPrice($event)">
+            <mat-option value=0>Low to High</mat-option>
+            <mat-option value=1>High to Low</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </section>
+      <section class="category-section">
+        <p><b>By Categorys</b></p>
+        <mat-checkbox [disabled]="isApartmentDisabled" class="mr-3" name="apartment" ngDefaultControl
+         [(ngModel)]="apartment" (ngModelChange)="sort('apartmentForRent')">Apartment</mat-checkbox>
+
+        <mat-checkbox [disabled]="isHouseDisabled" name="house" ngDefaultControl [(ngModel)]="house"
+        (ngModelChange)="sort('houseForRent')">House</mat-checkbox><br>
+        <mat-checkbox [disabled]="isStudentAccomodationDisabled" name="studentAccomodation"
+        ngDefaultControl [(ngModel)]="studentAccommodation" (ngModelChange)="sort('studentAccommodation')">Student Accommodation</mat-checkbox><br>
+        <mat-checkbox [disabled]="isShareAccomodationDisabled" name="shareAccomodation" ngDefaultControl
+        [(ngModel)]="shareAccommodation" (ngModelChange)="sort('sharing')">Share Accommodation</mat-checkbox>
+      </section>
+      <button class="mt-2" mat-stroked-button color="accent" (click)="reset()">Reset</button>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <!-- Filter Accordion end -->
+
+  <!-- Listing Wrapper start -->
+  <div class="listing-wrapper">
+  <div class="row">
+    <div class="col-md-3" *ngFor="let element of responseBody">
+      <mat-card class="example-card">
+        <img mat-card-image src="{{element.listingImg}}" alt="Property Photo">
+        <mat-card-content>
+          <p><b>{{element.type}}</b></p>
+        <h2>€ {{element.Price}}</h2>
+        <p>{{element.address}}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-stroked-button color="accent" (click)="detailPage(element.id,element.param)">View More</button>
+        </mat-card-actions>
+      </mat-card>
+  </div>
+  </div>
+
+  </div>
+  <!-- Listing Wrapper ends -->
+
+</div>

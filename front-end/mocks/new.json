@@ -1,0 +1,692 @@
+{
+  "houseForRent":[
+  {
+    "id": 1,
+    "description": "This Classy house is located in the city center, a well furnished living room, 1 bed and bath apartment with a stunning kitchen with all appliances and kitchen utensils included.",
+    "address":"Thomas street, Dublin 1",
+    "tenancy": "",
+    "Price": "4500",
+    "features": ["Bright and spacious", "1 Bathroom", "1 Bedroom", "Parking Space"],
+    "images":["../assets/image/Rent/house1/Picture1.jpg","../assets/image/Rent/house1/Picture2.jpg","../assets/image/Rent/house1/Picture3.jpg","../assets/image/Rent/house1/Picture4.jpg","../assets/image/Rent/house1/Picture5.jpg","../assets/image/Rent/house1/Picture6.jpg"],
+    "type":"House For Rent",
+    "listingImg":"../assets/image/Rent/house1/1.jpg",
+    "param": "houseForRent"
+  },
+  {
+    "id":2,
+    "description":"This south facing recently furnished apartment is located in a secluded environment, this apartment comes with a spacious closet, 2 bedrooms and a bath, it also comes with a well furnished living room.",
+    "address":"North road, Dublin 2",
+    "tenancy":"",
+    "Price": "5400",
+    "features": ["Great Closet", "wifi included", "2 bedrooms 1 bath", "Parking space"],
+    "images":["../assets/image/Rent/house2/Picture1.jpg","../assets/image/Rent/house2/Picture2.jpg","../assets/image/Rent/house2/Picture3.jpg","../assets/image/Rent/house2/Picture4.jpg"],
+    "type":"House For Rent",
+    "listingImg":"../assets/image/Rent/house2/1.jpg",
+    "param": "houseForRent"
+  },
+  {
+    "id": 3,
+    "description":"This great house is located on the outh side of dublin it comes fully furnished, a great parking space, a fully equipped gymnasium, 2 bedrooms and 2 baths, the house is also comes with a fully furnished living room. ",
+    "address":"Cork Street, santry Dublin 8",
+    "tenancy":"",
+    "Price":"5800",
+    "features": ["Large parking space", "wifi", "Gymnasium", "2 bedrooms", "2 baths", "fully furnished"],
+    "images":["../assets/image/Rent/house3/Picture1.jpg","../assets/image/Rent/house3/Picture2.jpg","../assets/image/Rent/house3/Picture3.jpg","../assets/image/Rent/house3/Picture4.jpg","../assets/image/Rent/house3/Picture5.jpg","../assets/image/Rent/house3/Picture6.jpg","../assets/image/Rent/house3/Picture7.jpg"],
+    "type":"House For Rent",
+    "listingImg":"../assets/image/Rent/house3/1.jpg",
+    "param": "houseForRent"
+  }
+],
+"apartmentForRent":[
+  {
+    "id":4,
+    "description":"Beautiful apartment located in the city centre with great view of the city, 2 bedrooms and 2 baths a fully furnished living room and kitchen it also comes with a study space, the apartment building has general gym and a cinema room. ",
+    "address":"Thomas street, dublin 9",
+    "tenancy":"",
+    "Price":"3400",
+    "features": ["wifi included", "all utility bills included", "2 bedrooms and 2 baths", "Parking space", "Gymansium and Cinema room"],
+    "images":["../assets/image/Rent/apartment1/Picture1.jpg","../assets/image/Rent/apartment1/Picture2.jpg","../assets/image/Rent/apartment1/Picture3.jpg","../assets/image/Rent/apartment1/Picture4.jpg"],
+    "type":"Apartment For Rent",
+    "listingImg":"../assets/image/Rent/apartment1/1.jpg",
+    "param": "apartmentForRent"
+
+  },
+  {
+    "id": 5,
+    "description":"A great apartment located in the city centre with great view for the phoenix park, fully furnished living room and kitchen, 2 bedrooms and 2 baths, a great parking space and laundromat located in the apartment building.",
+    "address":"Brickfeild lane, Dublin 8",
+    "tenancy":"",
+    "Price":"1300",
+    "features": ["wifi included", "all utility bills included", "2 bedrooms and 2 baths", "Parking space", "laundromat"],
+    "images":["../assets/image/Rent/apartment2/Picture1.jpg","../assets/image/Rent/apartment2/Picture2.jpg","../assets/image/Rent/apartment2/Picture3.jpg","../assets/image/Rent/apartment2/Picture4.jpg","../assets/image/Rent/apartment2/Picture5.jpg","../assets/image/Rent/apartment2/Picture6.jpg"],
+    "type":"Apartment For Rent",
+    "listingImg":"../assets/image/Rent/apartment2/1.jpg",
+    "param": "apartmentForRent"
+
+  },
+  {
+    "id": 6,
+    "description":"2 bedroom apartment located in dublin 8, with fully furnished living room and kitchen, this apartment is located near a bus stop for easy transportation, 1 bedroom and a bath.",
+    "address":"the liberties, Dublin 08",
+    "tenancy":"",
+    "Price":"1600",
+    "features": ["wifi included", "all utility bills included", "1 bedrooms and 1 bath", "Parking space", "Gymansium and Cinema room"],
+    "images":["../assets/image/Rent/apartment3/Picture1.jpg","../assets/image/Rent/apartment3/Picture2.jpg","../assets/image/Rent/apartment3/Picture3.jpg","../assets/image/Rent/apartment3/Picture4.jpg"],
+    "type":"Apartment For Rent",
+    "listingImg":"../assets/image/Rent/apartment3/1.jpg",
+    "param": "apartmentForRent"
+  }
+],
+"studentAccommodation":[
+  {
+    "id": 7,
+    "description":"This accommodation is suitable for students it comes with a spacious ensuite room with a great a shared living room fully equipped kitchen a smart tv, each room comes with a comfortable reading chair and desk",
+    "address":"Arran quay, Dublin 08",
+    "tenancy":"",
+    "Price":250,
+    "features": ["wifi included", "all utility bills included", "1 ensuite bedroom", "Parking space", "Gymansium and Cinema room", "Study room"],
+    "images":["../assets/image/Rent/student1/Picture1.jpg","../assets/image/Rent/student1/Picture2.jpg","../assets/image/Rent/student1/Picture3.jpg","../assets/image/Rent/student1/Picture4.jpg"],
+    "type":"Student Accommodation",
+    "listingImg":"../assets/image/Rent/student1/1.jpg",
+    "param": "studentAccommodation"
+
+  },
+  {
+    "id": 8,
+    "description": "This accommodation is suitable for students it comes with a shared ensuite room, with a spacious shared living room fuly equipped kitchen, this accommodation is close to bus stop for ease of transportation to and from school",
+    "address":"Soil street dublin 9",
+    "tenancy":"",
+    "Price": "240",
+    "features": ["wifi included", "all utility bills included", "1 ensuite shared bedroom", "Parking space", "Gymansium and Cinema room", "Study room"],
+    "images":["../assets/image/Rent/student2/Picture1.jpg","../assets/image/Rent/student2/Picture2.jpg","../assets/image/Rent/student2/Picture3.jpg","../assets/image/Rent/student2/Picture4.jpg","../assets/image/Rent/student2/Picture5.jpg"],
+    "type":"Student Accommodation",
+    "listingImg":"../assets/image/Rent/student2/1.jpg",
+    "param": "studentAccommodation"
+
+  }
+],
+
+"holidayHomes":[
+  {
+    "id": 10,
+    "description":"This holiday home is located in a secluded environment perfect for a family holiday comes with a fully furnished living room, kitchen and 3 bedrooms great parking space and a serene environment",
+    "address":"flinder street, Dublin 05",
+    "tenancy":"",
+    "Price": "3,400",
+    "features": ["wifi included", "all utility bills included", "3 ensuite bedrooms, Parking space, Serene Environment."],
+    "images":["../assets/image/Rent/holidayhome1/Picture1.jpg","../assets/image/Rent/holidayhome1/Picture2.jpg","../assets/image/Rent/holidayhome1/Picture3.jpg","../assets/image/Rent/holidayhome1/Picture4.jpg"],
+    "type":"Holiday Homes",
+    "listingImg":"../assets/image/Rent/holidayhome1/1.jpg",
+    "param": "holidayHomes"
+
+  },
+  {
+    "id": 11,
+    "description":"This holiday home is located in a secluded environment perfect for a family holiday comes with a fully furnished living room, kitchen and 2 bedrooms great parking space and a serene environment",
+    "address":"221B Baker Street, Dublin 4",
+    "tenancy":"",
+    "Price": "4,900",
+    "features": ["2 ensuite bedrooms", "Parking space", "Serene Environment"],
+    "images":["../assets/image/Rent/holidayhome2/Picture1.jpg","../assets/image/Rent/holidayhome2/Picture2.jpg","../assets/image/Rent/holidayhome2/Picture3.jpg"],
+    "type":"Holiday Homes",
+    "listingImg":"../assets/image/Rent/holidayhome2/1.jpg",
+    "param": "holidayHomes"
+
+  }
+],
+"shortTermStay":[
+      {
+        "id": 13,
+        "Description":"This accommodation is suitable for people visiting the city it comes with a shared ensuite room, with a spacious shared living room fuly equipped kitchen, this accommodation is close to bus stop ",
+        "address":"890 Fifth Avenue, Dublin 9",
+        "tenancy":"1 month",
+        "Price": "245",
+        "features": ["wifi included", "all utility bills included", "1 ensuite shared bedroom", "Parking space", "Gymansium and Cinema room", "Study room"],
+        "images":["../assets/image/Rent/shortstay/Picture1.jpg","../assets/image/Rent/shortstay/Picture2.jpg","../assets/image/Rent/shortstay/Picture3.jpg"],
+        "type":"Short Term Stay",
+        "listingImg":"../assets/image/Rent/shortstay/1.jpg",
+        "param": "shortTermStay"
+      },
+      {
+        "id": 14,
+        "description":"This accommodation is suitable for people visiting the city it comes with a spacious ensuite room with a great a shared living room fully equipped kitchen a smart tv, each room comes with a comfortable reading chair and desk",
+        "address":"Forest Hills, Dublin 9",
+        "tenancy":"2 month",
+        "Price": "270",
+        "features": ["wifi included", "all utility bills included", "1 ensuite bedroom", "Parking space", "Gymansium and Cinema room", "Study room"],
+        "images":["../assets/image/Rent/shortstay2/Picture1.jpg","../assets/image/Rent/shortstay2/Picture2.jpg","../assets/image/Rent/shortstay2/Picture3.jpg"],
+        "type":"Short Term Stay",
+        "listingImg":"../assets/image/Rent/shortstay2/1.jpg",
+        "param": "shortTermStay"
+
+      }
+],
+"houseForSale":[
+  {
+          "id": 16,
+          "description": "This Classy house is located in the city center, a well furnished living room, 1 bed and bath apartment with a stunning kitchen with all appliances and kitchen utensils included.",
+          "address":"Lower east side, Dublin 7",
+          "Price": "4,50,000",
+          "features": ["Bright and spacious", "1 Bathroom", "1 Bedroom", "Parking Space"],
+          "images":["../assets/image/Buy/house1/Picture1.jpg","../assets/image/Buy/house1/Picture2.jpg","../assets/image/Buy/house1/Picture3.jpg","../assets/image/Buy/house1/Picture4.jpg","../assets/image/Buy/house1/Picture5.jpg","../assets/image/Buy/house1/Picture6.jpg"],
+          "type":"House For Sale",
+          "listingImg":"../assets/image/Rent/house1/1.jpg",
+          "param": "houseForSale"
+
+
+        },
+        {
+          "id": 17,
+          "description": "This south facing recently furnished apartment is located in a secluded environment, this apartment comes with a spacious closet, 2 bedrooms and a bath, it also comes with a well furnished living room.",
+          "address":"Brickfield lane Dublin 6",
+          "Price": "5,00,000",
+          "features": ["Great Closet", "wifi included", "2 bedrooms 1 bath", "Parking space"],
+          "images":["../assets/image/Buy/house2/Picture1.jpg","../assets/image/Buy/house2/Picture2.jpg","../assets/image/Buy/house2/Picture3.jpg","../assets/image/Buy/house2/Picture5.jpg","../assets/image/Buy/house1/Picture6.jpg","../assets/image/Buy/house2/Picture7.jpg","../assets/image/Buy/house2/Picture8.jpg","../assets/image/Buy/house2/Picture9.jpg","../assets/image/Buy/house2/Picture10.jpg"],
+          "type":"House For Sale",
+          "listingImg":"../assets/image/Rent/house2/1.jpg",
+          "param": "houseForSale"
+
+        },
+        {
+          "id": 18,
+          "description": "This great house is located on the outh side of dublin it comes fully furnished, a great parking space, a fully equipped gymnasium, 2 bedrooms and 2 baths, the house is also comes with a fully furnished living room.",
+          "address":"James Street, Dublin 4",
+          "Price": "5,00,000",
+          "features": ["Large parking space", "wifi", "Gymnasium", "2 bedrooms", "2 baths", "fully furnished"],
+          "images":["../assets/image/Buy/house3/Picture1.jpg","../assets/image/Buy/house3/Picture2.jpg","../assets/image/Buy/house3/Picture3.jpg","../assets/image/Buy/house3/Picture4.jpg","../assets/image/Buy/house3/Picture5.jpg","../assets/image/Buy/house3/Picture6.jpg"],
+          "type":"House For Sale",
+          "listingImg":"../assets/image/Rent/house3/1.jpg",
+          "param": "houseForSale"
+
+        }
+      ],
+"apartmentsForSale":[
+        {
+          "id":19,
+          "description":"Beautiful apartment located in the city centre with great view of the city, 2 bedrooms and 2 baths a fully furnished living room and kitchen it also comes with a study space, the apartment building has general gym and a cinema room.",
+          "address":"Micheal street, Dublin 09",
+          "Price": "3,31,400",
+          "features": ["wifi included", "all utility bills included", "2 bedrooms and 2 baths", "Parking space", "Gymansium and Cinema room"],
+          "images":["../assets/image/Buy/apartment1/Picture1.jpg","../assets/image/Buy/apartment1/Picture2.jpg","../assets/image/Buy/apartment1/Picture3.jpg","../assets/image/Buy/apartment1/Picture4.jpg","../assets/image/Buy/apartment1/Picture5.jpg","../assets/image/Buy/apartment1/Picture6.jpg","../assets/image/Buy/apartment1/Picture7.jpg"],
+          "type":"Sale",
+          "listingImg":"../assets/image/Rent/apartment1/1.jpg",
+          "param": "apartmentsForSale"
+        },
+        {
+          "id":20,
+          "description":"A great apartment located in the city centre with great view for the phoenix park, fully furnished living room and kitchen, 2 bedrooms and 2 baths, a great parking space and laundromat located in the apartment building.",
+          "address":"Gabriel's Street, Limerick",
+          "Price": "2,40,000",
+          "features": ["wifi included", "all utility bills included", "2 bedrooms and 2 baths", "Parking space", "laundromat"],
+          "images":["../assets/image/Buy/apartment2/Picture1.jpg","../assets/image/Buy/apartment2/Picture2.jpg","../assets/image/Buy/apartment2/Picture3.jpg","../assets/image/Buy/apartment2/Picture4.jpg","../assets/image/Buy/apartment2/Picture5.jpg"],
+          "type":"Sale",
+          "listingImg":"../assets/image/Rent/apartment2/1.jpg",
+          "param": "apartmentsForSale"
+        }
+      ],
+"mostViewedProperty":[
+        {
+          "id":21,
+          "description":"Beautiful apartment located in the city centre with great view of the city, 2 bedrooms and 2 baths a fully furnished living room and kitchen it also comes with a study space, the apartment building has general gym and a cinema room.",
+          "address":"Micheal street, Dublin 09",
+          "Price": "3,31,400",
+          "features": ["wifi included", "all utility bills included", "2 bedrooms and 2 baths", "Parking space", "Gymansium and Cinema room"],
+          "images":["../assets/image/Buy/apartment1/Picture1.jpg","../assets/image/Buy/apartment1/Picture2.jpg","../assets/image/Buy/apartment1/Picture3.jpg","../assets/image/Buy/apartment1/Picture4.jpg","../assets/image/Buy/apartment1/Picture5.jpg","../assets/image/Buy/apartment1/Picture6.jpg","../assets/image/Buy/apartment1/Picture7.jpg"],
+          "type":"Sale",
+          "param": "mostViewedProperty",
+          "listingImg":"../assets/image/Buy/apartment1/1.jpg"
+        },
+        {
+          "id": 22,
+          "description": "This south facing recently furnished apartment is located in a secluded environment, this apartment comes with a spacious closet, 2 bedrooms and a bath, it also comes with a well furnished living room.",
+          "address":"Brickfield lane Dublin 6",
+          "Price": "5,00,000",
+          "features": ["Great Closet","wifi included","2 bedrooms 1 bath","Parking space"],
+          "images":["../assets/image/Buy/house2/Picture1.jpg","../assets/image/Buy/house2/Picture2.jpg","../assets/image/Buy/house2/Picture3.jpg","../assets/image/Buy/house2/Picture5.jpg","../assets/image/Buy/house1/Picture6.jpg","../assets/image/Buy/house2/Picture7.jpg","../assets/image/Buy/house2/Picture8.jpg","../assets/image/Buy/house2/Picture9.jpg","../assets/image/Buy/house2/Picture10.jpg"],
+          "type":"Sale",
+          "param": "mostViewedProperty",
+          "listingImg":"../assets/image/Buy/house2/1.jpg"
+        },
+        {
+          "id":23,
+          "description":"A great apartment located in the city centre with great view for the phoenix park, fully furnished living room and kitchen, 2 bedrooms and 2 baths, a great parking space and laundromat located in the apartment building.",
+          "address":"Gabriel's Street, Limerick",
+          "Price": "2,40,000",
+          "features": ["wifi included", "all utility bills included", "2 bedrooms and 2 baths", "Parking space", "laundromat"],
+          "images":["../assets/image/Buy/apartment2/Picture1.jpg","../assets/image/Buy/apartment2/Picture2.jpg","../assets/image/Buy/apartment2/Picture3.jpg","../assets/image/Buy/apartment2/Picture4.jpg","../assets/image/Buy/apartment2/Picture5.jpg"],
+          "type":"Sale",
+          "listingImg":"../assets/image/Rent/apartment2/1.jpg",
+          "param": "apartmentsForSale"
+        },
+        {
+          "id": 24,
+          "description":"A great apartment located in the city centre with great view for the phoenix park, fully furnished living room and kitchen, 2 bedrooms and 2 baths, a great parking space and laundromat located in the apartment building.",
+          "address":"Brickfeild lane, Dublin 8",
+          "tenancy":"",
+          "Price": "1,300",
+          "features": ["wifi included","all utility bills included","2 bedrooms and 2 baths","Parking space","laundromat"],
+          "images":["../assets/image/Rent/apartment2/Picture1.jpg","../assets/image/Rent/apartment2/Picture2.jpg","../assets/image/Rent/apartment2/Picture3.jpg","../assets/image/Rent/apartment2/Picture4.jpg","../assets/image/Rent/apartment2/Picture5.jpg","../assets/image/Rent/apartment2/Picture6.jpg"],
+          "type":"Rent",
+          "param": "mostViewedProperty",
+          "listingImg":"../assets/image/Rent/apartment2/1.jpg"
+        },
+        {
+          "id": 25,
+          "Description":"This accommodation is suitable for people visiting the city it comes with a shared ensuite room, with a spacious shared living room fuly equipped kitchen, this accommodation is close to bus stop ",
+          "address":"890 Fifth Avenue, Dublin 9",
+          "tenancy":"",
+          "Price": "2,450",
+          "features": ["wifi included","all utility bills included","1 ensuite shared bedroom","Parking space","Gymansium and Cinema room","Study room"],
+          "images":["../assets/image/Rent/shortstay/Picture1.jpg","../assets/image/Rent/shortstay/Picture2.jpg","../assets/image/Rent/shortstay/Picture3.jpg"],
+          "type":"Short Term Stay",
+          "param": "mostViewedProperty",
+          "listingImg":"../assets/image/Rent/shortstay/1.jpg"
+        },
+        {
+          "id": 26,
+          "description":"This holiday home is located in a secluded environment perfect for a family holiday comes with a fully furnished living room, kitchen and 3 bedrooms great parking space and a serene environment",
+          "address":"flinder street, Dublin 05",
+          "tenancy":"",
+          "Price": "3,400",
+          "features": "wifi included, all utility bills included, 3 ensuite bedrooms, Parking space, Serene Environment.",
+          "images":["../assets/image/Rent/holidayhome1/Picture1.jpg","../assets/image/Rent/holidayhome1/Picture2.jpg","../assets/image/Rent/holidayhome1/Picture3.jpg","../assets/image/Rent/holidayhome1/Picture4.jpg"],
+          "type":"Rent",
+          "param": "mostViewedProperty",
+          "listingImg":"../assets/image/Rent/holidayhome1/1.jpg"
+        },
+        {
+          "id":27,
+          "description":"Beautiful apartment located in the city centre with great view of the city, 2 bedrooms and 2 baths a fully furnished living room and kitchen it also comes with a study space, the apartment building has general gym and a cinema room. ",
+          "address":"Thomas street, dublin 9",
+          "tenancy":"",
+          "Price": "3,400",
+          "features": "wifi included, all utility bills included, 2 bedrooms and 2 baths, Parking space, Gymansium and Cinema room",
+          "images":["../assets/image/Rent/apartment1/Picture1.jpg","../assets/image/Rent/apartment1/Picture2.jpg","../assets/image/Rent/apartment1/Picture3.jpg","../assets/image/Rent/apartment1/Picture4.jpg"],
+          "type":"Rent",
+          "param": "mostViewedProperty",
+          "listingImg":"../assets/image/Rent/apartment1/1.jpg"
+        }
+      ],
+"ListOfProperty":[
+  {
+    "id":28,
+    "description":"This south facing recently furnished apartment is located in a secluded environment, this apartment comes with a spacious closet, 2 bedrooms and a bath, it also comes with a well furnished living room.",
+    "address":"North road, Dublin 2",
+    "tenancy":"",
+    "Price": "5,400",
+    "features": ["Great Closet", "wifi included", "2 bedrooms 1 bath", "Parking space"],
+    "images":["../assets/image/Rent/house2/Picture1.jpg","../assets/image/Rent/house2/Picture2.jpg","../assets/image/Rent/house2/Picture3.jpg","../assets/image/Rent/house2/Picture4.jpg"],
+    "listingImg":"../assets/image/Rent/house2/1.jpg",
+    "type":"House For Rent",
+    "param": "ListOfProperty"
+
+  },
+  {
+    "id": 29,
+    "description":"This great house is located on the outh side of dublin it comes fully furnished, a great parking space, a fully equipped gymnasium, 2 bedrooms and 2 baths, the house is also comes with a fully furnished living room. ",
+    "address":"Cork Street, santry Dublin 8",
+    "tenancy":"",
+    "Price":"5,800",
+    "features": ["Large parking space", "wifi", "Gymnasium", "2 bedrooms", "2 baths", "fully furnished"],
+    "images":["../assets/image/Rent/house3/Picture1.jpg","../assets/image/Rent/house3/Picture2.jpg","../assets/image/Rent/house3/Picture3.jpg","../assets/image/Rent/house3/Picture4.jpg","../assets/image/Rent/house3/Picture5.jpg","../assets/image/Rent/house3/Picture6.jpg","../assets/image/Rent/house3/Picture7.jpg"],
+    "listingImg":"../assets/image/Rent/house3/1.jpg",
+    "type":"House For Rent",
+    "param": "ListOfProperty"
+
+  },
+  {
+    "id": 30,
+    "description":"This holiday home is located in a secluded environment perfect for a family holiday comes with a fully furnished living room, kitchen and 2 bedrooms great parking space and a serene environment",
+    "address":"221B Baker Street, Dublin 4",
+    "tenancy":"",
+    "Price": "4,900",
+    "features": ["2 ensuite bedrooms", "Parking space", "Serene Environment"],
+    "images":["../assets/image/Rent/holidayhome2/Picture1.jpg","../assets/image/Rent/holidayhome2/Picture2.jpg","../assets/image/Rent/holidayhome2/Picture3.jpg"],
+    "listingImg":"../assets/image/Rent/holidayhome2/1.jpg",
+    "type":"Holiday Homes",
+    "param": "ListOfProperty"
+
+  },
+  {
+    "id":31,
+    "description":"Beautiful apartment located in the city centre with great view of the city, 2 bedrooms and 2 baths a fully furnished living room and kitchen it also comes with a study space, the apartment building has general gym and a cinema room.",
+    "address":"Micheal street, Dublin 09",
+    "Price": "3,31,400",
+    "features": ["wifi included", "all utility bills included", "2 bedrooms and 2 baths", "Parking space", "Gymansium and Cinema room"],
+    "images":["../assets/image/Buy/apartment1/Picture1.jpg","../assets/image/Buy/apartment1/Picture2.jpg","../assets/image/Buy/apartment1/Picture3.jpg","../assets/image/Buy/apartment1/Picture4.jpg","../assets/image/Buy/apartment1/Picture5.jpg","../assets/image/Buy/apartment1/Picture6.jpg","../assets/image/Buy/apartment1/Picture7.jpg"],
+    "listingImg":"../assets/image/Buy/apartment1/1.jpg",
+    "type":"Sale",
+    "param": "ListOfProperty"
+
+
+  },
+  {
+    "id":32,
+    "description":"A great apartment located in the city centre with great view for the phoenix park, fully furnished living room and kitchen, 2 bedrooms and 2 baths, a great parking space and laundromat located in the apartment building.",
+    "address":"Gabriel's Street, Limerick",
+    "Price": "2,40,000",
+    "features": ["wifi included", "all utility bills included", "2 bedrooms and 2 baths", "Parking space", "laundromat"],
+    "images":["../assets/image/Buy/apartment2/Picture1.jpg","../assets/image/Buy/apartment2/Picture2.jpg","../assets/image/Buy/apartment2/Picture3.jpg","../assets/image/Buy/apartment2/Picture4.jpg","../assets/image/Buy/apartment2/Picture5.jpg"],
+    "listingImg":"../assets/image/Buy/apartment2/1.jpg",
+    "type":"Sale",
+    "param": "ListOfProperty"
+
+  },
+  {
+    "id":33,
+    "description":"Beautiful apartment located in the city centre with great view of the city, 2 bedrooms and 2 baths a fully furnished living room and kitchen it also comes with a study space, the apartment building has general gym and a cinema room. ",
+    "address":"Thomas street, dublin 9",
+    "tenancy":"",
+    "Price":"3,400",
+    "features": ["wifi included", "all utility bills included", "2 bedrooms and 2 baths", "Parking space", "Gymansium and Cinema room"],
+    "images":["../assets/image/Rent/apartment1/Picture1.jpg","../assets/image/Rent/apartment1/Picture2.jpg","../assets/image/Rent/apartment1/Picture3.jpg","../assets/image/Rent/apartment1/Picture4.jpg"],
+    "listingImg":"../assets/image/Rent/apartment1/1.jpg",
+    "type":"Apartment For Rent",
+    "param": "ListOfProperty"
+
+
+  },
+  {
+    "id": 34,
+    "description":"A great apartment located in the city centre with great view for the phoenix park, fully furnished living room and kitchen, 2 bedrooms and 2 baths, a great parking space and laundromat located in the apartment building.",
+    "address":"Brickfeild lane, Dublin 8",
+    "tenancy":"",
+    "Price":"1,300",
+    "features": ["wifi included", "all utility bills included", "2 bedrooms and 2 baths", "Parking space", "laundromat"],
+    "images":["../assets/image/Rent/apartment2/Picture1.jpg","../assets/image/Rent/apartment2/Picture2.jpg","../assets/image/Rent/apartment2/Picture3.jpg","../assets/image/Rent/apartment2/Picture4.jpg","../assets/image/Rent/apartment2/Picture5.jpg","../assets/image/Rent/apartment2/Picture6.jpg"],
+    "listingImg":"../assets/image/Rent/apartment2/1.jpg",
+    "type":"Apartment For Rent",
+    "param": "ListOfProperty"
+
+
+  },
+  {
+    "id": 35,
+    "description": "This accommodation is suitable for students it comes with a shared ensuite room, with a spacious shared living room fuly equipped kitchen, this accommodation is close to bus stop for ease of transportation to and from school",
+    "address":"Soil street dublin 9",
+    "tenancy":"",
+    "Price": "240",
+    "features": ["wifi included", "all utility bills included", "1 ensuite shared bedroom", "Parking space", "Gymansium and Cinema room", "Study room"],
+    "images":["../assets/image/Rent/student2/Picture1.jpg","../assets/image/Rent/student2/Picture2.jpg","../assets/image/Rent/student2/Picture3.jpg","../assets/image/Rent/student2/Picture4.jpg","../assets/image/Rent/student2/Picture5.jpg"],
+    "listingImg":"../assets/image/Rent/student2/1.jpg",
+    "type":"Student Accommodation",
+    "param": "ListOfProperty"
+
+
+  },
+  {
+    "id": 36,
+    "description":"A great apartment located in the city centre with great view for the phoenix park, fully furnished living room and kitchen, 2 bedrooms and 2 baths, a great parking space and laundromat located in the apartment building.",
+    "address":"Brickfeild lane, Dublin 8",
+    "tenancy":"",
+    "Price":"1,300",
+    "features": ["wifi included", "all utility bills included", "2 bedrooms and 2 baths", "Parking space", "laundromat"],
+    "images":["../assets/image/Rent/apartment2/Picture1.jpg","../assets/image/Rent/apartment2/Picture2.jpg","../assets/image/Rent/apartment2/Picture3.jpg","../assets/image/Rent/apartment2/Picture4.jpg","../assets/image/Rent/apartment2/Picture5.jpg","../assets/image/Rent/apartment2/Picture6.jpg"],
+    "listingImg":"../assets/image/Rent/apartment2/1.jpg",
+    "type":"Apartment For Rent",
+    "param": "ListOfProperty"
+
+
+  },
+  {
+    "id": 37,
+    "description":"2 bedroom apartment located in dublin 8, with fully furnished living room and kitchen, this apartment is located near a bus stop for easy transportation, 1 bedroom and a bath.",
+    "address":"the liberties, Dublin 08",
+    "tenancy":"",
+    "Price":"1,600",
+    "features": ["wifi included", "all utility bills included", "1 bedrooms and 1 bath", "Parking space", "Gymansium and Cinema room"],
+    "images":["../assets/image/Rent/apartment3/Picture1.jpg","../assets/image/Rent/apartment3/Picture2.jpg","../assets/image/Rent/apartment3/Picture3.jpg","../assets/image/Rent/apartment3/Picture4.jpg"],
+    "listingImg":"../assets/image/Rent/apartment3/1.jpg",
+    "type":"Apartment For Rent",
+    "param": "ListOfProperty"
+
+
+  }
+      ],
+"sharing":[
+  {
+    "id": 38,
+    "description":"This accommodation is suitable for students it comes with a spacious ensuite room with a great a shared living room fully equipped kitchen a smart tv, each room comes with a comfortable reading chair and desk",
+    "address":"Arran quay, Dublin 08",
+    "tenancy":"",
+    "Price":"500",
+    "features": ["wifi included", "all utility bills included", "1 ensuite bedroom", "Parking space", "Gymansium and Cinema room", "Study room"],
+    "images":["../assets/image/Rent/student1/Picture1.jpg","../assets/image/Rent/student1/Picture2.jpg","../assets/image/Rent/student1/Picture3.jpg","../assets/image/Rent/student1/Picture4.jpg"],
+    "type":"Sharing Accommodation",
+    "listingImg":"../assets/image/Rent/student1/1.jpg",
+    "param": "sharing"
+
+  },
+  {
+    "id": 39,
+    "description": "This accommodation is suitable for students it comes with a shared ensuite room, with a spacious shared living room fuly equipped kitchen, this accommodation is close to bus stop for ease of transportation to and from school",
+    "address":"Soil street dublin 9",
+    "tenancy":"",
+    "Price": "240",
+    "features": ["wifi included", "all utility bills included", "1 ensuite shared bedroom", "Parking space", "Gymansium and Cinema room", "Study room"],
+    "images":["../assets/image/Rent/student2/Picture1.jpg","../assets/image/Rent/student2/Picture2.jpg","../assets/image/Rent/student2/Picture3.jpg","../assets/image/Rent/student2/Picture4.jpg","../assets/image/Rent/student2/Picture5.jpg"],
+    "type":"Sharing Accommodation",
+    "listingImg":"../assets/image/Rent/student2/1.jpg",
+    "param": "sharing"
+
+  }
+],
+
+"ListOfAllBuyProperty":[
+  {
+    "id":40,
+    "description":"This south facing recently furnished apartment is located in a secluded environment, this apartment comes with a spacious closet, 2 bedrooms and a bath, it also comes with a well furnished living room.",
+    "address":"North road, Dublin 2",
+    "tenancy":"",
+    "Price": "5,60,400",
+    "features": ["Great Closet", "wifi included", "2 bedrooms 1 bath", "Parking space"],
+    "images":["../assets/image/Rent/house2/Picture1.jpg","../assets/image/Rent/house2/Picture2.jpg","../assets/image/Rent/house2/Picture3.jpg","../assets/image/Rent/house2/Picture4.jpg"],
+    "listingImg":"../assets/image/Rent/house2/1.jpg",
+    "type":"Sale House",
+    "param": "ListOfAllBuyProperty"
+  },
+  {
+    "id": 41,
+    "description":"This great house is located on the outh side of dublin it comes fully furnished, a great parking space, a fully equipped gymnasium, 2 bedrooms and 2 baths, the house is also comes with a fully furnished living room. ",
+    "address":"Cork Street, santry Dublin 8",
+    "tenancy":"",
+    "Price":"5,00,800",
+    "features": ["Large parking space", "wifi", "Gymnasium", "2 bedrooms", "2 baths", "fully furnished"],
+    "images":["../assets/image/Rent/house3/Picture1.jpg","../assets/image/Rent/house3/Picture2.jpg","../assets/image/Rent/house3/Picture3.jpg","../assets/image/Rent/house3/Picture4.jpg","../assets/image/Rent/house3/Picture5.jpg","../assets/image/Rent/house3/Picture6.jpg","../assets/image/Rent/house3/Picture7.jpg"],
+    "listingImg":"../assets/image/Rent/house3/1.jpg",
+    "type":"Sale Apartment",
+    "param": "ListOfAllBuyProperty"
+
+  },
+  {
+    "id": 42,
+    "description":"This holiday home is located in a secluded environment perfect for a family holiday comes with a fully furnished living room, kitchen and 2 bedrooms great parking space and a serene environment",
+    "address":"221B Baker Street, Dublin 4",
+    "tenancy":"",
+    "Price": "9,40,900",
+    "features": ["2 ensuite bedrooms", "Parking space", "Serene Environment"],
+    "images":["../assets/image/Rent/holidayhome2/Picture1.jpg","../assets/image/Rent/holidayhome2/Picture2.jpg","../assets/image/Rent/holidayhome2/Picture3.jpg"],
+    "listingImg":"../assets/image/Rent/holidayhome2/1.jpg",
+    "type":"Sale Apartment",
+    "param": "ListOfAllBuyProperty"
+
+  },
+  {
+    "id":43,
+    "description":"Beautiful apartment located in the city centre with great view of the city, 2 bedrooms and 2 baths a fully furnished living room and kitchen it also comes with a study space, the apartment building has general gym and a cinema room.",
+    "address":"Micheal street, Dublin 09",
+    "Price": "3,31,400",
+    "features": ["wifi included", "all utility bills included", "2 bedrooms and 2 baths", "Parking space", "Gymansium and Cinema room"],
+    "images":["../assets/image/Buy/apartment1/Picture1.jpg","../assets/image/Buy/apartment1/Picture2.jpg","../assets/image/Buy/apartment1/Picture3.jpg","../assets/image/Buy/apartment1/Picture4.jpg","../assets/image/Buy/apartment1/Picture5.jpg","../assets/image/Buy/apartment1/Picture6.jpg","../assets/image/Buy/apartment1/Picture7.jpg"],
+    "listingImg":"../assets/image/Buy/apartment1/1.jpg",
+    "type":"Sale House",
+    "param": "ListOfAllBuyProperty"
+
+
+  },
+  {
+    "id":44,
+    "description":"A great apartment located in the city centre with great view for the phoenix park, fully furnished living room and kitchen, 2 bedrooms and 2 baths, a great parking space and laundromat located in the apartment building.",
+    "address":"Gabriel's Street, Limerick",
+    "Price": "2,40,000",
+    "features": ["wifi included", "all utility bills included", "2 bedrooms and 2 baths", "Parking space", "laundromat"],
+    "images":["../assets/image/Buy/apartment2/Picture1.jpg","../assets/image/Buy/apartment2/Picture2.jpg","../assets/image/Buy/apartment2/Picture3.jpg","../assets/image/Buy/apartment2/Picture4.jpg","../assets/image/Buy/apartment2/Picture5.jpg"],
+    "listingImg":"../assets/image/Buy/apartment2/1.jpg",
+    "type":"Sale House",
+    "param": "ListOfAllBuyProperty"
+
+  },
+  {
+    "id":45,
+    "description":"Beautiful apartment located in the city centre with great view of the city, 2 bedrooms and 2 baths a fully furnished living room and kitchen it also comes with a study space, the apartment building has general gym and a cinema room. ",
+    "address":"Thomas street, dublin 9",
+    "tenancy":"",
+    "Price":"32,400",
+    "features": ["wifi included", "all utility bills included", "2 bedrooms and 2 baths", "Parking space", "Gymansium and Cinema room"],
+    "images":["../assets/image/Rent/apartment1/Picture1.jpg","../assets/image/Rent/apartment1/Picture2.jpg","../assets/image/Rent/apartment1/Picture3.jpg","../assets/image/Rent/apartment1/Picture4.jpg"],
+    "listingImg":"../assets/image/Rent/apartment1/1.jpg",
+    "type":"Sale Apartment",
+    "param": "ListOfAllBuyProperty"
+
+
+  },
+  {
+    "id": 46,
+    "description":"A great apartment located in the city centre with great view for the phoenix park, fully furnished living room and kitchen, 2 bedrooms and 2 baths, a great parking space and laundromat located in the apartment building.",
+    "address":"Brickfeild lane, Dublin 8",
+    "tenancy":"",
+    "Price":"1,40,300",
+    "features": ["wifi included", "all utility bills included", "2 bedrooms and 2 baths", "Parking space", "laundromat"],
+    "images":["../assets/image/Rent/apartment2/Picture1.jpg","../assets/image/Rent/apartment2/Picture2.jpg","../assets/image/Rent/apartment2/Picture3.jpg","../assets/image/Rent/apartment2/Picture4.jpg","../assets/image/Rent/apartment2/Picture5.jpg","../assets/image/Rent/apartment2/Picture6.jpg"],
+    "listingImg":"../assets/image/Rent/apartment2/1.jpg",
+    "type":"Sale House",
+    "param": "ListOfAllBuyProperty"
+
+
+  },
+  {
+    "id": 47,
+    "description": "This accommodation is suitable for students it comes with a shared ensuite room, with a spacious shared living room fuly equipped kitchen, this accommodation is close to bus stop for ease of transportation to and from school",
+    "address":"Soil street dublin 9",
+    "tenancy":"",
+    "Price": "70,000",
+    "features": ["wifi included", "all utility bills included", "1 ensuite shared bedroom", "Parking space", "Gymansium and Cinema room", "Study room"],
+    "images":["../assets/image/Rent/student2/Picture1.jpg","../assets/image/Rent/student2/Picture2.jpg","../assets/image/Rent/student2/Picture3.jpg","../assets/image/Rent/student2/Picture4.jpg","../assets/image/Rent/student2/Picture5.jpg"],
+    "listingImg":"../assets/image/Rent/student2/1.jpg",
+    "type":"Sale House",
+    "param": "ListOfAllBuyProperty"
+
+
+  },
+  {
+    "id": 48,
+    "description":"A great apartment located in the city centre with great view for the phoenix park, fully furnished living room and kitchen, 2 bedrooms and 2 baths, a great parking space and laundromat located in the apartment building.",
+    "address":"Brickfeild lane, Dublin 8",
+    "tenancy":"",
+    "Price":"1,80,300",
+    "features": ["wifi included", "all utility bills included", "2 bedrooms and 2 baths", "Parking space", "laundromat"],
+    "images":["../assets/image/Rent/apartment2/Picture1.jpg","../assets/image/Rent/apartment2/Picture2.jpg","../assets/image/Rent/apartment2/Picture3.jpg","../assets/image/Rent/apartment2/Picture4.jpg","../assets/image/Rent/apartment2/Picture5.jpg","../assets/image/Rent/apartment2/Picture6.jpg"],
+    "listingImg":"../assets/image/Rent/apartment2/1.jpg",
+    "type":"Sale House",
+    "param": "ListOfAllBuyProperty"
+
+
+  },
+  {
+    "id": 49,
+    "description":"2 bedroom apartment located in dublin 8, with fully furnished living room and kitchen, this apartment is located near a bus stop for easy transportation, 1 bedroom and a bath.",
+    "address":"the liberties, Dublin 08",
+    "tenancy":"",
+    "Price":"20,00,600",
+    "features": ["wifi included", "all utility bills included", "1 bedrooms and 1 bath", "Parking space", "Gymansium and Cinema room"],
+    "images":["../assets/image/Rent/apartment3/Picture1.jpg","../assets/image/Rent/apartment3/Picture2.jpg","../assets/image/Rent/apartment3/Picture3.jpg","../assets/image/Rent/apartment3/Picture4.jpg"],
+    "listingImg":"../assets/image/Rent/apartment3/1.jpg",
+    "type":"Sale Apartment",
+    "param": "ListOfAllBuyProperty"
+
+  }
+],
+
+
+"ListOfAllRentProperty":[
+  {
+      "id": 1,
+      "description": "This Classy house is located in the city center, a well furnished living room, 1 bed and bath apartment with a stunning kitchen with all appliances and kitchen utensils included.",
+      "address":"Thomas street, Dublin 1",
+      "tenancy": "",
+      "Price": "4500",
+      "features": ["Bright and spacious", "1 Bathroom", "1 Bedroom", "Parking Space"],
+      "images":["../assets/image/Rent/house1/Picture1.jpg","../assets/image/Rent/house1/Picture2.jpg","../assets/image/Rent/house1/Picture3.jpg","../assets/image/Rent/house1/Picture4.jpg","../assets/image/Rent/house1/Picture5.jpg","../assets/image/Rent/house1/Picture6.jpg"],
+      "type":"House For Rent",
+      "listingImg":"../assets/image/Rent/house1/1.jpg",
+      "param": "houseForRent"
+    },
+    {
+      "id":2,
+      "description":"This south facing recently furnished apartment is located in a secluded environment, this apartment comes with a spacious closet, 2 bedrooms and a bath, it also comes with a well furnished living room.",
+      "address":"North road, Dublin 2",
+      "tenancy":"",
+      "Price": "5400",
+      "features": ["Great Closet", "wifi included", "2 bedrooms 1 bath", "Parking space"],
+      "images":["../assets/image/Rent/house2/Picture1.jpg","../assets/image/Rent/house2/Picture2.jpg","../assets/image/Rent/house2/Picture3.jpg","../assets/image/Rent/house2/Picture4.jpg"],
+      "type":"House For Rent",
+      "listingImg":"../assets/image/Rent/house2/1.jpg",
+      "param": "houseForRent"
+    },
+    {
+      "id": 3,
+      "description":"This great house is located on the outh side of dublin it comes fully furnished, a great parking space, a fully equipped gymnasium, 2 bedrooms and 2 baths, the house is also comes with a fully furnished living room. ",
+      "address":"Cork Street, santry Dublin 8",
+      "tenancy":"",
+      "Price":"5800",
+      "features": ["Large parking space", "wifi", "Gymnasium", "2 bedrooms", "2 baths", "fully furnished"],
+      "images":["../assets/image/Rent/house3/Picture1.jpg","../assets/image/Rent/house3/Picture2.jpg","../assets/image/Rent/house3/Picture3.jpg","../assets/image/Rent/house3/Picture4.jpg","../assets/image/Rent/house3/Picture5.jpg","../assets/image/Rent/house3/Picture6.jpg","../assets/image/Rent/house3/Picture7.jpg"],
+      "type":"House For Rent",
+      "listingImg":"../assets/image/Rent/house3/1.jpg",
+      "param": "houseForRent"
+    },
+    {
+      "id":4,
+      "description":"Beautiful apartment located in the city centre with great view of the city, 2 bedrooms and 2 baths a fully furnished living room and kitchen it also comes with a study space, the apartment building has general gym and a cinema room. ",
+      "address":"Thomas street, dublin 9",
+      "tenancy":"",
+      "Price":"3400",
+      "features": ["wifi included", "all utility bills included", "2 bedrooms and 2 baths", "Parking space", "Gymansium and Cinema room"],
+      "images":["../assets/image/Rent/apartment1/Picture1.jpg","../assets/image/Rent/apartment1/Picture2.jpg","../assets/image/Rent/apartment1/Picture3.jpg","../assets/image/Rent/apartment1/Picture4.jpg"],
+      "type":"Apartment For Rent",
+      "listingImg":"../assets/image/Rent/apartment1/1.jpg",
+      "param": "apartmentForRent"
+
+    },
+    {
+      "id": 5,
+      "description":"A great apartment located in the city centre with great view for the phoenix park, fully furnished living room and kitchen, 2 bedrooms and 2 baths, a great parking space and laundromat located in the apartment building.",
+      "address":"Brickfeild lane, Dublin 8",
+      "tenancy":"",
+      "Price":"1300",
+      "features": ["wifi included", "all utility bills included", "2 bedrooms and 2 baths", "Parking space", "laundromat"],
+      "images":["../assets/image/Rent/apartment2/Picture1.jpg","../assets/image/Rent/apartment2/Picture2.jpg","../assets/image/Rent/apartment2/Picture3.jpg","../assets/image/Rent/apartment2/Picture4.jpg","../assets/image/Rent/apartment2/Picture5.jpg","../assets/image/Rent/apartment2/Picture6.jpg"],
+      "type":"Apartment For Rent",
+      "listingImg":"../assets/image/Rent/apartment2/1.jpg",
+      "param": "apartmentForRent"
+
+    },
+    {
+      "id": 6,
+      "description":"2 bedroom apartment located in dublin 8, with fully furnished living room and kitchen, this apartment is located near a bus stop for easy transportation, 1 bedroom and a bath.",
+      "address":"the liberties, Dublin 08",
+      "tenancy":"",
+      "Price":"1600",
+      "features": ["wifi included", "all utility bills included", "1 bedrooms and 1 bath", "Parking space", "Gymansium and Cinema room"],
+      "images":["../assets/image/Rent/apartment3/Picture1.jpg","../assets/image/Rent/apartment3/Picture2.jpg","../assets/image/Rent/apartment3/Picture3.jpg","../assets/image/Rent/apartment3/Picture4.jpg"],
+      "type":"Apartment For Rent",
+      "listingImg":"../assets/image/Rent/apartment3/1.jpg",
+      "param": "apartmentForRent"
+
+    }
+
+]
+
+
+}
+

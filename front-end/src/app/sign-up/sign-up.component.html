@@ -1,0 +1,101 @@
+<div class="block-wrapper">
+  <mat-card class="card-wrapper">
+<div class="d-lg-flex half">
+  <div class="bg order-1 order-md-2" style="background-image: url('../../assets/image/bg-signUp.jpg');"></div>
+  <div class="contents order-2 order-md-1">
+
+    <div class="container">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-md-7">
+          <div class="example-button-container">
+            <button (click)="backToLogin()" class="float-start mt-3 mb-5" mat-mini-fab color="accent" aria-label="Example icon button with a plus one icon">
+              <mat-icon>chevron_left</mat-icon>
+            </button>
+          </div>
+          <div class="mb-4">
+            <h2 class="mb-4">Sign up to unlock the best of GoSolo.</h2>
+            <h3 class="mb-4">Join now -- its's free.</h3>
+          </div>
+          <form name="validateForm" [formGroup]="signUpValidateForm" novalidate (ngSubmit)="submitForm(signUpValidateForm.value)">
+
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Full Name</mat-label>
+              <input matInput formControlName="userName">
+              <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
+              <mat-error>
+                  Name is required
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="full-width  mt-2">
+              <mat-label>Mobile Number</mat-label>
+              <input matInput formControlName="contactNo">
+              <mat-icon matSuffix class="secondary-text">phone</mat-icon>
+              <mat-error *ngIf="signUpValidateForm.get('contactNo').hasError('required')">
+                  Mobile number is required!
+              </mat-error>
+              <mat-error
+                  *ngIf="!signUpValidateForm.get('contactNo').hasError('required') &&
+                          signUpValidateForm.get('contactNo').hasError('mobileErr')">
+                  Please enter a valid mobile number!
+              </mat-error>
+            </mat-form-field>
+
+            <!-- Email address -->
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Email ID</mat-label>
+              <input matInput formControlName="email">
+              <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+              <mat-hint>Hint</mat-hint>
+              <mat-error *ngIf="signUpValidateForm.get('email').hasError('required')">
+                Email is required
+            </mat-error>
+            <mat-error *ngIf="signUpValidateForm.get('email').hasError('email')">
+                Please enter a valid email address
+            </mat-error>
+            </mat-form-field>
+
+                     <!-- Password -->
+            <mat-form-field appearance="outline" class="full-width mb-3">
+              <mat-label>password</mat-label>
+              <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+              <mat-error *ngIf="signUpValidateForm.get('password').hasError('required')">
+                Password is required!
+              </mat-error>
+              <mat-error
+                    *ngIf="!signUpValidateForm.get('password').hasError('required') &&
+                            signUpValidateForm.get('password').hasError('passErr')">
+                    *Please enter a valid password! <br>
+                    *minimum length should be 8 digit <br>
+                    *must contain Numeric and Alpha characters
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="full-width mb-3">
+              <mat-label>Confrim Password</mat-label>
+              <input matInput [type]="hide ? 'password' : 'text'" formControlName="confirmPassword">
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+              <mat-error *ngIf="signUpValidateForm.get('confirmPassword').hasError('required')">
+                confirmPassword is required!
+              </mat-error>
+              <mat-error
+                    *ngIf="!signUpValidateForm.get('confirmPassword').hasError('required') &&
+                            signUpValidateForm.get('confirmPassword').hasError('confirmPassErr')">
+                    *Password is not matched!
+              </mat-error>
+            </mat-form-field>
+            <button mat-raised-button color="primary">Sign Up</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</mat-card>
+</div>
