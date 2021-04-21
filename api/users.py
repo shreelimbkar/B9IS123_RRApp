@@ -35,7 +35,7 @@ def getUsers():  # Name of the method
         Result['user_email_id'] = row[6]
         Result['user_contact'] = row[7]
         Results.append(Result)
-    response = {'data': Results, 'count': len(Results)}
+    response = {'status': 200, 'responseMessage': 'Success', 'body': Results}
     retData = app.response_class(
         response=json.dumps(response),
         status=200,
