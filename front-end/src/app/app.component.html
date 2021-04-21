@@ -12,11 +12,11 @@
     <div class="menus-item w-100">
       <button mat-button [matMenuTriggerFor]="animals" mat-stroked-button color="accent">Expolre Solo</button>
       <mat-menu #animals="matMenu">
-        <button mat-menu-item>Hotels</button>
-        <button mat-menu-item>B&B</button>
-        <button mat-menu-item>Restaurans</button>
-        <button mat-menu-item>Bar</button>
-        <button mat-menu-item>Clubs</button>
+        <button mat-menu-item (click)="browserSection('hotel')">Hotels</button>
+        <button mat-menu-item (click)="browserSection('bar')">B&B</button>
+        <button mat-menu-item (click)="browserSection('Restaurant')">Restaurans</button>
+        <button mat-menu-item (click)="browserSection('bar')">Bars</button>
+        <button mat-menu-item (click)="browserSection('club')">Clubs</button>
       </mat-menu>
       <button mat-button mat-stroked-button color="accent" (click)="login()">Login</button>
 
