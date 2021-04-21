@@ -146,7 +146,7 @@ clubHouse = [{
   }
 
   writeReviewForm(){
-
+    this._route.navigate(["write-review"])
   }
 
   bannerImages = [
