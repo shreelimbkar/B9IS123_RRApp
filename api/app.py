@@ -2,7 +2,9 @@ from flask import Flask
 from flask import request
 from flask_mysqldb import MySQL
 from flask_cors import CORS
+import jwt
 import datetime
+from functools import wraps
 import json
 import users
 import resources
@@ -10,8 +12,10 @@ mysql = MySQL()
 app = Flask(__name__)
 CORS(app)
 
-
+app.config['SECRET_KEY'] = 'rating_app@2021'
 # Initialize the Database connection
+
+
 def initDB():
     app.config['MYSQL_USER'] = 'web'
     app.config['MYSQL_PASSWORD'] = 'webPass'
@@ -21,6 +25,24 @@ def initDB():
 
 
 initDB()
+
+
+def token_required(f):
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        token1 = request.args.get('token')
+        print('my token', token1)
+
+        if not token1:
+            return {"message": "Token is missing"}, 403
+
+        try:
+            data = jwt.decode(token1, app.config['SECRET_KEY'])
+        except:
+            return {"message": "Token is invalid!"}, 403
+
+        return f(*args, **kwargs)
+    return decorated
 
 
 @app.route("/")
@@ -57,6 +79,7 @@ def index():
 
 
 @app.route("/users")  # Get all users
+# @token_required
 def getAllUsers():
     return users.getUsers()
 
@@ -64,10 +87,10 @@ def getAllUsers():
 @app.route("/login", methods=['POST'])  # Login user
 def userLogin():
     if request.method == 'POST':
-        username = request.form['username']
+        email = request.form['email']
         pwd = request.form['password']
 
-    return users.login(username, pwd)
+    return users.login(email, pwd)
 
 
 @app.route("/resources", methods=['GET'])  # Get all resources

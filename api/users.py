@@ -24,14 +24,16 @@ def addUser(userData):
 
 def getUsers():  # Name of the method
     cur = mysql.connection.cursor()  # SQL instance
-    cur.execute('''SELECT * FROM user_table''')  # execute an SQL statment
+    cur.execute('''SELECT user_id, user_role_id, user_token, user_name, user_avatar_img, user_email_id, user_contact, is_deleted, modified_date, created_date FROM user_table''')  # execute an SQL statment
     rv = cur.fetchall()  # Retreive all rows returend by the SQL statment
     Results = []
     for row in rv:  # Format the Output Results and add to return string
         Result = {}
         Result['user_id'] = row[0]
-        Result['user_token'] = row[1]
-        Result['user_name'] = row[2]
+        Result['user_token'] = row[2]
+        Result['user_name'] = row[3]
+        Result['user_email_id'] = row[6]
+        Result['user_contact'] = row[7]
         Results.append(Result)
     response = {'data': Results, 'count': len(Results)}
     retData = app.response_class(
@@ -42,26 +44,26 @@ def getUsers():  # Name of the method
     return retData  # Return the data in a string format
 
 
-def login(username, pwd):
+def login(email, pwd):
     # print('username, pwd = ', username, pwd)
 
-    if len(username.strip()) <= 0:
+    if len(email.strip()) <= 0:
         return {"msg": "Invalid Username. Please try again!"}, 500
 
     if len(pwd.strip()) <= 0:
         return {"msg": "Invalid Password. Please try again!"}, 500
 
-    token = jwt.encode({'username': username, 'exp': datetime.datetime.utcnow(
+    encoded = jwt.encode({'email': email, 'exp': datetime.datetime.utcnow(
     ) + datetime.timedelta(minutes=20)}, app.config['SECRET_KEY'])
     cur = mysql.connection.cursor()  # SQL instance
     cur.execute(
-        f"""SELECT user_id, user_token, user_name, user_avatar_img, user_email_id, user_contact FROM user_table WHERE user_name = '{username}' and user_password = '{pwd}'""")
+        f"""SELECT user_id, user_token, user_name, user_avatar_img, user_email_id, user_contact FROM user_table WHERE user_email_id = '{email}' and user_password = '{pwd}'""")
     rv = cur.fetchall()  # Retreive all rows returend by the SQL statment
     Results = []
     for row in rv:  # Format the Output Results and add to return string
         Result = {}
         Result['user_id'] = row[0]
-        Result['user_token'] = token
+        Result['user_token'] = encoded
         Result['user_name'] = row[2]
         # Result['user_avatar_img'] = row[3]
         # Result['user_email_id'] = row[4]
