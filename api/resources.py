@@ -27,7 +27,7 @@ def getResources(category):
         Result['resource_name'] = row[2]
         Result['resource_city_code'] = row[3]
         Result['resource_address'] = row[4]
-        Result['resource_details'] = row[5]
+        Result['resource_details'] = row[5].replace("\"", "")
         Result['resource_price'] = row[6]
         Result['resource_review'] = row[7]
         Result['resource_images'] = row[8]

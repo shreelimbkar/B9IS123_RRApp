@@ -24,14 +24,16 @@ def addUser(userData):
 
 def getUsers():  # Name of the method
     cur = mysql.connection.cursor()  # SQL instance
-    cur.execute('''SELECT * FROM user_table''')  # execute an SQL statment
+    cur.execute('''SELECT user_id, user_role_id, user_token, user_name, user_avatar_img, user_email_id, user_contact, is_deleted, modified_date, created_date FROM user_table''')  # execute an SQL statment
     rv = cur.fetchall()  # Retreive all rows returend by the SQL statment
     Results = []
     for row in rv:  # Format the Output Results and add to return string
         Result = {}
         Result['user_id'] = row[0]
-        Result['user_token'] = row[1]
-        Result['user_name'] = row[2]
+        Result['user_token'] = row[2]
+        Result['user_name'] = row[3]
+        Result['user_email_id'] = row[6]
+        Result['user_contact'] = row[7]
         Results.append(Result)
     response = {'data': Results, 'count': len(Results)}
     retData = app.response_class(
