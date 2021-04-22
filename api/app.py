@@ -78,6 +78,8 @@ def userLogin():
         req_json = request.json
         email = req_json['email']
         pwd = req_json['password']
+        salt = hashlib.md5(pwd.encode())
+        pwd = salt.hexdigest()
     return users.login(email, pwd)
 
 

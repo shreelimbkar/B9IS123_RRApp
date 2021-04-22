@@ -60,20 +60,25 @@ def login(email, pwd):
         f"""SELECT user_id, user_token, user_name, user_avatar_img, user_email_id, user_contact FROM user_table WHERE user_email_id = '{email}' and user_password = '{pwd}'""")
     rv = cur.fetchall()  # Retreive all rows returend by the SQL statment
     Results = []
-    for row in rv:  # Format the Output Results and add to return string
-        Result = {}
-        Result['user_id'] = row[0]
-        Result['user_token'] = encoded
-        Result['user_name'] = row[2]
-        # Result['user_avatar_img'] = row[3]
-        # Result['user_email_id'] = row[4]
-        # Result['user_contact'] = row[5]
-        Results.append(Result)
-    response = {'status': 200, 'responseMessage': 'Success', 'body': Results}
-    retData = app.response_class(
-        response=json.dumps(response),
-        status=200,
-        mimetype='application/json'
-    )
-    return retData  # Return the data in a string format
-    return {"msg": "User logged in Successfully"}, 200
+
+    if (len(rv) != 0):
+        for row in rv:  # Format the Output Results and add to return string
+            Result = {}
+            Result['user_id'] = row[0]
+            Result['user_token'] = encoded
+            Result['user_name'] = row[2]
+            # Result['user_avatar_img'] = row[3]
+            # Result['user_email_id'] = row[4]
+            # Result['user_contact'] = row[5]
+            Results.append(Result)
+
+        response = {'status': 200,
+                    'responseMessage': 'Success', 'body': Results}
+        retData = app.response_class(
+            response=json.dumps(response),
+            status=200,
+            mimetype='application/json'
+        )
+        return retData  # Return the data in a string format
+    else:
+        return {'status': 500, 'responseMessage': 'Unauthorized User. Please try again!'}, 500
