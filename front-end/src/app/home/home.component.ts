@@ -11,6 +11,10 @@ import { ObservableDataService } from '../observable/behaviourSubject.service';
 })
 export class HomeComponent implements OnInit {
   imageTest
+  mightLikeList;
+  clubsList;
+  restaurantsList;
+  hotelsList;
   mostViewedBody = [{
     id : "1",
     images : ["../assets/image/bars/bar_1.jpeg"],
@@ -80,7 +84,7 @@ export class HomeComponent implements OnInit {
 
 clubHouse = [{
   id: "1",
-  image : ["https://material.angular.io/assets/img/examples/shiba2.jpg"],
+  image : ["../assets/image/BB/BB1/1.jpeg"],
   Price : "500",
   type: "Club",
   name: "Name",
@@ -88,7 +92,7 @@ clubHouse = [{
 },
 {
   id: "2",
-  image : ["https://material.angular.io/assets/img/examples/shiba2.jpg"],
+  image : ["../assets/image/BB/BB3/BB_14.jpeg"],
   Price : "500",
   type: "Club",
   name: "Name",
@@ -96,7 +100,7 @@ clubHouse = [{
 },
 {
   id: "3",
-  image : ["https://material.angular.io/assets/img/examples/shiba2.jpg"],
+  image : ["../assets/image/BB/BB3/1.jpeg"],
   Price : "500",
   type: "Club",
   name: "Name",
@@ -104,7 +108,7 @@ clubHouse = [{
 },
 {
   id: "4",
-  image : ["https://material.angular.io/assets/img/examples/shiba2.jpg"],
+  image : ["../assets/image/BB/BB4/1.jpeg"],
   Price : "500",
   type: "Club",
   name: "Name",
@@ -112,7 +116,7 @@ clubHouse = [{
 },
 {
   id: "5",
-  image : ["https://material.angular.io/assets/img/examples/shiba2.jpg"],
+  image : ["../assets/image/BB/BB5/1.jpeg"],
   Price : "500",
   type: "Club",
   name: "Name",
@@ -120,7 +124,7 @@ clubHouse = [{
 },
 {
   id: "6",
-  image : ["https://material.angular.io/assets/img/examples/shiba2.jpg"],
+  image : ["../assets/image/BB/BB1/BB_2.jpeg"],
   Price : "500",
   type: "Club",
   name: "Name",
@@ -139,17 +143,38 @@ clubHouse = [{
   onLoadBidding(){
     this._service.mightBeLike().subscribe((resposneData)=>{
       console.log("+++++++++++++",resposneData)
+      let responseBody =  resposneData.body
+      console.log("+++++++++++++",responseBody)
+      this.mightLikeList = responseBody;
+    })
 
-      let responseBody = resposneData.body[0].resource_details[0].split(',')
-      .map(x => x.split(':').map(y => y.trim()))
-      .reduce((a, x) => {
-        a[x[0]] = x[1];
-        return a;
-      }, {});
-      console.log(",+++++++++++++++++",responseBody);
 
-      // this.mostViewedBody = responseBody;
-      // this.imageTest = responseBody[0].images[0]
+    this._service.clubsNearYou().subscribe((resposneData)=>{
+      console.log("+++++++++++++",resposneData)
+      let responseBody =  resposneData.body
+      console.log("+++++++++++++",responseBody)
+      this.clubsList = responseBody;
+    })
+
+    this._service.clubsNearYou().subscribe((resposneData)=>{
+      console.log("+++++++++++++",resposneData)
+      let responseBody =  resposneData.body
+      console.log("+++++Clubs++++++++",responseBody)
+      this.clubsList = responseBody;
+    })
+
+    this._service.restaurantsNearYou().subscribe((resposneData)=>{
+      console.log("+++++++++++++",resposneData)
+      let responseBody =  resposneData.body
+      console.log("++++++Restaurents+++++++",responseBody)
+      this.restaurantsList = responseBody;
+    })
+
+    this._service.hotelsNearYou().subscribe((resposneData)=>{
+      console.log("+++++++++++++",resposneData)
+      let responseBody =  resposneData.body
+      console.log("++++++Restaurents+++++++",responseBody)
+      this.hotelsList = responseBody;
     })
   }
 

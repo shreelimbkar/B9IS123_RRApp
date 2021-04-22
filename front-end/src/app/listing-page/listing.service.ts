@@ -14,11 +14,15 @@ export class ListingService {
   }
 
   listingProperty(): Observable<any> {
-    return this._restService.get(RestUrl.listingProperty)
+    return this._restService.get(RestUrl.mightBeLike)
   }
 
   listBySection(param):Observable<any>{
-    return this._restService.get("/"+param)
+    return this._restService.get("resources?category="+`'${param}'`)
+  }
+
+  listBySectionBNB(param):Observable<any>{
+    return this._restService.get("resources/"+param)
   }
 
   listByFilter(param):Observable<any>{

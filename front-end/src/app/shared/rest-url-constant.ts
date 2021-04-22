@@ -1,6 +1,10 @@
 export class RestUrl {
   public static get login(): string { return `login`; }
+  public static get signUp(): string { return `users/add`; }
   public static get mightBeLike(): string { return `resources`; }
+  public static get getClubsDetails(): string { return `resources?category='club'`; }
+  public static get getRestaurantsDetails(): string { return `resources?category='Restaurant'`; }
+  public static get getHotelsDetails(): string { return `resources?category='hotel'`; }
 
 
 

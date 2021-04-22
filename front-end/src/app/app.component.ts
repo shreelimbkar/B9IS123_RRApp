@@ -47,5 +47,16 @@ export class AppComponent {
     this._route.navigate(['login'])
   }
 
+  // menu Explore Solo catergory navigation
+  browserSection(param){
+
+    let obj = {
+      "param" : param
+    }
+    this._observableDataService.passDetailData(obj);
+    this._route.navigate(['listing'])
+  }
+
+
 }
 

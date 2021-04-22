@@ -12,11 +12,11 @@
     <div class="menus-item w-100">
       <button mat-button [matMenuTriggerFor]="animals" mat-stroked-button color="accent">Expolre Solo</button>
       <mat-menu #animals="matMenu">
-        <button mat-menu-item>Hotels</button>
-        <button mat-menu-item>B&B</button>
-        <button mat-menu-item>Restaurans</button>
-        <button mat-menu-item>Bar</button>
-        <button mat-menu-item>Clubs</button>
+        <button mat-menu-item (click)="browserSection('hotel')">Hotels</button>
+        <button mat-menu-item (click)="browserSection('bar')">B&B</button>
+        <button mat-menu-item (click)="browserSection('Restaurant')">Restaurans</button>
+        <button mat-menu-item (click)="browserSection('bar')">Bars</button>
+        <button mat-menu-item (click)="browserSection('club')">Clubs</button>
       </mat-menu>
       <button mat-button mat-stroked-button color="accent" (click)="login()">Login</button>
 
@@ -38,9 +38,9 @@
     <div class="row">
       <div class="col-sm-12 col-md-6">
         <h6>About</h6>
-        <p class="text-justify">Property Aauction <i>Makes Buy and Sell Property Simple </i> via online portal to help
-          the Tenants, Students and Buyer to make their choice simple. Property Aauction focuses on providing the most
-          luxury and world class standards property availabe in just simple clicks.</p>
+        <p class="text-justify">
+          GoSolo, is an Ireland online travel company that operates a website with user-generated content and . It also offers online hotel reservations and bookings for B&B, lodging, bar, clubbing experiences, and restaurants
+        </p>
       </div>
 
       <div class="col-xs-6 col-md-6">
@@ -59,7 +59,7 @@
     <div class="row">
       <div class="col-md-8 col-sm-6 col-xs-12">
         <p class="copyright-text">All Rights Reserved by
-     <a href="#">Bijendra & Pelumi</a>.
+     <a href="#">Bijendra, Tushar & Shrivardhan</a>.
         </p>
       </div>
 

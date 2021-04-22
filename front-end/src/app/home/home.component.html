@@ -15,11 +15,11 @@
 <div class="container hm-inner-body-wrapper">
 <div class="hm-browser-section">
 <div><h2>Browse by section </h2></div>
-<button mat-stroked-button color="accent" (click)="browserSection('apartmentsForSale')">Bread and Breakfast</button>
-<button mat-stroked-button color="accent" (click)="browserSection('apartmentForRent')">Hotels</button>
-<button mat-stroked-button color="accent" (click)="browserSection('sharing')">Bars</button>
-<button mat-stroked-button color="accent" (click)="browserSection('houseForSale')">Restaurants</button>
-<button mat-stroked-button color="accent" (click)="browserSection('holidayHomes')">Clubs</button>
+<button mat-stroked-button color="accent" (click)="browserSection('allbnb')">Bread and Breakfast</button>
+<button mat-stroked-button color="accent" (click)="browserSection('hotel')">Hotels</button>
+<button mat-stroked-button color="accent" (click)="browserSection('bar')">Bars</button>
+<button mat-stroked-button color="accent" (click)="browserSection('Restaurant')">Restaurants</button>
+<button mat-stroked-button color="accent" (click)="browserSection('club')">Clubs</button>
 <button mat-stroked-button color="accent" (click)="writeReviewForm()">Write Review</button>
 </div>
 <!-- Diver line -->
@@ -29,24 +29,14 @@
 <div class="hm-most-view-wrapper mt-5">
 <div class="hm-heading"><h2>You might be like<span><a (click)="ViewAll()" href="javascript:;" mat-stroked-button color="accent">Explore in Ireland<mat-icon>chevron_right</mat-icon></a></span></h2></div>
 <owl-carousel-o [options]="customOptions">
-  <!-- <ng-template carouselSlide *ngFor="let element of mostViewedBody; let i = index" >
-    <mat-card class="short-card" (click)="mostViewDetailPage(element.id)">
-      <img src={{element.images[0]}}>
-      <mat-card-content>
-        <h2>€ {{element.Price}} <span>(for {{element.type}})</span></h2>
-        <p>{{element.address}}</p>
-        </mat-card-content>
-    </mat-card>
-  </ng-template> -->
-
-  <ng-template carouselSlide *ngFor="let element of mostViewedBody; let i = index" >
+  <ng-template carouselSlide *ngFor="let element of mightLikeList; let i = index" >
     <mat-card class="short-card" (click)="mostViewDetailPage(element.resource_id)">
-      <img src={{element.images[0]}}>
+      <img src="../assets/image/bars/bar_1.jpeg">
       <mat-card-content>
-        <span class="category">{{element.type}}</span>
-        <h2>{{element.name}}</h2>
-        <h3>€ {{element.Price}} <span>(for 2)</span></h3>
-        <p>{{element.address}}</p>
+        <span class="category">{{element.resource_category}}</span>
+        <h2>{{element.resource_name}}</h2>
+        <h3>€ {{element.resource_price}} <span>(for 2)</span></h3>
+        <p>{{element.resource_address}}</p>
         </mat-card-content>
     </mat-card>
   </ng-template>
@@ -70,7 +60,7 @@
             <mat-card class="example-card">
               <img mat-card-image src="{{element.image[0]}}" alt="Property Photo">
               <mat-card-content>
-                <p><b>{{element.type}}</b></p>
+                <p><b>B&B</b></p>
               <h2>€ {{element.Price}}</h2>
               <p>{{element.address}}</p>
               </mat-card-content>
@@ -82,16 +72,6 @@
   </div>
 
       <owl-carousel-o class="isBNBVisible-slider" [options]="customOptions">
-        <!-- <ng-template carouselSlide *ngFor="let element of mostViewedBody; let i = index" >
-          <mat-card class="short-card" (click)="mostViewDetailPage(element.id)">
-            <img src={{element.images[0]}}>
-            <mat-card-content>
-              <h2>€ {{element.Price}} <span>(for {{element.type}})</span></h2>
-              <p>{{element.address}}</p>
-              </mat-card-content>
-          </mat-card>
-        </ng-template> -->
-
         <ng-template carouselSlide *ngFor="let element of mostViewedBody; let i = index" >
           <mat-card class="short-card" (click)="mostViewDetailPage(element.id)">
             <img class="mb-2" src={{element.images[0]}}>
@@ -119,14 +99,14 @@
     <div class="row">
     <div class="col-md-8 order-2 order-md-1">
         <owl-carousel-o [options]="customOptions">
-          <ng-template carouselSlide *ngFor="let element of mostViewedBody; let i = index" >
+          <ng-template carouselSlide *ngFor="let element of clubsList; let i = index" >
             <mat-card class="short-card" (click)="mostViewDetailPage(element.id)">
-              <img class="mb-2" src={{element.images[0]}}>
+              <img class="mb-2" src="../assets/image/bars/bar_2.jpeg">
               <mat-card-content>
-                <span class="category">{{element.type}}</span>
-                <h2>{{element.name}}</h2>
-                <h3>€ {{element.Price}} <span>(for 2)</span></h3>
-                <p>{{element.address}}</p>
+                <span class="category">{{element.resource_category}}</span>
+                <h2>{{element.resource_name}}</h2>
+                <h3>€ {{element.resource_price}} <span>(for 2)</span></h3>
+                <p>{{element.resource_address}}</p>
                 </mat-card-content>
             </mat-card>
           </ng-template>
@@ -153,14 +133,14 @@
   </div>
   <div class="col-md-10">
         <owl-carousel-o [options]="customOptions">
-          <ng-template carouselSlide *ngFor="let element of mostViewedBody; let i = index" >
+          <ng-template carouselSlide *ngFor="let element of restaurantsList; let i = index" >
             <mat-card class="short-card" (click)="mostViewDetailPage(element.id)">
-              <img class="mb-2" src={{element.images[0]}}>
+              <img class="mb-2" src="../assets/image/restaurants/rest1/1_2.jpeg">
               <mat-card-content>
-                <span class="category">{{element.type}}</span>
-                <h2>{{element.name}}</h2>
-                <h3>€ {{element.Price}} <span>(for 2)</span></h3>
-                <p>{{element.address}}</p>
+                <span class="category">{{element.resource_category}}</span>
+                <h2>{{element.resource_name}}</h2>
+                <h3>€ {{element.resource_price}} <span>(for 2)</span></h3>
+                <p>{{element.resource_address}}</p>
                 </mat-card-content>
             </mat-card>
           </ng-template>
@@ -176,14 +156,14 @@
     <div class="hm-hotel-heading"><h2>Explore Popular Hotels near you<span><a (click)="ViewAll()" href="javascript:;" mat-stroked-button color="accent">View More<mat-icon>chevron_right</mat-icon></a></span></h2></div>
 
         <owl-carousel-o [options]="customOptions">
-          <ng-template carouselSlide *ngFor="let element of mostViewedBody; let i = index" >
+          <ng-template carouselSlide *ngFor="let element of hotelsList; let i = index" >
             <mat-card class="short-card" (click)="mostViewDetailPage(element.id)">
-              <img class="mb-2" src={{element.images[0]}}>
+              <img class="mb-2" src="../assets/image/hotels/hotel1/1.jpeg">
               <mat-card-content>
-                <span class="category">{{element.type}}</span>
-                <h2>{{element.name}}</h2>
-                <h3>€ {{element.Price}} <span>(for 2)</span></h3>
-                <p>{{element.address}}</p>
+                <span class="category">{{element.resource_category}}</span>
+                <h2>{{element.resource_name}}</h2>
+                <h3>€ {{element.resource_price}}</h3>
+                <p>{{element.resource_address}}</p>
                 </mat-card-content>
             </mat-card>
           </ng-template>
