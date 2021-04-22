@@ -3,6 +3,7 @@ from flask import request
 from flask_mysqldb import MySQL
 from flask_cors import CORS
 import jwt
+import hashlib
 import datetime
 from functools import wraps
 import json
@@ -62,6 +63,9 @@ def index():
         avatar = 'avatar.png'
         contact = req_json['contact']
         modifiedDate = datetime.datetime.now()
+        # Password encryption with Salt and hash
+        salt = hashlib.md5(pwd.encode())
+        pwd = salt.hexdigest()
         userData = [
             role, token, username, email, pwd, avatar, contact, modifiedDate
         ]
