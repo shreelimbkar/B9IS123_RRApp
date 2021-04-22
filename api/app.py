@@ -48,29 +48,19 @@ def token_required(f):
 @app.route("/")
 def initApp():
     return("Welcome to Rating App API Page")
-# @app.route("/add")  # Add Student
-# def add():
-#     name = request.args.get('name')
-#     email = request.args.get('email')
-#     cur = mysql.connection.cursor()  # create a connection to the SQL instance
-#     s = '''INSERT INTO students(studentName, email) VALUES('{}','{}');'''.format(
-#         name, email)
-#     cur.execute(s)
-#     mysql.connection.commit()
-
-#     return '{"Result":"Success"}'
 
 
-@app.route("/users/add", methods=['GET', 'POST'])
+@app.route("/users/register", methods=['POST'])
 def index():
     if request.method == 'POST':
+        req_json = request.json
         role = "003"
         token = "29347skdfhsdhf"
-        username = request.form['username']
-        email = request.form['email']
-        pwd = request.form['password']
-        avatar = 'avatar.img'
-        contact = request.form['contact']
+        username = req_json['username']
+        email = req_json['email']
+        pwd = req_json['password']
+        avatar = 'avatar.png'
+        contact = req_json['contact']
         modifiedDate = datetime.datetime.now()
         userData = [
             role, token, username, email, pwd, avatar, contact, modifiedDate
@@ -78,19 +68,19 @@ def index():
     return users.addUser(userData)
 
 
+@app.route("/login", methods=['POST'])  # Login user
+def userLogin():
+    if request.method == 'POST':
+        req_json = request.json
+        email = req_json['email']
+        pwd = req_json['password']
+    return users.login(email, pwd)
+
+
 @app.route("/users")  # Get all users
 # @token_required
 def getAllUsers():
     return users.getUsers()
-
-
-@app.route("/login", methods=['POST'])  # Login user
-def userLogin():
-    if request.method == 'POST':
-        email = request.form['email']
-        pwd = request.form['password']
-
-    return users.login(email, pwd)
 
 
 @app.route("/resources", methods=['GET'])  # Get all resources
