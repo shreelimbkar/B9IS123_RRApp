@@ -5,6 +5,10 @@ from flask_cors import CORS
 import jwt
 import datetime
 import json
+# send email imports
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 mysql = MySQL()
 app = Flask(__name__)
 CORS(app)
@@ -67,9 +71,7 @@ def login(email, pwd):
             Result['user_id'] = row[0]
             Result['user_token'] = encoded
             Result['user_name'] = row[2]
-            # Result['user_avatar_img'] = row[3]
-            # Result['user_email_id'] = row[4]
-            # Result['user_contact'] = row[5]
+            Result['user_email_id'] = row[4]
             Results.append(Result)
 
         response = {'status': 200,
@@ -82,3 +84,23 @@ def login(email, pwd):
         return retData  # Return the data in a string format
     else:
         return {'status': 500, 'responseMessage': 'Unauthorized User. Please try again!'}, 500
+
+
+def send_email(user, password, recipient, subject, body):
+    msg = MIMEMultipart()
+    msg['From'] = f'"Your Name" <{gmailUser}>'
+    msg['To'] = recipient
+    msg['Subject'] = subject
+    msg.attach(MIMEText(body))
+
+    try:
+        mailServer = smtplib.SMTP('smtp.gmail.com', 587)
+        mailServer.ehlo()
+        mailServer.starttls()
+        mailServer.ehlo()
+        mailServer.login(gmailUser, gmailPassword)
+        mailServer.sendmail(gmailUser, recipient, msg.as_string())
+        mailServer.close()
+        print('Email sent!')
+    except:
+        print('Something went wrong...')

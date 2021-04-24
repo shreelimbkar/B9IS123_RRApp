@@ -102,6 +102,27 @@ def getAllBnbs():
     return resources.getAllBnbs()
 
 
+@app.route("/users/registerme", methods=['POST'])
+def index():
+    if request.method == 'POST':
+        req_json = request.json
+        role = "003"
+        token = "29347skdfhsdhf"
+        username = req_json['username']
+        email = req_json['email']
+        pwd = req_json['password']
+        avatar = 'avatar.png'
+        contact = req_json['contact']
+        modifiedDate = datetime.datetime.now()
+        # Password encryption with Salt and hash
+        salt = hashlib.md5(pwd.encode())
+        pwd = salt.hexdigest()
+        userData = [
+            role, token, username, email, pwd, avatar, contact, modifiedDate
+        ]
+    return users.addUser(userData)
+
+
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port='8080', ssl_context=(
         'cert.pem', 'privkey.pem'))  # Run the flask app at port 8080
