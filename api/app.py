@@ -102,12 +102,12 @@ def getAllBnbs():
     return resources.getAllBnbs()
 
 
-@app.route("/users/registerme", methods=['POST'])
-def index():
+@app.route("/users/register", methods=['POST'])
+def index1():
     if request.method == 'POST':
         req_json = request.json
         role = "003"
-        token = "29347skdfhsdhf"
+        token = "29347skdf#$7hsdhf"
         username = req_json['username']
         email = req_json['email']
         pwd = req_json['password']
