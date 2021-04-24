@@ -22,11 +22,23 @@ def addUser(userData):
     role, token, username, email, pwd, avatar, contact, modifiedDate = userData
     ran_number = random.randint(1000, 9999)     # random 4 digit number
 
-    cur = mysql.connection.cursor()  # SQL instance
-    s = '''INSERT INTO user_table(user_role_id, user_token, user_password, user_name, user_avatar_img, user_email_id, user_contact, modified_date, created_date ) VALUES('{}','{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}');'''.format(
-        role, token, pwd, username, avatar, email, contact, modifiedDate, modifiedDate)
-    cur.execute(s)
-    mysql.connection.commit()
+    # cur = mysql.connection.cursor()  # SQL instance
+    # s = '''INSERT INTO user_table(user_role_id, user_token, user_password, user_name, user_avatar_img, user_email_id, user_contact, modified_date, created_date ) VALUES('{}','{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}');'''.format(
+    #     role, token, pwd, username, avatar, email, contact, modifiedDate, modifiedDate)
+    # cur.execute(s)
+    # mysql.connection.commit()
+
+    # Send OTP email to registered User
+    subject = "Welcome to GoSolo - Verify your email address"
+    body = f"""
+        <h3>Verify your email address<h3><br/>
+        <p>Hi {username},</p>
+        <p>Enter the 4 digit OTP code we sent to you via email to continue</p>
+        <h1 style='letter-spacing: 1rem'>{ran_number}</h1>
+        <p>Regards,<br/>GoSolo Admin Team,<br/>Dublin 1.</p>
+    """
+    send_email('gosoloprojectmaster@gmail.com', 'Gosolo@21', recipient=email, subject, body)
+
     return {'status': 200, 'responseMessage': 'Success'}, 200
 
 
