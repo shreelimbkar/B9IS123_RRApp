@@ -123,6 +123,14 @@ def index1():
     return users.addUser(userData)
 
 
+@app.route("/users/checkotp", methods=['POST'])  # Check OTP
+def chkOTP():
+    if request.method == 'POST':
+        req_json = request.json
+        otpCode = req_json['otp_code']
+    return users.checkOTP(otpCode)
+
+
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port='8080', ssl_context=(
         'cert.pem', 'privkey.pem'))  # Run the flask app at port 8080

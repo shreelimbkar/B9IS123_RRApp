@@ -102,6 +102,34 @@ def login(email, pwd):
         return {'status': 500, 'responseMessage': 'Unauthorized User. Please try again!'}, 500
 
 
+def checkOTP(otpCode):
+    if len(otpCode.strip()) <= 0:
+        return {'status': 500, 'responseMessage': 'OTP is invalid. Please try again!'}, 500
+
+    cur = mysql.connection.cursor()  # SQL instance
+    cur.execute(
+        f"""SELECT user_id FROM user_table WHERE otp_code = '{otpCode}'""")
+    rv = cur.fetchall()  # Retreive all rows returend by the SQL statment
+    Results = []
+
+    if (len(rv) != 0):
+        for row in rv:  # Format the Output Results and add to return string
+            Result = {}
+            Result['user_id'] = row[0]
+            Results.append(Result)
+
+        response = {'status': 200,
+                    'responseMessage': 'Success'}
+        retData = app.response_class(
+            response=json.dumps(response),
+            status=200,
+            mimetype='application/json'
+        )
+        return retData  # Return the data in a string format
+    else:
+        return {'status': 500, 'responseMessage': 'OTP is invalid. Please try again!'}, 500
+
+
 def send_email(gmailUser, gmailPassword, recipient, subject, body):
     msg = MIMEMultipart()
     msg['From'] = f'"GoSolo Admin " <gosoloprojectmaster@gmail.com>'
