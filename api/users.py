@@ -9,6 +9,8 @@ import json
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+# generate random 4 digit number for OTP
+import random
 mysql = MySQL()
 app = Flask(__name__)
 CORS(app)
@@ -18,6 +20,8 @@ app.config['SECRET_KEY'] = 'rating_app@2021'
 
 def addUser(userData):
     role, token, username, email, pwd, avatar, contact, modifiedDate = userData
+    ran_number = random.randint(1000, 9999)     # random 4 digit number
+
     cur = mysql.connection.cursor()  # SQL instance
     s = '''INSERT INTO user_table(user_role_id, user_token, user_password, user_name, user_avatar_img, user_email_id, user_contact, modified_date, created_date ) VALUES('{}','{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}');'''.format(
         role, token, pwd, username, avatar, email, contact, modifiedDate, modifiedDate)
