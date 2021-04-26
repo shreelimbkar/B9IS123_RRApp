@@ -97,6 +97,14 @@ def getAllResources():
     return resources.getResources(category)
 
 
+@app.route("/resourcesbyid", methods=['GET'])  # Get all resources by ID
+def getAllResourcesById():
+    if request.method == 'GET':
+        id = request.args.get('id')
+
+    return resources.getResourcesID(id)
+
+
 @app.route("/resources/allbnbs")  # Get all Bnbs
 def getAllBnbs():
     return resources.getAllBnbs()
