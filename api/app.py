@@ -9,6 +9,7 @@ from functools import wraps
 import json
 import users
 import resources
+import reviews
 mysql = MySQL()
 app = Flask(__name__)
 CORS(app)
@@ -148,6 +149,22 @@ def chkOTP():
         req_json = request.json
         otpCode = req_json['otp_code']
     return users.checkOTP(otpCode)
+
+
+@app.route("/reviews", methods=['GET'])  # Get user Reviews
+def getAllReviews():
+    if request.method == 'GET':
+        category = request.args.get('category')
+
+    return reviews.getResourceReviews(category)
+
+
+@app.route("/reviews/bnbs", methods=['GET'])  # Get user BnB Reviews
+def getAllBnBReviews():
+    if request.method == 'GET':
+        category = request.args.get('category')
+
+    return reviews.getBnBReviews(category)
 
 
 if __name__ == "__main__":
