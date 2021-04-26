@@ -105,6 +105,17 @@ def getAllResourcesById():
     return resources.getResourcesID(id)
 
 
+@app.route("/resources/filters", methods=['POST'])  # Get Resource by filters
+def filters():
+    if request.method == 'POST':
+        req_json = request.json
+        byPrice = req_json['resource_price']
+        byCategories = req_json['resource_category']
+        byLocation = req_json['resource_city_code']
+        byPopularities = req_json['resource_rating']
+    return resources.getResourcesByFilters(byPrice, byCategories, byLocation, byPopularities)
+
+
 @app.route("/resources/allbnbs")  # Get all Bnbs
 def getAllBnbs():
     return resources.getAllBnbs()
