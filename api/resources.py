@@ -134,9 +134,13 @@ INNER JOIN city as c ON r.resource_city_code=c.city_code WHERE r.resource_city_c
     return retData  # Return the data in a string format
 
 
-def getAllBnbs():
+def getAllBnbs(Id):
+    query = '''SELECT bnb_id, bnb_name, bnb_amenities, bnb_room_features, bnb_review, bnb_about, bnb_meals, bnb_city_code, bnb_address, modified_date, created_date, contact_number, bnb_price_range, bnb_is_available FROM bnb_master'''
+    if Id:
+        query = f'''SELECT bnb_id, bnb_name, bnb_amenities, bnb_room_features, bnb_review, bnb_about, bnb_meals, bnb_city_code, bnb_address, modified_date, created_date, contact_number, bnb_price_range, bnb_is_available FROM bnb_master WHERE bnb_id={Id}'''
+
     cur = mysql.connection.cursor()  # SQL instance
-    cur.execute('''SELECT bnb_id, bnb_name, bnb_amenities, bnb_room_features, bnb_review, bnb_about, bnb_meals, bnb_city_code, bnb_address, modified_date, created_date, contact_number, bnb_price_range, bnb_is_available FROM bnb_master''')  # execute an SQL statment
+    cur.execute(query)
     rv = cur.fetchall()  # Retreive all rows returend by the SQL statment
     Results = []
     for row in rv:  # Format the Output Results and add to return string

@@ -117,9 +117,13 @@ def filters():
     return resources.getResourcesByFilters(byPrice, byCategories, byLocation, byPopularities)
 
 
-@app.route("/resources/allbnbs")  # Get all Bnbs
+# Get all Bnbs and get all Bnbs by Id
+@app.route("/resources/allbnbs",  methods=['GET'])
 def getAllBnbs():
-    return resources.getAllBnbs()
+    if request.method == 'GET':
+        id = request.args.get('id')
+
+    return resources.getAllBnbs(id)
 
 
 @app.route("/users/register", methods=['POST'])
