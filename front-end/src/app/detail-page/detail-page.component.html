@@ -1,43 +1,153 @@
 <div class="container detail-block-wrapper">
-
+<div class="row">
+  <div class="col-md-6">
   <div class="basic-container">
     <gallery (click)="lightbox.open(0, 'lightbox',{panelClass: 'fullscreen'})" id="basic-test" [items]="items"></gallery>
   </div>
+  </div>
+  <div class="col-md-6">
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Check In and Check Out</mat-label>
+        <input matInput type="text" ngxDaterangepickerMd
+        formControlName="selected" class="form-control" placeholder="Choose date"
+        showCancel="true"
+        />
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="mr-2 half-width" >
+        <mat-label>Number of Rooms</mat-label>
+        <mat-select formControlName="rooms" name="rooms">
+          <mat-option *ngFor="let elements of rooms" [value]="elements.value">
+            {{elements.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="half-width">
+        <mat-label>Adults</mat-label>
+        <mat-select formControlName="adults" name="adults">
+          <mat-option *ngFor="let elements of adults" [value]="elements.value">
+            {{elements.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="mr-2 half-width">
+        <mat-label>Children</mat-label>
+        <mat-select formControlName="children" name="childrens">
+          <mat-option *ngFor="let elements of childrens" [value]="elements.value">
+            {{elements.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="half-width">
+        <mat-label>Special Requirement</mat-label>
+        <textarea formControlName="splRequirement" matInput></textarea>
+      </mat-form-field>
+      <br>
+      <h2>Rating: 4.5<span><mat-icon>star</mat-icon></span></h2>
+    <button type="submit" class="mt-5" mat-raised-button color="primary">Book Now</button>
+    </form>
 
-  <section class="container detail-content-wrapper">
+  </div>
+</div>
+
+  <section *ngIf="responseBody.resource_category == 'Hotel'" class="container detail-content-wrapper">
     <div class="row">
       <div class="col-md-8 mt-5">
-        <h1>{{responseBody.type}}</h1>
-            <h2>€ {{responseBody.Price}}</h2>
-        <p>{{responseBody.address}}</p>
-        <hr>
-        <h2>Description</h2>
-        <p>{{responseBody.description}}</p>
-
-        <h2>Property Facilities</h2>
-        <mat-chip-list
-        class="example-chip"
-        cdkDropList
-        cdkDropListOrientation="horizontal">
+        <h2><i>{{responseBody.resource_category}}</i></h2>
+        <h1>{{responseBody.resource_name}}</h1>
+          <h2>Address:<span>{{responseBody.resource_address}}</span></h2>
+            <h2>€ {{responseBody.resource_price}}</h2>
+          <hr>
+        <h2>Property Amenities</h2>
+        <mat-chip-list>
         <mat-chip
-            class="example-box"
-            cdkDrag
-            *ngFor="let item of facilities">
+            *ngFor="let item of propertyAmenities">
             {{item}}
         </mat-chip>
       </mat-chip-list>
+      <hr>
+      <h2>Room Features</h2>
+      <mat-chip-list>
+      <mat-chip
+          *ngFor="let item of roomFeatures">
+          {{item}}
+      </mat-chip>
+    </mat-chip-list>
       </div>
       <div class="col-md-4">
-
         <div class="booking-section">
           <mat-card class="example-card">
-            <p>For Viewing This Property Advance Booking Is Mandatory</p>
-            <button mat-flat-button color="accent" (click)="openDialog()">Book Appointment</button>
+           <h3>About</h3>
+            <p>The {{responseBody.resource_name}} is {{responseBody.city_name}} newest and most stylish hotel boasting both beautiful design and an incontestably perfect location at the heart of the city centre. Boasting 103 bedrooms - all with super king size, extra comfortable beds, versatile event space for up to 400 people and a sophisticated bar and restaurant area which is both comfortable and stylish. Try out some of the best coffee on offer in Dublin in our very own Steam Café which serves delicious barista coffee throughout the day and which has direct access from the hotel itself. Located on the corner of Merrion Square where locals, business people and tourists alike meet and mingle. This corner of Dublin is full of surprises and offers a range of top attractions as well as much sought-after peace and quiet in such a bustling city. Getting to The Alex is really easy and once you arrive, it's the perfect hub for exploring Dublin.</p>
           </mat-card>
         </div>
       </div>
+      <section class="review-section">
+        <hr>
+        <h2>Reviews</h2>
+        <button mat-raised-button class="mt-2 mb-4" color="accent" (click)="writeReviewForm()">Write Review</button>
+
+        <mat-card class="example-card mb-3">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>Shiba Inu</mat-card-title>
+            <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+            <div><h4>4 Ratting</h4></div>
+          </mat-card-header>
+          <mat-card-content>
+            <p>
+              The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+              A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+              bred for hunting.
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button>LIKE</button>
+          </mat-card-actions>
+        </mat-card>
+
+        <mat-card class="example-card mb-3">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>Shiba Inu</mat-card-title>
+            <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+            <div><h4>4 Ratting</h4></div>
+          </mat-card-header>
+          <mat-card-content>
+            <p>
+              The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+              A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+              bred for hunting.
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button>LIKE</button>
+          </mat-card-actions>
+        </mat-card>
+
+        <mat-card class="example-card mb-3">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>Shiba Inu</mat-card-title>
+            <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+            <div><h4>4 Ratting</h4></div>
+          </mat-card-header>
+          <mat-card-content>
+            <p>
+              The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+              A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+              bred for hunting.
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button>LIKE</button>
+          </mat-card-actions>
+        </mat-card>
+
+      </section>
     </div>
 
   </section>
+
 
 </div>

@@ -82,11 +82,12 @@ export class ListingPageComponent implements OnInit, OnDestroy  {
     })
   }
 
-  detailPage(id,param){
+  detailPage(id){
     let obj = {
-      "id" : id,
-      "param" : param
+      "resource_id" : id
     }
+    console.log("obj ++++++ ",obj);
+
     this._observableDataService.passDetailData(obj);
     this._router.navigate(['detail-page']);
   }

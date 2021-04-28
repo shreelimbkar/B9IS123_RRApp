@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   urlAddress: "http://localhost:3000",
-  DevUrlAddress: "https://shriv.dbsprojects.ie:8080/"
+  // DevUrlAddress: "https://shriv.dbsprojects.ie:8080/"
+  DevUrlAddress: "https://bijendra.dbsprojects.ie:8080/"
 };
 
 /*

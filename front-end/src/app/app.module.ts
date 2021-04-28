@@ -24,7 +24,7 @@ import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { WriteReviewComponent } from './write-review/write-review.component';
 import { RatingModule } from 'ng-starrating';
-
+import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
 
 @NgModule({
   declarations: [
@@ -49,6 +49,7 @@ import { RatingModule } from 'ng-starrating';
     LightboxModule,
     ReactiveFormsModule,
     FormsModule,
+    NgxDaterangepickerMd.forRoot(),
     MaterialModule,
     NgxSpinnerModule,
     HttpClientModule

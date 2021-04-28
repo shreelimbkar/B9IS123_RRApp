@@ -20,7 +20,6 @@
 <button mat-stroked-button color="accent" (click)="browserSection('bar')">Bars</button>
 <button mat-stroked-button color="accent" (click)="browserSection('Restaurant')">Restaurants</button>
 <button mat-stroked-button color="accent" (click)="browserSection('club')">Clubs</button>
-<button mat-stroked-button color="accent" (click)="writeReviewForm()">Write Review</button>
 </div>
 <!-- Diver line -->
 <hr>
@@ -31,7 +30,7 @@
 <owl-carousel-o [options]="customOptions">
   <ng-template carouselSlide *ngFor="let element of mightLikeList; let i = index" >
     <mat-card class="short-card" (click)="mostViewDetailPage(element.resource_id)">
-      <img src="../assets/image/bars/bar_1.jpeg">
+      <img src="../assets/image/bars/bar1/bar_1.jpeg">
       <mat-card-content>
         <span class="category">{{element.resource_category}}</span>
         <h2>{{element.resource_name}}</h2>
@@ -101,7 +100,7 @@
         <owl-carousel-o [options]="customOptions">
           <ng-template carouselSlide *ngFor="let element of clubsList; let i = index" >
             <mat-card class="short-card" (click)="mostViewDetailPage(element.id)">
-              <img class="mb-2" src="../assets/image/bars/bar_2.jpeg">
+              <img class="mb-2" src="../assets/image/bars/bar1/bar_2.jpeg">
               <mat-card-content>
                 <span class="category">{{element.resource_category}}</span>
                 <h2>{{element.resource_name}}</h2>

@@ -5,6 +5,7 @@ export class RestUrl {
   public static get getClubsDetails(): string { return `resources?category='club'`; }
   public static get getRestaurantsDetails(): string { return `resources?category='Restaurant'`; }
   public static get getHotelsDetails(): string { return `resources?category='hotel'`; }
+  public static get getResourceById(): string { return `resourcesbyid?id=`; }
 
 
 
