@@ -25,24 +25,28 @@ export class ListingService {
     return this._restService.get("resources/"+param)
   }
 
-  listByFilter(param):Observable<any>{
-    return this._restService.get("/"+param)
-  }
+  // listByFilter(param):Observable<any>{
+  //   return this._restService.get("/"+param)
+  // }
 
-  listByPriceFilterURLAsc(urlParam):Observable<any>{
-    return this._restService.get("/"+urlParam+RestUrl.ascendingSort)
-  }
+  // listByPriceFilterURLAsc(urlParam):Observable<any>{
+  //   return this._restService.get("/"+urlParam+RestUrl.ascendingSort)
+  // }
 
-  listByPriceFilterURLDesc(urlParam):Observable<any>{
-    return this._restService.get("/"+urlParam+RestUrl.descendingSort)
-  }
+  // listByPriceFilterURLDesc(urlParam):Observable<any>{
+  //   return this._restService.get("/"+urlParam+RestUrl.descendingSort)
+  // }
 
-  listByPriceFilterAsc(urlParam):Observable<any>{
-    return this._restService.get(urlParam+RestUrl.ascendingSort)
-  }
+  // listByPriceFilterAsc(urlParam):Observable<any>{
+  //   return this._restService.get(urlParam+RestUrl.ascendingSort)
+  // }
 
-  listByPriceFilterDesc(urlParam):Observable<any>{
-    return this._restService.get(urlParam+RestUrl.descendingSort)
+  // listByPriceFilterDesc(urlParam):Observable<any>{
+  //   return this._restService.get(urlParam+RestUrl.descendingSort)
+  // }
+
+  filter(param):Observable<any>{
+    return this._restService.create(RestUrl.getfilterData,param)
   }
 
 

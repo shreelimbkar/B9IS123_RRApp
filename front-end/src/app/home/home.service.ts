@@ -25,6 +25,10 @@ export class HomeService {
     return this._restService.get(RestUrl.getClubsDetails)
   }
 
+  bnbNearYou(): Observable<any> {
+    return this._restService.get(RestUrl.getAllBNB)
+  }
+
   restaurantsNearYou(): Observable<any> {
     return this._restService.get(RestUrl.getRestaurantsDetails)
   }

@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/propertyAauction",
+            "outputPath": "dist/GoSolo",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -127,7 +127,7 @@
       }
     }
   },
-  "defaultProject": "propertyAauction",
+  "defaultProject": "goSolo",
   "cli": {
     "analytics": "d31d5408-3e9f-4cd2-a39d-4b1cec603546"
   }

@@ -19,7 +19,15 @@
   width:100%;
 }
 
-
+.category-section ul.checkbox-items{
+  text-decoration: none;
+  list-style: none;
+  padding: 0px;
+}
+.category-section ul.checkbox-items li {
+  display: inline;
+  padding-right: 5px;
+}
 /*//////////////////////////////////////////////////////////////////
 [ SM ]*/
 @media screen and (max-width: 575px) {

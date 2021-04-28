@@ -50,7 +50,7 @@
   </div>
 </div>
 
-  <section *ngIf="responseBody.resource_category == 'Hotel'" class="container detail-content-wrapper">
+  <section class="container detail-content-wrapper">
     <div class="row">
       <div class="col-md-8 mt-5">
         <h2><i>{{responseBody.resource_category}}</i></h2>
@@ -58,6 +58,7 @@
           <h2>Address:<span>{{responseBody.resource_address}}</span></h2>
             <h2>€ {{responseBody.resource_price}}</h2>
           <hr>
+        <div class="property-amenities" *ngIf="responseBody.resource_category == 'Hotel'; else elseBlockShow" >
         <h2>Property Amenities</h2>
         <mat-chip-list>
         <mat-chip
@@ -65,14 +66,50 @@
             {{item}}
         </mat-chip>
       </mat-chip-list>
+      </div>
+      <ng-template #elseBlockShow>
+        <h2>Cuisines</h2>
+        <mat-chip-list>
+        <mat-chip
+            *ngFor="let item of cuisines">
+            {{item}}
+        </mat-chip>
+      </mat-chip-list>
       <hr>
+      <h2>Features</h2>
+        <mat-chip-list>
+        <mat-chip
+          *ngFor="let item of features">
+          {{item}}
+          </mat-chip>
+        </mat-chip-list>
+        <hr>
+      <h2>Meals</h2>
+        <mat-chip-list>
+        <mat-chip
+          *ngFor="let item of meals">
+          {{item}}
+          </mat-chip>
+        </mat-chip-list>
+        <hr>
+        <h2>Special Diets</h2>
+        <mat-chip-list>
+        <mat-chip
+          *ngFor="let item of specialDiets">
+          {{item}}
+          </mat-chip>
+        </mat-chip-list>
+      </ng-template>
+      <hr>
+      <div class="room-features" *ngIf="responseBody.resource_category == 'Hotel'">
       <h2>Room Features</h2>
       <mat-chip-list>
       <mat-chip
           *ngFor="let item of roomFeatures">
           {{item}}
       </mat-chip>
-    </mat-chip-list>
+      </mat-chip-list>
+      </div>
       </div>
       <div class="col-md-4">
         <div class="booking-section">
@@ -148,6 +185,7 @@
     </div>
 
   </section>
+
 
 
 </div>
