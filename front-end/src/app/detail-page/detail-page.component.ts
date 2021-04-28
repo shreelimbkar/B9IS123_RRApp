@@ -6,6 +6,9 @@ import { BookingComponent } from '../booking/booking.component';
 import { ObservableDataService } from '../observable/behaviourSubject.service';
 import { DetailService } from './detail.service';
 import { SubscriptionLike } from 'rxjs';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import * as moment from 'moment';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-detail-page',
@@ -19,19 +22,94 @@ export class DetailPageComponent implements OnInit, OnDestroy {
   imageData;
   facilities
   responseBody = {
-    type : null,
-    Price: null,
-    address: null,
-    description: null,
-    images: null,
-    features:null
+    resource_name : null,
+    resource_category : null,
+    resource_city_code : null,
+    city_name : null,
+    resource_address : null,
+    resource_details : null,
+    resource_images : null,
+    resource_is_active : null,
+    resource_review : null,
+    resource_price : null
   };
   observ: SubscriptionLike;
+  form: FormGroup;
+  roomFeatures;
+  propertyAmenities;
 
-  constructor(public gallery: Gallery, public lightbox: Lightbox, private _detailService : DetailService,
-    private dialog: MatDialog, private _observableDataService : ObservableDataService)
+  images = [
+		{
+			path: '../../assets/image/bars/bar1/bar_1.jpeg'
+		},
+		{
+			path: '../../assets/image/BB/BB1/1.jpeg'
+		},
+		{
+			path: '../../assets/image/clubs/club1/1.jpeg'
+		},
+		{
+			path: '../../assets/image/hotels/hotel1/1.jpeg'
+		},
+		{
+			path: '../../assets/image/bars/bar1/bar_4.jpeg'
+		},
+		{
+			path: '../../assets/image/hotels/hotel1/hotel_2.jpeg'
+		},
+		{
+			path: '../../assets/image/bars/bar2/1.jpeg'
+		},
+		{
+			path: '../../assets/image/hotels/hotel2/hotel_10.jpeg'
+		},
+	];
+  selectedValue: string;
+
+  rooms = [
+    {value: '1', viewValue: '1'},
+    {value: '2', viewValue: '2'},
+    {value: '3', viewValue: '3'},
+    {value: '4', viewValue: '4'},
+    {value: '5', viewValue: '5'},
+    {value: '6', viewValue: '6'}
+  ];
+
+  adults = [
+    {value: '1', viewValue: '1'},
+    {value: '2', viewValue: '2'},
+    {value: '3', viewValue: '3'},
+    {value: '4', viewValue: '4'},
+    {value: '5', viewValue: '5'},
+    {value: '6', viewValue: '6'}
+  ];
+
+  childrens = [
+    {value: '1', viewValue: '1'},
+    {value: '2', viewValue: '2'},
+    {value: '3', viewValue: '3'},
+    {value: '4', viewValue: '4'},
+    {value: '5', viewValue: '5'},
+    {value: '6', viewValue: '6'}
+  ];
+
+  constructor(private _route: Router, public gallery: Gallery, public lightbox: Lightbox, private _detailService : DetailService,
+    private dialog: MatDialog, private _observableDataService : ObservableDataService, private fb: FormBuilder)
      {
+      this.form = this.fb.group({
+        selected: [{
+          startDate: moment('2015-11-24T00:00Z'),
+          endDate: moment('2015-11-26T00:00Z')
+        }, Validators.required],
+        rooms : ['', [Validators.required]],
+        adults : ['', [Validators.required]],
+        children : ['', [Validators.required]],
+        splRequirement : ['', [Validators.required]]
+      });
+     }
 
+    submit() {
+      console.log(this.form.value);
     }
 
   ngOnInit(): void {
@@ -39,12 +117,19 @@ export class DetailPageComponent implements OnInit, OnDestroy {
     this.observ = this._observableDataService.detailPageData.subscribe((requestParam)=>{
 
       if(requestParam != null){
-        this._detailService.getDetailByObservable(requestParam.param, requestParam.id).subscribe((responseData)=>{
-          this.responseBody = responseData;
-          this.imageData = this.responseBody.images.map((elements) => {
-              return { "srcUrl": elements, "previewUrl": elements }
+        this._detailService.getDetailByObservable(requestParam.resource_id).subscribe((responseData)=>{
+          console.log("Deatail page ", responseData);
+
+          this.responseBody = responseData.body[0];
+          this.imageData = this.images.map((elements) => {
+            console.log("element +++ ",elements)
+              return { "srcUrl": elements.path, "previewUrl": elements.path }
           })
-          this.facilities = this.responseBody.features;
+          this.facilities = JSON.parse(this.responseBody.resource_details);
+          console.log("this.facilities ",this.facilities)
+          console.log("Object.values ",Object.values(this.facilities.propertyAmenities))
+          this.propertyAmenities = Object.values(this.facilities.propertyAmenities)
+          this.roomFeatures = Object.values(this.facilities.roomFeatures)
           // Creat gallery items
           this.items = this.imageData.map(item => new ImageItem({ src: item.srcUrl, thumb: item.previewUrl }));
           // Get a lightbox gallery ref
@@ -62,6 +147,11 @@ export class DetailPageComponent implements OnInit, OnDestroy {
     })
   }
 
+  writeReviewForm(){
+    this._route.navigate(["write-review"])
+  }
+
+
   ngOnDestroy() {
     this.observ.unsubscribe()
   }
@@ -69,6 +159,14 @@ export class DetailPageComponent implements OnInit, OnDestroy {
   openDialog() {
     this.dialog.open(BookingComponent, {
     });
+  }
+
+  toggleDisable(form: FormGroup) {
+    if (form.disabled) {
+      form.enable();
+    } else {
+      form.disable();
+    }
   }
 
 }

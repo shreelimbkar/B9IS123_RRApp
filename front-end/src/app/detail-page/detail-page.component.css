@@ -8,3 +8,15 @@
   border: 2px solid #ddd;
   margin-top: 40px;
 }
+
+.full-width{
+  width: 100%;
+}
+.half-width{
+  width: 45%;
+}
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}

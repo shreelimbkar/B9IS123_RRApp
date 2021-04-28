@@ -13,8 +13,8 @@ export class DetailService {
   constructor( private _restService : RestService) {
   }
 
-  getDetailByObservable(param,id): Observable<any> {
-    return this._restService.get(RestUrl.getDetail+param+"/"+id)
+  getDetailByObservable(id): Observable<any> {
+    return this._restService.get(RestUrl.getResourceById+id)
   }
 
 

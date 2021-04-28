@@ -3,7 +3,7 @@
   <div class="col-md-4">
       <!-- Filter Accordion start -->
   <mat-accordion class="filter-wrapper">
-    <mat-expansion-panel hideToggle class="filter-wrapper">
+    <mat-expansion-panel [expanded]="true" hideToggle class="filter-wrapper">
       <mat-expansion-panel-header>
         <mat-panel-title>
           <mat-icon>filter_alt</mat-icon>
@@ -46,7 +46,7 @@
         <mat-checkbox  formControlName="threeStar" name="threeStar">3 star</mat-checkbox><br>
         <mat-checkbox  formControlName="twoStar" name="twoStar">2 star</mat-checkbox>
       </section>
-      <button class="mt-2" mat-stroked-button color="primary">Submit</button>
+      <button class="mt-2 mr-4" mat-raised-button color="primary">Submit</button>
       <button class="mt-2" mat-stroked-button color="accent" (click)="reset()">Reset</button>
     </form>
     </mat-expansion-panel>
@@ -59,14 +59,14 @@
     <div class="row">
       <div class="col-md-4" *ngFor="let element of responseBody">
         <mat-card class="example-card">
-          <img mat-card-image src="../assets/image/bars/bar_1.jpeg" alt="Property Photo">
+          <img mat-card-image src="../assets/image/bars/bar1/bar_1.jpeg" alt="Property Photo">
           <mat-card-content>
             <p><b>{{element.resource_category}}</b></p>
           <h2>€ {{element.resource_price}} <span>(for 2)</span></h2>
           <p>{{element.resource_address}}</p>
           </mat-card-content>
           <mat-card-actions>
-            <button mat-stroked-button color="accent" (click)="detailPage(element.resource_id,element.param)">View More</button>
+            <button mat-stroked-button color="accent" (click)="detailPage(element.resource_id)">View More</button>
           </mat-card-actions>
         </mat-card>
     </div>

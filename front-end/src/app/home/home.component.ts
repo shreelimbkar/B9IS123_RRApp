@@ -178,38 +178,35 @@ clubHouse = [{
     })
   }
 
-  writeReviewForm(){
-    this._route.navigate(["write-review"])
-  }
 
 
 
-  bannerImages = [
-		{
-			path: '../assets/image/bars/bar_1.jpeg'
-		},
-		{
-			path: '../assets/image/BB/BB_4.jpeg'
-		},
-		{
-			path: '../assets/image/clubs/club_1.jpeg'
-		},
-		{
-			path: '../assets/image/hotels/hotel_1.jpeg'
-		},
-		{
-			path: '../assets/image/bars/bar_2.jpeg'
-		},
-		{
-			path: '../assets/image/hotels/hotel_3.jpeg'
-		},
-		{
-			path: '../assets/image/bars/bar_3.jpeg'
-		},
-		{
-			path: '../assets/image/hotels/hotel_4.jpeg'
-		},
-	];
+    bannerImages = [
+      {
+        path: '../assets/image/bars/bar1/bar_1.jpeg'
+      },
+      {
+        path: '../assets/image/BB/BB1/1.jpeg'
+      },
+      {
+        path: '../assets/image/clubs/club1/1.jpeg'
+      },
+      {
+        path: '../assets/image/hotels/hotel1/1.jpeg'
+      },
+      {
+        path: '../assets/image/bars/bar1/bar_4.jpeg'
+      },
+      {
+        path: '../assets/image/hotels/hotel1/hotel_2.jpeg'
+      },
+      {
+        path: '../assets/image/bars/bar2/1.jpeg'
+      },
+      {
+        path: '../assets/image/hotels/hotel2/hotel_10.jpeg'
+      },
+    ];
 
 
   customOptions: OwlOptions = {
