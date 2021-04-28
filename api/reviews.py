@@ -10,10 +10,10 @@ CORS(app)
 
 
 def getResourceReviews(category):
-    query = '''SELECT user_reviews_id, repor_flag_count, is_active, user_review_user_id, listing_id, like_count, modified_date, created_date FROM user_reviews'''
+    query = '''SELECT user_reviews_id, repor_flag_count, is_active, user_review_user_id, listing_id, review_title, review_body, budget, like_count, user_rating, modified_date, created_date FROM user_reviews'''
 
     if category:
-        query = f'''SELECT user_reviews_id, repor_flag_count, is_active, user_review_user_id, listing_id, like_count, modified_date, created_date FROM user_reviews WHERE listing_id = {category}'''
+        query = f'''SELECT user_reviews_id, repor_flag_count, is_active, user_review_user_id, listing_id, review_title, review_body, budget, like_count, user_rating, modified_date, created_date FROM user_reviews WHERE listing_id = {category}'''
 
     # print(query)
     cur = mysql.connection.cursor()  # SQL instance
@@ -27,13 +27,13 @@ def getResourceReviews(category):
         Result['is_active'] = row[2]
         Result['user_review_user_id'] = row[3]
         Result['listing_id'] = row[4]
-        Result['like_count'] = row[5]
-        Result['modified_date'] = row[6]
-        Result['created_date'] = row[7]
-        # Result['resource_images'] = row[8]
-        # Result['resource_is_active'] = row[9]
-        # Result['modified_date'] = row[10]
-        # Result['created_date'] = row[11]
+        Result['review_title'] = row[5]
+        Result['review_body'] = row[6]
+        Result['budget'] = row[7]
+        Result['like_count'] = row[8]
+        Result['user_rating'] = row[9]
+        Result['modified_date'] = row[10]
+        Result['created_date'] = row[11]
         Results.append(Result)
     response = {'status': 200, 'responseMessage': 'Success', 'body': Results}
     retData = app.response_class(
@@ -42,6 +42,20 @@ def getResourceReviews(category):
         mimetype='application/json'
     )
     return retData  # Return the data in a string format
+
+
+def addUserReviews(userReviewData):
+    review_user_id, listing_id, review_title, review_body, budget, like_count, user_rating = userReviewData
+    cur = mysql.connection.cursor()  # SQL instance
+    query = '''INSERT INTO user_reviews(is_active, user_review_user_id, listing_id, review_title, review_body, budget, like_count, repor_flag_count, user_rating, modified_date, created_date) VALUES ('{}','{}','{}','{}','{}','{}','{}','{}','{}','{}', '{}');'''.format(
+        'T', review_user_id, listing_id, review_title, review_body, budget, like_count, '1', user_rating, datetime.datetime.now(), datetime.datetime.now())
+    try:
+        cur.execute(query)
+        mysql.connection.commit()
+
+        return {'status': 200, 'responseMessage': 'Success'}, 200
+    except:
+        return {'status': 500, 'responseMessage': 'Server Error'}, 500
 
 
 def getBnBReviews(category):
