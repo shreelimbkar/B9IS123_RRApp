@@ -20,7 +20,7 @@ export class DetailPageComponent implements OnInit, OnDestroy {
   detailsPage;
   items: GalleryItem[];
   imageData;
-  facilities
+  facilities;
   responseBody = {
     resource_name : null,
     resource_category : null,
@@ -37,6 +37,10 @@ export class DetailPageComponent implements OnInit, OnDestroy {
   form: FormGroup;
   roomFeatures;
   propertyAmenities;
+  cuisines;
+  features;
+  meals;
+  specialDiets;
 
   images = [
 		{
@@ -98,8 +102,8 @@ export class DetailPageComponent implements OnInit, OnDestroy {
      {
       this.form = this.fb.group({
         selected: [{
-          startDate: moment('2015-11-24T00:00Z'),
-          endDate: moment('2015-11-26T00:00Z')
+          startDate: moment(),
+          endDate: moment()
         }, Validators.required],
         rooms : ['', [Validators.required]],
         adults : ['', [Validators.required]],
@@ -127,9 +131,15 @@ export class DetailPageComponent implements OnInit, OnDestroy {
           })
           this.facilities = JSON.parse(this.responseBody.resource_details);
           console.log("this.facilities ",this.facilities)
-          console.log("Object.values ",Object.values(this.facilities.propertyAmenities))
-          this.propertyAmenities = Object.values(this.facilities.propertyAmenities)
-          this.roomFeatures = Object.values(this.facilities.roomFeatures)
+          if(this.facilities.propertyAmenities) {
+            this.propertyAmenities = Object.values(this.facilities.propertyAmenities)
+            this.roomFeatures = Object.values(this.facilities.roomFeatures)
+          } else {
+            this.cuisines = Object.values(this.facilities.Cuisines)
+            this.features = Object.values(this.facilities.Features)
+            this.meals = Object.values(this.facilities.Meals)
+            this.specialDiets = Object.values(this.facilities.specialDiets)
+          }
           // Creat gallery items
           this.items = this.imageData.map(item => new ImageItem({ src: item.srcUrl, thumb: item.previewUrl }));
           // Get a lightbox gallery ref

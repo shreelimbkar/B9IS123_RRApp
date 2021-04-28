@@ -16,7 +16,7 @@
       <section>
         <mat-form-field appearance="fill" class="full-width">
           <mat-label>Filter By Price</mat-label>
-          <mat-select formControlName="price" (selectionChange)="filterByPrice($event)">
+          <mat-select formControlName="price">
             <mat-option value=0>Low to High</mat-option>
             <mat-option value=1>High to Low</mat-option>
           </mat-select>
@@ -24,27 +24,33 @@
       </section>
       <section class="category-section full-width">
         <p><b>By Categorys</b></p>
-        <mat-checkbox  class="mr-3" formControlName="hotel" name="hotel">Hotels</mat-checkbox>
+        <ul class="checkbox-items">
+          <li *ngFor="let item of categorys">
+            <mat-checkbox formControlName="categorys" name="categorys" [(ngModel)]="item.isChecked" (change)="changeSelection()">{{item.name}}</mat-checkbox>
+          </li>
+        </ul>
+        <!-- <mat-checkbox  class="mr-3" formControlName="hotel" name="hotel">Hotels</mat-checkbox>
         <mat-checkbox  name="BnB" formControlName="BnB">B&B</mat-checkbox><br>
         <mat-checkbox  name="bar" formControlName="bar">Bar</mat-checkbox><br>
         <mat-checkbox  name="club" class="mr-3" formControlName="club">Clubs</mat-checkbox>
-        <mat-checkbox  name="Restaurant"formControlName="Restaurant">Restaurants</mat-checkbox>
+        <mat-checkbox  name="Restaurant"formControlName="Restaurant">Restaurants</mat-checkbox> -->
       </section>
       <section class="category-section">
         <p><b>By Location</b></p>
         <mat-form-field appearance="fill" class="full-width">
           <mat-label>location</mat-label>
-          <mat-select formControlName="location" (selectionChange)="filterByPrice($event)">
+          <mat-select formControlName="location">
             <mat-option *ngFor="let element of location" value={{element.value}}>{{element.name}}</mat-option>
           </mat-select>
         </mat-form-field>
       </section>
       <section class="category-section full-width">
         <p><b>By Popularity</b></p>
-        <mat-checkbox  class="mr-3" formControlName="fiveStar" name="fiveStar">5 star</mat-checkbox>
-        <mat-checkbox  formControlName="fourStar" name="fourStar">4 star</mat-checkbox><br>
-        <mat-checkbox  formControlName="threeStar" name="threeStar">3 star</mat-checkbox><br>
-        <mat-checkbox  formControlName="twoStar" name="twoStar">2 star</mat-checkbox>
+        <ul class="checkbox-items">
+          <li *ngFor="let item of ratings">
+            <mat-checkbox formControlName="ratings" name="ratings" [(ngModel)]="item.isChecked" (change)="selectRating()">{{item.name}}</mat-checkbox>
+          </li>
+        </ul>
       </section>
       <button class="mt-2 mr-4" mat-raised-button color="primary">Submit</button>
       <button class="mt-2" mat-stroked-button color="accent" (click)="reset()">Reset</button>
@@ -61,12 +67,13 @@
         <mat-card class="example-card">
           <img mat-card-image src="../assets/image/bars/bar1/bar_1.jpeg" alt="Property Photo">
           <mat-card-content>
-            <p><b>{{element.resource_category}}</b></p>
-          <h2>€ {{element.resource_price}} <span>(for 2)</span></h2>
-          <p>{{element.resource_address}}</p>
+            <p><b>{{element.resource_category ? element.resource_category : "B&B"}}</b></p>
+          <h2>€ {{element.resource_price ? element.resource_price : element.bnb_price_range}} <span>(for 2)</span></h2>
+          <p>{{element.resource_address ? element.resource_address : element.bnb_address}}</p>
           </mat-card-content>
           <mat-card-actions>
-            <button mat-stroked-button color="accent" (click)="detailPage(element.resource_id)">View More</button>
+            <button *ngIf="element.resource_id" mat-stroked-button color="accent" (click)="detailPage(element.resource_id)">View More</button>
+            <button *ngIf="element.bnb_id" mat-stroked-button color="accent" (click)="detailPage(element.bnb_id)">View More</button>
           </mat-card-actions>
         </mat-card>
     </div>

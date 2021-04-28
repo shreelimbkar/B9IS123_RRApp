@@ -31,13 +31,31 @@ export class ListingPageComponent implements OnInit, OnDestroy  {
     {name:'Limerick',value:'c-004'},
     {name:'Waterford',value:'c-005'}
   ]
+  categorys = [
+    {name:'Hotel',value:'hotel',isChecked:false},
+    {name:'BnB',value:'BnB',isChecked:false},
+    {name:'Bar',value:'bar',isChecked:false},
+    {name:'club',value:'club',isChecked:false},
+    {name:'Restaurant',value:'Restaurant',isChecked:false}
+  ]
+  ratings = [
+    {name:'5 Star',value:'5',isChecked:false},
+    {name:'4 Star',value:'4',isChecked:false},
+    {name:'3 Star',value:'3',isChecked:false},
+    {name:'2 Star',value:'2',isChecked:false},
+    {name:'1 Star',value:'1',isChecked:false},
+  ]
+  selectedCategorysList = [];
+  selectedRatingList = [];
 
   constructor(private _router : Router, public formBuilder: FormBuilder, private listingService : ListingService, private _observableDataService : ObservableDataService) { }
 
   ngOnInit(): void {
       this.filterValidateForm = this.formBuilder.group({
-        price : ['', [Validators.required, Validators.email]],
+        price : ['', [Validators.required]],
         hotel : ['', [Validators.required]],
+        categorys : ['', [Validators.required]],
+        ratings : ['', [Validators.required]],
         BnB : ['', [Validators.required]],
         bar : ['', [Validators.required]],
         club : ['', [Validators.required]],
@@ -50,9 +68,11 @@ export class ListingPageComponent implements OnInit, OnDestroy  {
       })
 
     this.observ = this._observableDataService.detailPageData.subscribe((requestData)=>{
+
       if(requestData != null){
-        if(requestData == 'allbnb'){
+        if(requestData.param == 'allbnbs'){
           this.listingService.listBySectionBNB(requestData.param).subscribe((responseData)=>{
+           console.log("responseData ++++", responseData);
             this.responseBody = responseData.body;
           })
         }else {
@@ -66,8 +86,53 @@ export class ListingPageComponent implements OnInit, OnDestroy  {
     })
   }
 
+  changeSelection() {
+    this.fetchSelectedItems()
+  }
+  selectRating(){
+    this.fetchRatingSelection()
+  }
+
+  fetchSelectedItems() {
+    this.selectedCategorysList = this.categorys.filter((element, index) => {
+      if(element.isChecked){
+        return element.value
+      }
+    });
+    console.log("++++++++++++++ selectedCategorysList ",this.selectedCategorysList)
+  }
+
+  fetchRatingSelection() {
+    this.selectedRatingList = this.ratings.filter((element, index) => {
+      if(element.isChecked){
+        return element.value
+      }
+    });
+    console.log("++++++++++++++ selectedRatingList ",this.selectedRatingList)
+
+  }
+
+
   submitForm(value){
-    console.log("++++++++++++++ value ",value)
+   let category =  this.selectedCategorysList.map((element)=>{
+      return element.value
+    })
+    let ratings = this.selectedRatingList.map((element)=>{
+      return element.value
+    })
+
+   let obj = {
+    resource_price: value.price,
+    resource_category: category,
+    resource_city_code: value.location,
+    resource_rating: ratings
+    }
+    console.log("obj ",obj);
+
+    this.listingService.filter(obj).subscribe((responseData)=>{
+      console.log("onLoad binding responseData ",responseData)
+        this.responseBody = responseData.body;
+    })
   }
 
   ngOnDestroy() {
@@ -98,12 +163,6 @@ export class ListingPageComponent implements OnInit, OnDestroy  {
     this.filterValidateForm.controls['price'].setErrors(null);
   }
 
-  filterByPrice(e){
 
-  }
-
-  sort(reqParam){
-
-  }
 
 }

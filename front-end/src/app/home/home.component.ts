@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
   clubsList;
   restaurantsList;
   hotelsList;
+  bnbList;
   mostViewedBody = [{
     id : "1",
     images : ["../assets/image/bars/bar_1.jpeg"],
@@ -156,11 +157,11 @@ clubHouse = [{
       this.clubsList = responseBody;
     })
 
-    this._service.clubsNearYou().subscribe((resposneData)=>{
+    this._service.bnbNearYou().subscribe((resposneData)=>{
       console.log("+++++++++++++",resposneData)
       let responseBody =  resposneData.body
-      console.log("+++++Clubs++++++++",responseBody)
-      this.clubsList = responseBody;
+      console.log("+++++  bnbList  ++++++++",responseBody)
+      this.bnbList = responseBody;
     })
 
     this._service.restaurantsNearYou().subscribe((resposneData)=>{
@@ -234,17 +235,19 @@ clubHouse = [{
     nav: true
   }
 
-  ViewAll(){
+  ViewAll(param){
+    let obj = {
+      "param" : param
+    }
+   this._observableDataService.passDetailData(obj);
     this._route.navigate(['listing'])
   }
 
   mostViewDetailPage(id){
 
     let obj = {
-      "id" : id,
-      "param" : "mostViewedProperty"
+      "resource_id" : id,
     }
-
     this._observableDataService.passDetailData(obj);
     this._route.navigate(['detail-page']);
   }
@@ -257,5 +260,12 @@ clubHouse = [{
     this._route.navigate(['listing'])
   }
 
+  viewBNBDetailPage(id){
+    let obj = {
+      "bnb_id" : id,
+    }
+    this._observableDataService.passDetailData(obj);
+    this._route.navigate(['detail-page']);
+  }
 
 }
