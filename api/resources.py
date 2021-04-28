@@ -10,10 +10,12 @@ CORS(app)
 
 
 def getResources(category):
-    query = '''SELECT resource_id, resource_category, resource_name, resource_city_code, resource_address, resource_details, resource_price, resource_review, resource_images, resource_is_active, modified_date, created_date FROM resource_master'''
+    query = '''SELECT r.resource_id, r.resource_category, r.resource_name, r.resource_city_code, c.city_name, r.resource_address, r.resource_details, r.resource_price, r.resource_review, r.resource_images, r.resource_is_active, r.modified_date, r.created_date, r.contact_number FROM resource_master as r 
+INNER JOIN city as c ON r.resource_city_code=c.city_code'''
 
     if category:
-        query = f'''SELECT resource_id, resource_category, resource_name, resource_city_code, resource_address, resource_details, resource_price, resource_review, resource_images, resource_is_active, modified_date, created_date FROM resource_master WHERE resource_category = {category}'''
+        query = f'''SELECT r.resource_id, r.resource_category, r.resource_name, r.resource_city_code, c.city_name, r.resource_address, r.resource_details, r.resource_price, r.resource_review, r.resource_images, r.resource_is_active, r.modified_date, r.created_date, r.contact_number FROM resource_master as r 
+INNER JOIN city as c ON r.resource_city_code=c.city_code WHERE resource_category = {category}'''
 
     print(query)
     cur = mysql.connection.cursor()  # SQL instance
@@ -26,16 +28,17 @@ def getResources(category):
         Result['resource_category'] = row[1]
         Result['resource_name'] = row[2]
         Result['resource_city_code'] = row[3]
-        Result['resource_address'] = row[4]
-        Result['resource_details'] = [row[5].replace("\"", "")]
-        Result['resource_price'] = row[6]
-        Result['resource_review'] = row[7]
-        Result['resource_images'] = row[8]
-        Result['resource_is_active'] = row[9]
-        # Result['modified_date'] = row[10]
-        # Result['created_date'] = row[11]
+        Result['city_name'] = row[4]
+        Result['resource_address'] = row[5]
+        Result['resource_details'] = row[6]
+        Result['resource_price'] = row[7]
+        Result['resource_review'] = row[8]
+        Result['resource_images'] = row[9]
+        Result['resource_is_active'] = row[10]
+        # Result['modified_date'] = row[11]
+        # Result['created_date'] = row[12]
         Results.append(Result)
-    response = {'data': Results, 'count': len(Results)}
+    response = {'status': 200, 'responseMessage': 'Success', 'body': Results}
     retData = app.response_class(
         response=json.dumps(response),
         status=200,
@@ -44,33 +47,92 @@ def getResources(category):
     return retData  # Return the data in a string format
 
 
-#def getAllBnbs():
-#    cur = mysql.connection.cursor()  # SQL instance
-#    cur.execute('''SELECT bnb_booking_id, from_date, to_date, bnb_resource_id, bnb_book_user_id, number_of_adult, number_of_child, number_of_beds, special_requirement, is_status, modified_date, created_date FROM bnb_booking''')  # execute an SQL statment
-#    rv = cur.fetchall()  # Retreive all rows returend by the SQL statment
-#    Results = []
-#    for row in rv:  # Format the Output Results and add to return string
-#        Result = {}
-#        Result['bnb_booking_id'] = row[0]
-#        Result['from_date'] = row[1]
-#        Result['to_date'] = row[2]
-#        Result['bnb_resource_id'] = row[3]
-#        Result['bnb_book_user_id'] = row[4]
-#       Result['number_of_adult'] = row[5]
-#        Result['number_of_child'] = row[6]
-#        Result['number_of_beds'] = row[7]
-#        Result['special_requirement'] = row[8]
-#        Result['is_status'] = row[9]
-#       # Result['modified_date'] = row[10]
-#        # Result['created_date'] = row[11]
-#        Results.append(Result)
-#    response = {'data': Results, 'count': len(Results)}
-#    retData = app.response_class(
-#        response=json.dumps(response),
-#        status=200,
-#        mimetype='application/json'
-#    )
-#    return retData  # Return the data in a string format
+def getResourcesID(id):
+    if id:
+        query = f'''SELECT r.resource_id, r.resource_category, r.resource_name, r.resource_city_code, c.city_name, r.resource_address, r.resource_details, r.resource_price, r.resource_review, r.resource_images, r.resource_is_active, r.modified_date, r.created_date, r.contact_number FROM resource_master as r 
+INNER JOIN city as c ON r.resource_city_code=c.city_code WHERE resource_id = {id}'''
+
+    print(query)
+    cur = mysql.connection.cursor()  # SQL instance
+    cur.execute(query)  # execute an SQL statment
+    rv = cur.fetchall()  # Retreive all rows returend by the SQL statment
+    Results = []
+    for row in rv:  # Format the Output Results and add to return string
+        Result = {}
+        Result['resource_id'] = row[0]
+        Result['resource_category'] = row[1]
+        Result['resource_name'] = row[2]
+        Result['resource_city_code'] = row[3]
+        Result['city_name'] = row[4]
+        Result['resource_address'] = row[5]
+        Result['resource_details'] = row[6]
+        Result['resource_price'] = row[7]
+        Result['resource_review'] = row[8]
+        Result['resource_images'] = row[9]
+        Result['resource_is_active'] = row[10]
+        # Result['modified_date'] = row[11]
+        # Result['created_date'] = row[12]
+        Results.append(Result)
+    response = {'status': 200, 'responseMessage': 'Success', 'body': Results}
+    retData = app.response_class(
+        response=json.dumps(response),
+        status=200,
+        mimetype='application/json'
+    )
+    return retData  # Return the data in a string format
+
+
+def getResourcesByFilters(byPrice, byCategories, byLocation, byPopularities):
+    if byLocation:
+        byPrice = 'ASC' if int(byPrice) else 'DESC'
+        query = f'''SELECT r.resource_id, r.resource_category, r.resource_name, r.resource_city_code, c.city_name, r.resource_address, r.resource_details, r.resource_price, r.resource_review, r.resource_rating, r.resource_images, r.resource_is_active, r.modified_date, r.created_date, r.contact_number FROM resource_master as r 
+INNER JOIN city as c ON r.resource_city_code=c.city_code WHERE r.resource_city_code = '{byLocation}' ORDER BY r.resource_price {byPrice}'''
+
+        if byCategories:
+            cat = "'{}'".format("','".join(byCategories))
+            query = f'''SELECT r.resource_id, r.resource_category, r.resource_name, r.resource_city_code, c.city_name, r.resource_address, r.resource_details, r.resource_price, r.resource_review, r.resource_rating, r.resource_images, r.resource_is_active, r.modified_date, r.created_date, r.contact_number FROM resource_master as r 
+INNER JOIN city as c ON r.resource_city_code=c.city_code WHERE r.resource_city_code = '{byLocation}' AND r.resource_category in ({cat}) ORDER BY r.resource_price {byPrice}'''
+
+        if byPopularities:
+            popu = "'{}'".format("','".join(byPopularities))
+            query = f'''SELECT r.resource_id, r.resource_category, r.resource_name, r.resource_city_code, c.city_name, r.resource_address, r.resource_details, r.resource_price, r.resource_review, r.resource_rating, r.resource_images, r.resource_is_active, r.modified_date, r.created_date, r.contact_number FROM resource_master as r 
+INNER JOIN city as c ON r.resource_city_code=c.city_code WHERE r.resource_city_code = '{byLocation}' AND r.resource_rating in ({popu}) ORDER BY r.resource_price {byPrice}'''
+
+        if byCategories and byPopularities:
+            cat = "'{}'".format("','".join(byCategories))
+            popu = "'{}'".format("','".join(byPopularities))
+            query = f'''SELECT r.resource_id, r.resource_category, r.resource_name, r.resource_city_code, c.city_name, r.resource_address, r.resource_details, r.resource_price, r.resource_review, r.resource_rating, r.resource_images, r.resource_is_active, r.modified_date, r.created_date, r.contact_number FROM resource_master as r 
+INNER JOIN city as c ON r.resource_city_code=c.city_code WHERE r.resource_city_code = '{byLocation}' AND r.resource_rating in ({popu}) AND r.resource_category in ({cat}) ORDER BY r.resource_price {byPrice}'''
+
+        # print(query)
+    cur = mysql.connection.cursor()  # SQL instance
+    cur.execute(query)  # execute an SQL statment
+    rv = cur.fetchall()  # Retreive all rows returend by the SQL statment
+    Results = []
+    for row in rv:  # Format the Output Results and add to return string
+        Result = {}
+        Result['resource_id'] = row[0]
+        Result['resource_category'] = row[1]
+        Result['resource_name'] = row[2]
+        Result['resource_city_code'] = row[3]
+        Result['city_name'] = row[4]
+        Result['resource_address'] = row[5]
+        Result['resource_details'] = row[6]
+        Result['resource_price'] = row[7]
+        Result['resource_review'] = row[8]
+        Result['resource_images'] = row[9]
+        Result['resource_is_active'] = row[10]
+        # Result['modified_date'] = row[11]
+        # Result['created_date'] = row[12]
+        Results.append(Result)
+    response = {'status': 200, 'responseMessage': 'Success', 'body': Results}
+    retData = app.response_class(
+        response=json.dumps(response),
+        status=200,
+        mimetype='application/json'
+    )
+    return retData  # Return the data in a string format
+
 
 def getAllBnbs():
     cur = mysql.connection.cursor()  # SQL instance
@@ -94,7 +156,7 @@ def getAllBnbs():
         Result['bnb_price_range'] = row[12]
         Result['bnb_is_available'] = row[13]
         Results.append(Result)
-    response = {'data': Results, 'count': len(Results)}
+    response = {'status': 200, 'responseMessage': 'Success', 'body': Results}
     retData = app.response_class(
         response=json.dumps(response),
         status=200,

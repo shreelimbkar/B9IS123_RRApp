@@ -8,13 +8,14 @@ mysql = MySQL()
 app = Flask(__name__)
 CORS(app)
 
+
 def getResourceReviews(category):
     query = '''SELECT user_reviews_id, repor_flag_count, is_active, user_review_user_id, listing_id, like_count, modified_date, created_date FROM user_reviews'''
 
     if category:
-        query = f'''SELECT user_reviews_id, repor_flag_count, is_active, user_review_user_id, listing_id, like_count, modified_date, created_date FROM user_review WHERE lisitng_id = {category}'''
+        query = f'''SELECT user_reviews_id, repor_flag_count, is_active, user_review_user_id, listing_id, like_count, modified_date, created_date FROM user_reviews WHERE listing_id = {category}'''
 
-    print(query)
+    # print(query)
     cur = mysql.connection.cursor()  # SQL instance
     cur.execute(query)  # execute an SQL statment
     rv = cur.fetchall()  # Retreive all rows returend by the SQL statment
@@ -34,7 +35,7 @@ def getResourceReviews(category):
         # Result['modified_date'] = row[10]
         # Result['created_date'] = row[11]
         Results.append(Result)
-    response = {'data': Results, 'count': len(Results)}
+    response = {'status': 200, 'responseMessage': 'Success', 'body': Results}
     retData = app.response_class(
         response=json.dumps(response),
         status=200,
@@ -42,13 +43,14 @@ def getResourceReviews(category):
     )
     return retData  # Return the data in a string format
 
+
 def getBnBReviews(category):
     query = '''SELECT user_bnb_review_id, repor_flag_count, is_active, review_bnb_user_id, bnb_master_id, like_count, modified_date, created_date FROM user_bnb_review'''
 
     if category:
-        query = f'''SELECT user_bnb_review_id, repor_flag_count, is_active, review_bnb_user_id, bnb_master_id, like_count, modified_date, created_date FROM user_bnb_review FROM user_review WHERE bnb_master_id = {category}'''
+        query = f'''SELECT user_bnb_review_id, repor_flag_count, is_active, review_bnb_user_id, bnb_master_id, like_count, modified_date, created_date FROM user_bnb_review WHERE bnb_master_id = {category}'''
 
-    print(query)
+    # print(query)
     cur = mysql.connection.cursor()  # SQL instance
     cur.execute(query)  # execute an SQL statment
     rv = cur.fetchall()  # Retreive all rows returend by the SQL statment
@@ -68,11 +70,10 @@ def getBnBReviews(category):
         # Result['modified_date'] = row[10]
         # Result['created_date'] = row[11]
         Results.append(Result)
-    response = {'data': Results, 'count': len(Results)}
+    response = {'status': 200, 'responseMessage': 'Success', 'body': Results}
     retData = app.response_class(
         response=json.dumps(response),
         status=200,
         mimetype='application/json'
     )
     return retData  # Return the data in a string format
-

@@ -3,11 +3,13 @@ from flask import request
 from flask_mysqldb import MySQL
 from flask_cors import CORS
 import jwt
+import hashlib
 import datetime
 from functools import wraps
 import json
 import users
 import resources
+import reviews
 mysql = MySQL()
 app = Flask(__name__)
 CORS(app)
@@ -48,49 +50,44 @@ def token_required(f):
 @app.route("/")
 def initApp():
     return("Welcome to Rating App API Page")
-# @app.route("/add")  # Add Student
-# def add():
-#     name = request.args.get('name')
-#     email = request.args.get('email')
-#     cur = mysql.connection.cursor()  # create a connection to the SQL instance
-#     s = '''INSERT INTO students(studentName, email) VALUES('{}','{}');'''.format(
-#         name, email)
-#     cur.execute(s)
-#     mysql.connection.commit()
-
-#     return '{"Result":"Success"}'
 
 
-@app.route("/users/add", methods=['GET', 'POST'])
+@app.route("/users/register", methods=['POST'])
 def index():
     if request.method == 'POST':
+        req_json = request.json
         role = "003"
         token = "29347skdfhsdhf"
-        username = request.form['username']
-        email = request.form['email']
-        pwd = request.form['password']
-        avatar = 'avatar.img'
-        contact = request.form['contact']
+        username = req_json['username']
+        email = req_json['email']
+        pwd = req_json['password']
+        avatar = 'avatar.png'
+        contact = req_json['contact']
         modifiedDate = datetime.datetime.now()
+        # Password encryption with Salt and hash
+        salt = hashlib.md5(pwd.encode())
+        pwd = salt.hexdigest()
         userData = [
             role, token, username, email, pwd, avatar, contact, modifiedDate
         ]
     return users.addUser(userData)
 
 
+@app.route("/login", methods=['POST'])  # Login user
+def userLogin():
+    if request.method == 'POST':
+        req_json = request.json
+        email = req_json['email']
+        pwd = req_json['password']
+        salt = hashlib.md5(pwd.encode())
+        pwd = salt.hexdigest()
+    return users.login(email, pwd)
+
+
 @app.route("/users")  # Get all users
 # @token_required
 def getAllUsers():
     return users.getUsers()
-
-
-@app.route("/login", methods=['POST'])  # Login user
-def userLogin():
-    if request.method == 'POST':
-        email = request.form['email']
-        pwd = request.form['password']
-
-    return users.login(email, pwd)
 
 
 @app.route("/resources", methods=['GET'])  # Get all resources
@@ -101,9 +98,73 @@ def getAllResources():
     return resources.getResources(category)
 
 
+@app.route("/resourcesbyid", methods=['GET'])  # Get all resources by ID
+def getAllResourcesById():
+    if request.method == 'GET':
+        id = request.args.get('id')
+
+    return resources.getResourcesID(id)
+
+
+@app.route("/resources/filters", methods=['POST'])  # Get Resource by filters
+def filters():
+    if request.method == 'POST':
+        req_json = request.json
+        byPrice = req_json['resource_price']
+        byCategories = req_json['resource_category']
+        byLocation = req_json['resource_city_code']
+        byPopularities = req_json['resource_rating']
+    return resources.getResourcesByFilters(byPrice, byCategories, byLocation, byPopularities)
+
+
 @app.route("/resources/allbnbs")  # Get all Bnbs
 def getAllBnbs():
     return resources.getAllBnbs()
+
+
+@app.route("/users/register", methods=['POST'])
+def index1():
+    if request.method == 'POST':
+        req_json = request.json
+        role = "003"
+        token = "29347skdf#$7hsdhf"
+        username = req_json['username']
+        email = req_json['email']
+        pwd = req_json['password']
+        avatar = 'avatar.png'
+        contact = req_json['contact']
+        modifiedDate = datetime.datetime.now()
+        # Password encryption with Salt and hash
+        salt = hashlib.md5(pwd.encode())
+        pwd = salt.hexdigest()
+        userData = [
+            role, token, username, email, pwd, avatar, contact, modifiedDate
+        ]
+    return users.addUser(userData)
+
+
+@app.route("/users/checkotp", methods=['POST'])  # Check OTP
+def chkOTP():
+    if request.method == 'POST':
+        req_json = request.json
+        otpCode = req_json['otp_code']
+    return users.checkOTP(otpCode)
+
+
+@app.route("/reviews", methods=['GET'])  # Get user Reviews
+def getAllReviews():
+    if request.method == 'GET':
+        category = request.args.get('category')
+
+    return reviews.getResourceReviews(category)
+
+
+@app.route("/reviews/bnbs", methods=['GET'])  # Get user BnB Reviews
+def getAllBnBReviews():
+    if request.method == 'GET':
+        category = request.args.get('category')
+
+    return reviews.getBnBReviews(category)
 
 
 if __name__ == "__main__":
