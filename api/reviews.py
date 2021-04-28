@@ -44,6 +44,20 @@ def getResourceReviews(category):
     return retData  # Return the data in a string format
 
 
+def addUserReviews(userReviewData):
+    review_user_id, listing_id, review_title, review_body, budget, like_count, user_rating = userReviewData
+    cur = mysql.connection.cursor()  # SQL instance
+    query = '''INSERT INTO user_reviews(is_active, user_review_user_id, listing_id, review_title, review_body, budget, like_count, repor_flag_count, user_rating, modified_date, created_date) VALUES ('{}','{}','{}','{}','{}','{}','{}','{}','{}','{}', '{}');'''.format(
+        'T', review_user_id, listing_id, review_title, review_body, budget, like_count, '1', user_rating, datetime.datetime.now(), datetime.datetime.now())
+    try:
+        cur.execute(query)
+        mysql.connection.commit()
+
+        return {'status': 200, 'responseMessage': 'Success'}, 200
+    except:
+        return {'status': 500, 'responseMessage': 'Server Error'}, 500
+
+
 def getBnBReviews(category):
     query = '''SELECT user_bnb_review_id, repor_flag_count, is_active, review_bnb_user_id, bnb_master_id, like_count, modified_date, created_date FROM user_bnb_review'''
 

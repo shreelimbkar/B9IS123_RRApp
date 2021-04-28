@@ -163,6 +163,26 @@ def getAllReviews():
     return reviews.getResourceReviews(category)
 
 
+@app.route("/reviews/add", methods=['POST'])  # Add User review
+def userReview():
+    if request.method == 'POST':
+        req_json = request.json
+        review_user_id = int(req_json['user_review_user_id'])
+        listing_id = int(req_json['listing_id'])
+        review_title = req_json['review_title']
+        review_body = req_json['review_body']
+        budget = req_json['budget']
+        like_count = req_json['like_count']
+        user_rating = int(req_json['user_rating'])
+
+        # User Review Data
+        userReviewData = [
+            review_user_id, listing_id, review_title, review_body, budget, like_count, user_rating
+        ]
+
+    return reviews.addUserReviews(userReviewData)
+
+
 @app.route("/reviews/bnbs", methods=['GET'])  # Get user BnB Reviews
 def getAllBnBReviews():
     if request.method == 'GET':
