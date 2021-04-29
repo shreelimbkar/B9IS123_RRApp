@@ -155,3 +155,4 @@ def send_email(gmailUser, gmailPassword, recipient, subject, body):
         print('Email sent!')
     except LookupError:
         print('Something went wrong...', LookupError)
+        
