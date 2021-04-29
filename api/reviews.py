@@ -10,10 +10,10 @@ CORS(app)
 
 
 def getResourceReviews(category):
-    query = '''SELECT user_reviews_id, repor_flag_count, is_active, user_review_user_id, listing_id, review_title, review_body, budget, like_count, user_rating, modified_date, created_date FROM user_reviews'''
+    query = '''SELECT r.user_reviews_id, r.repor_flag_count, r.is_active, r.user_review_user_id, r.listing_id, r.review_title, r.review_body, r.budget, r.like_count, r.user_rating, r.modified_date, r.created_date, ut.user_name FROM user_reviews as r INNER JOIN user_table as ut ON r.user_review_user_id=ut.user_id'''
 
     if category:
-        query = f'''SELECT user_reviews_id, repor_flag_count, is_active, user_review_user_id, listing_id, review_title, review_body, budget, like_count, user_rating, modified_date, created_date FROM user_reviews WHERE listing_id = {category}'''
+        query = f'''SELECT r.user_reviews_id, r.repor_flag_count, r.is_active, r.user_review_user_id, r.listing_id, r.review_title, r.review_body, r.budget, r.like_count, r.user_rating, r.modified_date, r.created_date, ut.user_name FROM user_reviews as r INNER JOIN user_table as ut ON r.user_review_user_id=ut.user_id WHERE listing_id = {category}'''
 
     # print(query)
     cur = mysql.connection.cursor()  # SQL instance
@@ -34,6 +34,7 @@ def getResourceReviews(category):
         Result['user_rating'] = row[9]
         Result['modified_date'] = row[10]
         Result['created_date'] = row[11]
+        Result['user_name'] = row[12]
         Results.append(Result)
     response = {'status': 200, 'responseMessage': 'Success', 'body': Results}
     retData = app.response_class(
