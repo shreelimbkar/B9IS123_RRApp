@@ -25,21 +25,25 @@ def addUser(userData):
     cur = mysql.connection.cursor()  # SQL instance
     s = '''INSERT INTO user_table(user_role_id, user_token, user_password, user_name, user_avatar_img, user_email_id, user_contact, otp_code, modified_date, created_date ) VALUES('{}','{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}');'''.format(
         role, token, pwd, username, avatar, email, contact, ran_number, modifiedDate, modifiedDate)
-    cur.execute(s)
-    mysql.connection.commit()
+    try:
 
-    # Send OTP email to registered User
-    subject = "Welcome to GoSolo - Verify your email address"
-    body = f"""
-        <p>Hi {username},</p>
-        <p>Enter the 4 digit OTP code we sent to you via email to continue</p>
-        <h1 style='letter-spacing: 1rem'><b>{ran_number}</b></h1>
-        <p>Regards,<br/>GoSolo Admin Team,<br/>Dublin 1.</p>
-    """
-    send_email('gosoloprojectmaster@gmail.com',
-               'Gosolo@21', email, subject, body)
+        cur.execute(s)
+        mysql.connection.commit()
 
-    return {'status': 200, 'responseMessage': 'Success'}, 200
+        # Send OTP email to registered User
+        subject = "Welcome to GoSolo - Verify your email address"
+        body = f"""
+            <p>Hi {username},</p>
+            <p>Enter the 4 digit OTP code we sent to you via email to continue</p>
+            <h1 style='letter-spacing: 1rem'><b>{ran_number}</b></h1>
+            <p>Regards,<br/>GoSolo Admin Team,<br/>Dublin 1.</p>
+        """
+        send_email('gosoloprojectmaster@gmail.com',
+                   'Gosolo@21', email, subject, body)
+
+        return {'status': 200, 'responseMessage': 'Success'}, 200
+    except Exception as e:
+        return {'status': 500, 'responseMessage': str(e)}, 500
 
 
 def getUsers():  # Name of the method
@@ -75,31 +79,34 @@ def login(email, pwd):
 
     encoded = jwt.encode({'email': email, 'exp': datetime.datetime.utcnow(
     ) + datetime.timedelta(minutes=20)}, app.config['SECRET_KEY'])
-    cur = mysql.connection.cursor()  # SQL instance
-    cur.execute(
-        f"""SELECT user_id, user_token, user_name, user_avatar_img, user_email_id, user_contact FROM user_table WHERE user_email_id = '{email}' and user_password = '{pwd}'""")
-    rv = cur.fetchall()  # Retreive all rows returend by the SQL statment
-    Results = []
+    try:
+        cur = mysql.connection.cursor()  # SQL instance
+        cur.execute(
+            f"""SELECT user_id, user_token, user_name, user_avatar_img, user_email_id, user_contact FROM user_table WHERE user_email_id = '{email}' and user_password = '{pwd}'""")
+        rv = cur.fetchall()  # Retreive all rows returend by the SQL statment
+        Results = []
 
-    if (len(rv) != 0):
-        for row in rv:  # Format the Output Results and add to return string
-            Result = {}
-            Result['user_id'] = row[0]
-            Result['user_token'] = encoded
-            Result['user_name'] = row[2]
-            Result['user_email_id'] = row[4]
-            Results.append(Result)
+        if (len(rv) != 0):
+            for row in rv:  # Format the Output Results and add to return string
+                Result = {}
+                Result['user_id'] = row[0]
+                Result['user_token'] = encoded
+                Result['user_name'] = row[2]
+                Result['user_email_id'] = row[4]
+                Results.append(Result)
 
-        response = {'status': 200,
-                    'responseMessage': 'Success', 'body': Results}
-        retData = app.response_class(
-            response=json.dumps(response),
-            status=200,
-            mimetype='application/json'
-        )
-        return retData  # Return the data in a string format
-    else:
-        return {'status': 500, 'responseMessage': 'Unauthorized User. Please try again!'}, 500
+            response = {'status': 200,
+                        'responseMessage': 'Success', 'body': Results}
+            retData = app.response_class(
+                response=json.dumps(response),
+                status=200,
+                mimetype='application/json'
+            )
+            return retData  # Return the data in a string format
+        else:
+            return {'status': 500, 'responseMessage': 'Unauthorized User. Please try again!'}, 500
+    except Exception as e:
+        return {'status': 500, 'responseMessage': str(e)}, 500
 
 
 def checkOTP(otpCode):
