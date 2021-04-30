@@ -55,9 +55,10 @@ VM base URL - [https://shriv.dbsprojects.ie:8080](https://shriv.dbsprojects.ie:8
 
 - Run APIs
 
+```
 cd api
-
 python3 app.py --cert=cert.pem --key=privkey.pem
+```
 
 **Application Screenshots:**
 
