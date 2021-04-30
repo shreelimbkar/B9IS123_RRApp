@@ -13,10 +13,6 @@ export class HomeService {
   constructor( private _restService : RestService) {
   }
 
-  mostViewed(): Observable<any> {
-    return this._restService.get(RestUrl.mostViewedProperty)
-  }
-
   mightBeLike(): Observable<any> {
     return this._restService.get(RestUrl.mightBeLike)
   }
