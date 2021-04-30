@@ -31,14 +31,11 @@ export class WriteReviewComponent implements OnInit {
   }
 
   submitReview(value){
-    console.log("value of review",value);
     value["user_review_user_id"] = 1001;
     value["listing_id"] = this.sourceBody.resource_id ? this.sourceBody.resource_id : this.sourceBody.bnb_id;
     value["like_count"] = '1'
-    console.log("value of review",value);
 
     this._service.writeReview(value).subscribe((responseBody)=>{
-        console.log("responseBody ++++++ ",responseBody)
         if(responseBody.status = 200){
           alert("Your Review added successful!")
           this._route.navigate([''])

@@ -72,7 +72,6 @@ export class ListingPageComponent implements OnInit, OnDestroy  {
       if(requestData != null){
         if(requestData.param == 'allbnbs'){
           this.listingService.listBySectionBNB(requestData.param).subscribe((responseData)=>{
-           console.log("responseData ++++", responseData);
             this.responseBody = responseData.body;
           })
         }else {
@@ -99,7 +98,6 @@ export class ListingPageComponent implements OnInit, OnDestroy  {
         return element.value
       }
     });
-    console.log("++++++++++++++ selectedCategorysList ",this.selectedCategorysList)
   }
 
   fetchRatingSelection() {
@@ -108,7 +106,6 @@ export class ListingPageComponent implements OnInit, OnDestroy  {
         return element.value
       }
     });
-    console.log("++++++++++++++ selectedRatingList ",this.selectedRatingList)
 
   }
 
@@ -127,10 +124,8 @@ export class ListingPageComponent implements OnInit, OnDestroy  {
     resource_city_code: value.location,
     resource_rating: ratings
     }
-    console.log("obj ",obj);
 
     this.listingService.filter(obj).subscribe((responseData)=>{
-      console.log("onLoad binding responseData ",responseData)
         this.responseBody = responseData.body;
     })
   }
@@ -142,7 +137,6 @@ export class ListingPageComponent implements OnInit, OnDestroy  {
 
   onLoadBinding(){
     this.listingService.listingProperty().subscribe((responseData)=>{
-      console.log("onLoad binding responseData ",responseData)
         this.responseBody = responseData.body;
     })
   }
@@ -152,7 +146,6 @@ export class ListingPageComponent implements OnInit, OnDestroy  {
       "resource_id" : id,
       "resource_name" : resource_name
     }
-    console.log("obj ++++++ ",obj);
 
     this._observableDataService.passDetailData(obj);
     this._router.navigate(['detail-page']);

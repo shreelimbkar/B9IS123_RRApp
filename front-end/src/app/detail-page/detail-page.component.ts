@@ -124,15 +124,12 @@ export class DetailPageComponent implements OnInit {
       });
      }
 
-    submit() {
-      console.log(this.form.value);
-    }
+
 
   ngOnInit(): void {
 
 
     this.observ = this._observableDataService.detailPageData.subscribe((requestParam)=>{
-      console.log("requestParam ++++", requestParam);
 
       if(requestParam == null){
         requestParam = JSON.parse(localStorage.getItem("resourceData"));
@@ -142,19 +139,15 @@ export class DetailPageComponent implements OnInit {
         localStorage.setItem("resourceData",JSON.stringify(requestParam));
         this.getUserReview(requestParam.resource_id);
         this._detailService.getDetailByObservable(requestParam.resource_id).subscribe((responseData)=>{
-          console.log("Deatail page ", responseData);
 
           this.responseBody = responseData.body[0];
-          console.log("Deatail page 2", this.responseBody);
           // if(this.responseBody.resource_category != null){
 
           // }
           this.imageData = this.images.map((elements) => {
-            console.log("element +++ ",elements)
               return { "srcUrl": elements.path, "previewUrl": elements.path }
           })
           this.facilities = JSON.parse(this.responseBody.resource_details);
-          console.log("this.facilities ",this.facilities)
           if(this.facilities.propertyAmenities) {
             this.propertyAmenities = Object.values(this.facilities.propertyAmenities)
             this.roomFeatures = Object.values(this.facilities.roomFeatures)
@@ -180,17 +173,13 @@ export class DetailPageComponent implements OnInit {
       } else {
         this.getUserReview(requestParam.resource_id);
         this._detailService.getDetailByBNBID(requestParam.resource_id).subscribe((responseData)=>{
-          console.log("Deatail page ", responseData);
 
           this.responseBody = responseData.body[0];
-          console.log("Deatail page 2", this.responseBody);
 
           this.imageData = this.images.map((elements) => {
-            console.log("element +++ ",elements)
               return { "srcUrl": elements.path, "previewUrl": elements.path }
           })
           this.facilities = JSON.parse(this.responseBody.bnb_amenities);
-          console.log("this.facilities ",this.facilities)
             this.cuisines = Object.values(this.facilities.Cuisines)
             this.features = Object.values(this.facilities.Features)
             this.meals = Object.values(this.facilities.Meals)
@@ -215,9 +204,7 @@ export class DetailPageComponent implements OnInit {
   getUserReview(id){
 
     this._detailService.getUserReview(id).subscribe((responseObject)=>{
-        console.log("responseObject ",responseObject);
         this.reviewResponseBody = responseObject.body;
-
     })
 
   }

@@ -6,7 +6,7 @@
   </div>
   </div>
   <div class="col-md-6">
-    <form [formGroup]="form" (ngSubmit)="submit()">
+    <form [formGroup]="form">
       <mat-form-field appearance="outline" class="full-width">
         <mat-label>Check In and Check Out</mat-label>
         <input matInput type="text" ngxDaterangepickerMd
@@ -44,7 +44,7 @@
       </mat-form-field>
       <br>
       <h2>Rating: 4.5<span><mat-icon>star</mat-icon></span></h2>
-    <button type="submit" [disabled]="form.invalid" class="mt-5" mat-raised-button color="primary" (click)="openDialog()">Book Now</button>
+    <button [disabled]="form.invalid" class="mt-5" mat-raised-button color="primary" (click)="openDialog()">Book Now</button>
     </form>
 
   </div>

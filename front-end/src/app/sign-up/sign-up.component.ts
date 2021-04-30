@@ -32,17 +32,14 @@ export class SignUpComponent implements OnInit {
   }
 
   submitForm(value){
-    console.log("submit Form ",value);
     let paramObj = {
       username : value.username,
       email : value.email,
       contact : value.contact,
       password : value.password
     }
-    console.log("submit Form ",value);
 
     this._service.signUp(paramObj).subscribe((responseObject)=>{
-     console.log("responseObject+++++ ",responseObject);
      if(responseObject.status == 200){
           this.isOTP = !this.isOTP
         } else {
@@ -71,7 +68,6 @@ export class SignUpComponent implements OnInit {
   }
 
   passwordPattern = (control: FormControl): {[s: string]: boolean} => {
-    console.log("passwordPattern ----->",control.value)
     if(!control.value) {
       return { required: true };
     }else if (control.value.match(RegexConstant.PASSWORD_REGEX)){
@@ -82,7 +78,6 @@ export class SignUpComponent implements OnInit {
   }
 
   mobileNumber = (control: FormControl): {[s: string]: boolean} => {
-    console.log("control.value ----->",control.value)
 
     if(!control.value) {
       return { required: true };
@@ -94,7 +89,6 @@ export class SignUpComponent implements OnInit {
   }
 
   matchPassword =  (control: FormControl): {[s: string]: boolean} => {
-    console.log("control.value ----->",control.value)
 
     if(!control.value) {
       return { required: true };

@@ -25,10 +25,8 @@ export class LoginComponent implements OnInit {
     this._route.navigate(['/signUp'])
   }
   submitForm(value){
-    console.log("value ", value)
 
     this._service.login(value).subscribe((responseData)=>{
-      console.log("responseData ", responseData)
       if(responseData.status == 200){
         localStorage.setItem("user",value.email);
         location.reload();
@@ -44,7 +42,6 @@ export class LoginComponent implements OnInit {
   }
 
   passwordPattern = (control: FormControl): {[s: string]: boolean} => {
-    console.log("passwordPattern ----->",control.value)
     if(!control.value) {
       return { required: true };
     }else if (control.value.match(RegexConstant.PASSWORD_REGEX)){

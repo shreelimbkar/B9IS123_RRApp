@@ -145,38 +145,28 @@ clubHouse = [{
 
 
     this._service.mightBeLike().subscribe((resposneData)=>{
-      console.log("+++++++++++++",resposneData)
       let responseBody =  resposneData.body
-      console.log("+++++++++++++",responseBody)
       this.mightLikeList = responseBody;
     })
 
 
     this._service.clubsNearYou().subscribe((resposneData)=>{
-      console.log("+++++++++++++",resposneData)
       let responseBody =  resposneData.body
-      console.log("+++++++++++++",responseBody)
       this.clubsList = responseBody;
     })
 
     this._service.bnbNearYou().subscribe((resposneData)=>{
-      console.log("+++++++++++++",resposneData)
       let responseBody =  resposneData.body
-      console.log("+++++  bnbList  ++++++++",responseBody)
       this.bnbList = responseBody;
     })
 
     this._service.restaurantsNearYou().subscribe((resposneData)=>{
-      console.log("+++++++++++++",resposneData)
       let responseBody =  resposneData.body
-      console.log("++++++Restaurents+++++++",responseBody)
       this.restaurantsList = responseBody;
     })
 
     this._service.hotelsNearYou().subscribe((resposneData)=>{
-      console.log("+++++++++++++",resposneData)
       let responseBody =  resposneData.body
-      console.log("++++++Restaurents+++++++",responseBody)
       this.hotelsList = responseBody;
     })
   }
