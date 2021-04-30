@@ -8,11 +8,11 @@
 
 **Student Names:**
 
-**Tushar Chavan (10552610)**
+- **Tushar Chavan (10552610)**
 
-**Shrivardhan Limbkar (10573876)**
+- **Shrivardhan Limbkar (10573876)**
 
-**Bijendra Gaur (10525552)**
+- **Bijendra Gaur (10525552)**
 
 **Project Overview**
 
@@ -135,26 +135,14 @@ POST Add User review
 
 **Reference**
 
-[1]
-
-- O. Ethelbert, F. F. Moghaddam, P. Wieder, and R. Yahyapour, &quot;A JSON Token-Based Authentication and Access Management Schema for Cloud SaaS Applications,&quot; in _2017 IEEE 5th International Conference on Future Internet of Things and Cloud (FiCloud)_, Aug. 2017, pp. 47–53, doi: [10.1109/FiCloud.2017.29](https://doi.org/10.1109/FiCloud.2017.29).
-- [2]
-- Bhawiyuga, M. Data, and A. Warda, &quot;Architectural design of token based authentication of MQTT protocol in constrained IoT device,&quot; in _2017 11th International Conference on Telecommunication Systems Services and Applications (TSSA)_, Oct. 2017, pp. 1–4, doi: [10.1109/TSSA.2017.8272933](https://doi.org/10.1109/TSSA.2017.8272933).
-- [3]
-- S. K. Kasagoni, _Building Modern Web Applications Using Angular_. Packt Publishing Ltd, 2017.
-- [4]
-- M. Delisle, _Creating Your MySQL Database: Practical Design Tips and Techniques_. Packt Publishing Ltd, 2006.
-- [5]
-- Severance, &quot;Discovering JavaScript Object Notation,&quot; _Computer_, vol. 45, no. 4, pp. 6–8, Apr. 2012, doi: [10.1109/MC.2012.132](https://doi.org/10.1109/MC.2012.132).
-- [6]
-- &quot;hjp: doc: RFC 7523: JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants.&quot; [https://www.hjp.at/doc/rfc/rfc7523.html](https://www.hjp.at/doc/rfc/rfc7523.html) (accessed Apr. 28, 2021).
-- [7]
-- S. Suehring, _JavaScript Step by Step_. Pearson Education, 2013.
-- [8]
-- M. Lutz, _Learning Python: Powerful Object-Oriented Programming_. O&#39;Reilly Media, Inc., 2013.
-- [9]
-- M. Spreitzenbarth and D. J. Uhrmann, _Mastering Python Forensics_. Packt Publishing Ltd, 2015.
-- [10]
-- S. Suehring, _MySQL bible_. New York, NY: Wiley Publ, 2002.
-- [11]
-- S. J. Nielson and C. K. Monson, _Practical Cryptography in Python: Learning Correct Cryptography by Example_. Apress, 2019.
+- O. Ethelbert, F. F. Moghaddam, P. Wieder, and R. Yahyapour, &quot;A JSON Token-Based Authentication and Access Management Schema for Cloud SaaS Applications,&quot; in _2017 IEEE 5th International Conference on Future Internet of Things and Cloud (FiCloud)_, Aug. 2017, pp. 47–53, doi: [10.1109/FiCloud.2017.29](https://doi.org/10.1109/FiCloud.2017.29). [1]
+- Bhawiyuga, M. Data, and A. Warda, &quot;Architectural design of token based authentication of MQTT protocol in constrained IoT device,&quot; in _2017 11th International Conference on Telecommunication Systems Services and Applications (TSSA)_, Oct. 2017, pp. 1–4, doi: [10.1109/TSSA.2017.8272933](https://doi.org/10.1109/TSSA.2017.8272933). [2]
+- S. K. Kasagoni, _Building Modern Web Applications Using Angular_. Packt Publishing Ltd, 2017.[3]
+- M. Delisle, _Creating Your MySQL Database: Practical Design Tips and Techniques_. Packt Publishing Ltd, 2006.[4]
+- Severance, &quot;Discovering JavaScript Object Notation,&quot; _Computer_, vol. 45, no. 4, pp. 6–8, Apr. 2012, doi: [10.1109/MC.2012.132](https://doi.org/10.1109/MC.2012.132).[5]
+- &quot;hjp: doc: RFC 7523: JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants.&quot; [https://www.hjp.at/doc/rfc/rfc7523.html](https://www.hjp.at/doc/rfc/rfc7523.html) (accessed Apr. 28, 2021).[6]
+- S. Suehring, _JavaScript Step by Step_. Pearson Education, 2013.[7]
+- M. Lutz, _Learning Python: Powerful Object-Oriented Programming_. O&#39;Reilly Media, Inc., 2013.[8]
+- M. Spreitzenbarth and D. J. Uhrmann, _Mastering Python Forensics_. Packt Publishing Ltd, 2015.[9]
+- S. Suehring, _MySQL bible_. New York, NY: Wiley Publ, 2002.[10]
+- S. J. Nielson and C. K. Monson, _Practical Cryptography in Python: Learning Correct Cryptography by Example_. Apress, 2019.[11]
