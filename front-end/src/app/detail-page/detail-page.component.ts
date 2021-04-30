@@ -221,8 +221,15 @@ export class DetailPageComponent implements OnInit {
   // }
 
   openDialog() {
-    this.dialog.open(BookingComponent, {
-    });
+    let checkUser = localStorage.getItem("user")
+    if(checkUser){
+      this.dialog.open(BookingComponent, {
+      });
+    } else {
+      alert("For booking login is required!")
+      this._route.navigate(['login'])
+    }
+
   }
 
   toggleDisable(form: FormGroup) {
