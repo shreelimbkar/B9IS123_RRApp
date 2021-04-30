@@ -90,7 +90,7 @@ def login(email, pwd):
             for row in rv:  # Format the Output Results and add to return string
                 Result = {}
                 Result['user_id'] = row[0]
-                Result['user_token'] = encoded
+                Result['user_token'] = str(encoded)
                 Result['user_name'] = row[2]
                 Result['user_email_id'] = row[4]
                 Results.append(Result)
@@ -155,4 +155,3 @@ def send_email(gmailUser, gmailPassword, recipient, subject, body):
         print('Email sent!')
     except LookupError:
         print('Something went wrong...', LookupError)
-        

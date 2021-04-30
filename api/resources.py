@@ -167,3 +167,4 @@ def getAllBnbs(Id):
         mimetype='application/json'
     )
     return retData  # Return the data in a string format
+
