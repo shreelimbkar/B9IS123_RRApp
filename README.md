@@ -150,11 +150,11 @@ POST Add User review
 
 **Individual Contribution**
 
-**Tushar** - Planning + Database + API (backend) + Data preparation
+- **Tushar** - Planning + Database + API (backend) + Data preparation
 
-**Shrivardhan** - Planning + API (backend) + Database + VM project setup
+- **Shrivardhan** - Planning + API (backend) + Database + VM project setup
 
-**Bijendra** - Planning + Frontend + Database + API integration
+- **Bijendra** - Planning + Frontend + Database + API integration
 
 **Reference**
 
