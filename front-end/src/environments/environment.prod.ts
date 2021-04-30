@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  DevUrlAddress: "https://shriv.dbsprojects.ie:8080/"
+  // DevUrlAddress: "https://bijendra.dbsprojects.ie:8080/"
 };
