@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { RegexConstant } from '../shared/constant/regex-constant';
 import { LoginService } from './login.service'
+import { ThrowStmt } from '@angular/compiler';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -28,6 +29,14 @@ export class LoginComponent implements OnInit {
 
     this._service.login(value).subscribe((responseData)=>{
       console.log("responseData ", responseData)
+      if(responseData.status == 200){
+        localStorage.setItem("user",value.email);
+        location.reload();
+        alert(`${value.email} Logged In Successfully`)
+        this._route.navigate([''])
+      } else {
+        alert("Somthing Went Worng in Login!")
+      }
 
 
     })

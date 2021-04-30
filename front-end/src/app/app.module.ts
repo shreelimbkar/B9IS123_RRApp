@@ -54,7 +54,8 @@ import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
     NgxSpinnerModule,
     HttpClientModule
   ],
-  providers: [{
+  providers: [
+    {
     provide: HTTP_INTERCEPTORS,
     useClass: HttpIntercepterBasicAuthService,
     multi: true

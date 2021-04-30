@@ -17,8 +17,8 @@
         <mat-form-field appearance="fill" class="full-width">
           <mat-label>Filter By Price</mat-label>
           <mat-select formControlName="price">
-            <mat-option value=0>Low to High</mat-option>
-            <mat-option value=1>High to Low</mat-option>
+            <mat-option value=1>Low to High</mat-option>
+            <mat-option value=0>High to Low</mat-option>
           </mat-select>
         </mat-form-field>
       </section>
@@ -68,12 +68,13 @@
           <img mat-card-image src="../assets/image/bars/bar1/bar_1.jpeg" alt="Property Photo">
           <mat-card-content>
             <p><b>{{element.resource_category ? element.resource_category : "B&B"}}</b></p>
-          <h2>€ {{element.resource_price ? element.resource_price : element.bnb_price_range}} <span>(for 2)</span></h2>
+            <h2>{{element.resource_name}}</h2>
+          <h3>€ {{element.resource_price ? element.resource_price : element.bnb_price_range}} <span>(for 2)</span></h3>
           <p>{{element.resource_address ? element.resource_address : element.bnb_address}}</p>
           </mat-card-content>
           <mat-card-actions>
-            <button *ngIf="element.resource_id" mat-stroked-button color="accent" (click)="detailPage(element.resource_id)">View More</button>
-            <button *ngIf="element.bnb_id" mat-stroked-button color="accent" (click)="detailPage(element.bnb_id)">View More</button>
+            <button *ngIf="element.resource_id" mat-stroked-button color="accent" (click)="detailPage(element.resource_id, element.resource_category)">View More</button>
+            <button *ngIf="element.bnb_id" mat-stroked-button color="accent" (click)="detailPage(element.bnb_id,'bnb')">View More</button>
           </mat-card-actions>
         </mat-card>
     </div>

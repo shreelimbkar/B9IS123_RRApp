@@ -8,17 +8,13 @@ import { RestService } from '../shared/rest.service';
   providedIn: 'root'
 })
 
-export class SignUpService {
+export class WriteReviewService {
 
   constructor( private _restService : RestService) {
   }
 
-  signUp(param): Observable<any> {
-    return this._restService.create(RestUrl.signUp,param)
-  }
-
-  sendOTP(param): Observable<any> {
-    return this._restService.create(RestUrl.sendOTP,param)
+  writeReview(param): Observable<any> {
+    return this._restService.create(RestUrl.writeReview,param)
   }
 
 }

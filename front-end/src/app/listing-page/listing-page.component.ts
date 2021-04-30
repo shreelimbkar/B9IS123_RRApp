@@ -147,9 +147,10 @@ export class ListingPageComponent implements OnInit, OnDestroy  {
     })
   }
 
-  detailPage(id){
+  detailPage(id,resource_name){
     let obj = {
-      "resource_id" : id
+      "resource_id" : id,
+      "resource_name" : resource_name
     }
     console.log("obj ++++++ ",obj);
 

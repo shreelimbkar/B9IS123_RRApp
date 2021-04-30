@@ -6,43 +6,44 @@
       <img src="../assets/image/hotels/hotel1/hotel_4.jpeg">
       </div>
     <div class="col-md-8">
-      <p> Addresssssssssss </p>
+      <h3>Address:</h3><p> {{sourceBody.resource_address ? sourceBody.resource_address : sourceBody.bnb_address}} </p>
       </div>
   </div>
   <h2>Your first-hand experiences really help other travellers. Thanks!</h2>
   <hr>
   <p>Your overall rating of this property</p>
+<form [formGroup]="reviewForm" (ngSubmit)="submitReview(reviewForm.value)">
 
-  <mat-radio-group aria-label="Select rating">
-    <mat-radio-button value="1">1</mat-radio-button>
-    <mat-radio-button value="2">2</mat-radio-button>
+  <mat-radio-group aria-label="Select rating" formControlName="user_rating">
+    <mat-radio-button value="{{element}}" *ngFor="let element of reviewRating">{{element}}</mat-radio-button>
+    <!-- <mat-radio-button value="2">2</mat-radio-button>
     <mat-radio-button value="3">3</mat-radio-button>
     <mat-radio-button value="4">4</mat-radio-button>
-    <mat-radio-button value="5">5</mat-radio-button>
+    <mat-radio-button value="5">5</mat-radio-button> -->
   </mat-radio-group>
+
   <div class="rating-body-wrapper mt-3">
   <h4>Title of your review</h4>
   <mat-form-field class="full-width" appearance="outline">
     <mat-label>Title</mat-label>
-    <input matInput placeholder="Placeholder" maxlength="100">
+    <input matInput placeholder="Placeholder" maxlength="100" formControlName="review_title">
   </mat-form-field>
   <h4>Your review Tips for writing a great review</h4>
   <mat-form-field class="full-width" appearance="outline">
     <mat-label>Tell about your experience</mat-label>
-    <textarea matInput></textarea>
+    <textarea matInput formControlName="review_body" maxlength="3000"></textarea>
   </mat-form-field>
   </div>
 
   <div class="budget-wrapper mb-5">
     <section>
       <h4>How expensive is this was ?</h4>
-      <mat-button-toggle-group aria-label="Font Style">
-        <mat-button-toggle value="budget">Budget</mat-button-toggle>
-        <mat-button-toggle value="mid-range">Mid-range</mat-button-toggle>
-        <mat-button-toggle value="luxury">Luxury</mat-button-toggle>
+      <mat-button-toggle-group formControlName="budget">
+        <mat-button-toggle value="{{element}}" *ngFor="let element of reviewBudget">{{element}}</mat-button-toggle>
       </mat-button-toggle-group>
     </section>
   </div>
   <button mat-raised-button color="primary">Submit Your Review</button>
+</form>
 </mat-card>
 </div>

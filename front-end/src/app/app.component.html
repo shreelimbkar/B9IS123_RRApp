@@ -18,7 +18,8 @@
         <button mat-menu-item (click)="browserSection('bar')">Bars</button>
         <button mat-menu-item (click)="browserSection('club')">Clubs</button>
       </mat-menu>
-      <button mat-button mat-stroked-button color="accent" (click)="login()">Login</button>
+      <button mat-button mat-stroked-button color="accent" (click)="login()" *ngIf="!loginFlag">Login</button>
+      <button mat-button mat-stroked-button color="accent" (click)="logOut()" *ngIf="loginFlag">Logout</button>
 
     </div>
   </mat-toolbar>

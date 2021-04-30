@@ -44,7 +44,7 @@
       </mat-form-field>
       <br>
       <h2>Rating: 4.5<span><mat-icon>star</mat-icon></span></h2>
-    <button type="submit" class="mt-5" mat-raised-button color="primary">Book Now</button>
+    <button type="submit" [disabled]="form.invalid" class="mt-5" mat-raised-button color="primary" (click)="openDialog()">Book Now</button>
     </form>
 
   </div>
@@ -53,10 +53,10 @@
   <section class="container detail-content-wrapper">
     <div class="row">
       <div class="col-md-8 mt-5">
-        <h2><i>{{responseBody.resource_category}}</i></h2>
-        <h1>{{responseBody.resource_name}}</h1>
-          <h2>Address:<span>{{responseBody.resource_address}}</span></h2>
-            <h2>€ {{responseBody.resource_price}}</h2>
+        <h2><i>{{responseBody.resource_category ? responseBody.resource_category : "B&B" }}</i></h2>
+        <h1>{{responseBody.resource_name ? responseBody.resource_name : responseBody.bnb_name}}</h1>
+          <h2>Address:<span>{{responseBody.resource_address ? responseBody.resource_address : responseBody.bnb_address}}</span></h2>
+            <h2>€ {{responseBody.resource_price ? responseBody.resource_price : responseBody.bnb_price_range}}</h2>
           <hr>
         <div class="property-amenities" *ngIf="responseBody.resource_category == 'Hotel'; else elseBlockShow" >
         <h2>Property Amenities</h2>
@@ -124,56 +124,16 @@
         <h2>Reviews</h2>
         <button mat-raised-button class="mt-2 mb-4" color="accent" (click)="writeReviewForm()">Write Review</button>
 
-        <mat-card class="example-card mb-3">
+        <mat-card class="example-card mb-3" *ngFor="let element of reviewResponseBody">
           <mat-card-header>
             <div mat-card-avatar class="example-header-image"></div>
-            <mat-card-title>Shiba Inu</mat-card-title>
-            <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-            <div><h4>4 Ratting</h4></div>
+            <mat-card-title>{{element.user_name}}</mat-card-title>
+            <mat-card-subtitle>{{element.user_rating}} <span><mat-icon>star</mat-icon></span></mat-card-subtitle>
           </mat-card-header>
           <mat-card-content>
+            <h3>{{element.review_title}}</h3>
             <p>
-              The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-              A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-              bred for hunting.
-            </p>
-          </mat-card-content>
-          <mat-card-actions>
-            <button mat-button>LIKE</button>
-          </mat-card-actions>
-        </mat-card>
-
-        <mat-card class="example-card mb-3">
-          <mat-card-header>
-            <div mat-card-avatar class="example-header-image"></div>
-            <mat-card-title>Shiba Inu</mat-card-title>
-            <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-            <div><h4>4 Ratting</h4></div>
-          </mat-card-header>
-          <mat-card-content>
-            <p>
-              The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-              A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-              bred for hunting.
-            </p>
-          </mat-card-content>
-          <mat-card-actions>
-            <button mat-button>LIKE</button>
-          </mat-card-actions>
-        </mat-card>
-
-        <mat-card class="example-card mb-3">
-          <mat-card-header>
-            <div mat-card-avatar class="example-header-image"></div>
-            <mat-card-title>Shiba Inu</mat-card-title>
-            <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-            <div><h4>4 Ratting</h4></div>
-          </mat-card-header>
-          <mat-card-content>
-            <p>
-              The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-              A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-              bred for hunting.
+              {{element.review_body}}
             </p>
           </mat-card-content>
           <mat-card-actions>

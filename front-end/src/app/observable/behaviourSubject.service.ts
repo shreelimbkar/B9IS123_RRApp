@@ -15,16 +15,8 @@ export class ObservableDataService {
     this.messageSource.next(message);
   }
 
-  // checkUserOperation(message: any) {
-  //   this.checkOperationSource.next(message)
-  // }
 
-  // passAstroDetails(message: any) {
-  //   this.astroDetail.next(message)
-  // }
 
-  // messageData(message : any){
-  //   this.getMessage.next(message);
-  // }
+
 
 }

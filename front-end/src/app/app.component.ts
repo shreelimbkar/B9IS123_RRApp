@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ObservableDataService } from './observable/behaviourSubject.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -8,14 +9,21 @@ import { ObservableDataService } from './observable/behaviourSubject.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'propertyAauction';
-
+  title = 'GoSolo';
+  isLoggedIn$: Observable<boolean>;
+  loginFlag: boolean;
   constructor(private _route: Router,private _observableDataService : ObservableDataService ){
 
   }
   // ngOnInit method Initiate first every time
   ngOnInit(): void {
-      this._route.navigate([''])
+    let checkUser = localStorage.getItem("user")
+    if(checkUser) {
+      // location.reload()
+      this.loginFlag = true;
+    } else {
+      this.loginFlag = false;
+    }
   }
 
   // homepage method navigate to home page
@@ -45,6 +53,13 @@ export class AppComponent {
 
   login(){
     this._route.navigate(['login'])
+  }
+
+  logOut(){
+    localStorage.clear()
+    location.reload()
+    alert("Logged Out Successfully!")
+    this._route.navigate([''])
   }
 
   // menu Explore Solo catergory navigation

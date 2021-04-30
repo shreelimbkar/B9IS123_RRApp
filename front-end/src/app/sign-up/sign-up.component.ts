@@ -11,8 +11,8 @@ import { SignUpService } from './sign-up.service'
 export class SignUpComponent implements OnInit {
   hide = true;
   signUpValidateForm;
-  otpForm;
-
+  otpValidationForm;
+  isOTP : boolean = false;
   constructor( public formBuilder: FormBuilder, private _service : SignUpService, private _route: Router) {
   }
 
@@ -26,8 +26,8 @@ export class SignUpComponent implements OnInit {
       confirmPassword : ['', [Validators.required, this.matchPassword]]
     })
 
-    this.otpForm = this.formBuilder.group({
-      otp : ['',[Validators.required]]
+    this.otpValidationForm = this.formBuilder.group({
+      otp_code : ['',[Validators.required]]
     });
   }
 
@@ -43,8 +43,27 @@ export class SignUpComponent implements OnInit {
 
     this._service.signUp(paramObj).subscribe((responseObject)=>{
      console.log("responseObject+++++ ",responseObject);
+     if(responseObject.status == 200){
+          this.isOTP = !this.isOTP
+        } else {
+          alert("Somthing went wrong in Sign UP! ");
+        }
 
     })
+  }
+
+  submitOTPForm(value){
+    if(value != null){
+      this._service.sendOTP(value).subscribe((responseData)=>{
+        if(responseData.status == 200){
+          this._route.navigate(["/login"]);
+          this.isOTP = !this.isOTP
+        } else {
+           alert("Somthing went wrong in OTP! ");
+           this.isOTP = !this.isOTP
+          }
+      })
+    }
   }
 
   backToLogin(){

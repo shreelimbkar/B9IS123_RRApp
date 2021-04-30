@@ -17,6 +17,14 @@ export class DetailService {
     return this._restService.get(RestUrl.getResourceById+id)
   }
 
+  getDetailByBNBID(id): Observable<any> {
+    return this._restService.get(RestUrl.getBNBResourceById+id)
+  }
+
+  getUserReview(id): Observable<any> {
+    return this._restService.get(RestUrl.getUserReview+id)
+  }
+
 
 
 }

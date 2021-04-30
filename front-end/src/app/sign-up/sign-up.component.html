@@ -16,7 +16,7 @@
             <h2 class="mb-4">Sign up to unlock the best of GoSolo.</h2>
             <h3 class="mb-4">Join now -- its's free.</h3>
           </div>
-          <form name="validateForm" [formGroup]="signUpValidateForm" novalidate (ngSubmit)="submitForm(signUpValidateForm.value)">
+          <form *ngIf="!isOTP" name="validateForm" [formGroup]="signUpValidateForm" novalidate (ngSubmit)="submitForm(signUpValidateForm.value)">
 
             <mat-form-field appearance="outline" class="full-width">
               <mat-label>Full Name</mat-label>
@@ -91,11 +91,25 @@
             </mat-form-field>
             <button mat-raised-button color="primary">Sign Up</button>
           </form>
+          <div class="otp-wrapper" *ngIf="isOTP">
+            <form name="validationForm" [formGroup]="otpValidationForm" novalidate (ngSubmit)="submitOTPForm(otpValidationForm.value)">
+              <mat-form-field appearance="outline" class="full-width">
+                <mat-label>OTP</mat-label>
+                <input matInput formControlName="otp_code">
+                <mat-icon matSuffix class="secondary-text">VpnKey</mat-icon>
+                <mat-error>
+                    OTP is required
+                </mat-error>
+              </mat-form-field>
+            <button mat-raised-button color="primary">Send OTP</button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
 </div>
+
 </mat-card>
 </div>

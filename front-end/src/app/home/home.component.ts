@@ -142,6 +142,8 @@ clubHouse = [{
   }
 
   onLoadBidding(){
+
+
     this._service.mightBeLike().subscribe((resposneData)=>{
       console.log("+++++++++++++",resposneData)
       let responseBody =  resposneData.body
