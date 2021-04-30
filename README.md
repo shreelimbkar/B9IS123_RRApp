@@ -53,6 +53,14 @@ VM base URL - [https://shriv.dbsprojects.ie:8080](https://shriv.dbsprojects.ie:8
 
 - Run frontend app
 
+  ```
+  cd front-end
+  npm i
+  ng serve
+  ```
+
+  application will start on http://localhost:4200/
+
 - Run APIs
 
 ```
@@ -78,7 +86,7 @@ python3 app.py --cert=cert.pem --key=privkey.pem
 - Filters
   ![](./screenshots/filters.png)
 
-- Image Currausals
+- Image Carousel
   ![](./screenshots/gallary_page.png)
 
 - User Reviews
