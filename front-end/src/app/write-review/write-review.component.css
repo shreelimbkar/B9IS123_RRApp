@@ -1,21 +1,21 @@
-.review-wrapper{
-  margin-top: 100px;
+.review-wrapper {
+  margin-top: 80px;
 }
-.review-wrapper img{
-  width:100%
+.review-wrapper img {
+  width: 100%;
 }
 
-.review-wrapper .mat-radio-button{
+.review-wrapper .mat-radio-button {
   padding-right: 8px;
 }
 
 .review-card {
-  width : 60%;
+  width: 60%;
   margin: auto;
 }
-.full-width{
+.full-width {
   width: 100%;
 }
-.mat-button-toggle-checked{
+.mat-button-toggle-checked {
   background-color: #ffdd4b !important;
 }

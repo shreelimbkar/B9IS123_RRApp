@@ -1,22 +1,22 @@
-.detail-block-wrapper{
-  margin-top: 70px;
+.detail-block-wrapper {
+  margin-top: 80px;
 }
 
-.detail-content-wrapper .booking-section{
+.detail-content-wrapper .booking-section {
   position: sticky;
   top: 80px;
   border: 2px solid #ddd;
   margin-top: 40px;
 }
 
-.full-width{
+.full-width {
   width: 100%;
 }
-.half-width{
+.half-width {
   width: 45%;
 }
 
 .example-header-image {
-  background-image: url('../../assets/image/user_avatar.jpg');
+  background-image: url("../../assets/image/user_avatar.jpg");
   background-size: cover;
 }
