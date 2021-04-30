@@ -62,6 +62,28 @@ python3 app.py --cert=cert.pem --key=privkey.pem
 
 **Application Screenshots:**
 
+- Landing Page
+  ![](./screenshots/landing_page.png)
+  ![](./screenshots/landing_page1.png)
+
+- User Login
+  ![](./screenshots/user_login.png)
+
+- User Registration
+  ![](./screenshots/user_registration.png)
+
+- List Page
+  ![](./screenshots/listing_filters.png)
+
+- Filters
+  ![](./screenshots/filters.png)
+
+- Image Currausals
+  ![](./screenshots/gallary_page.png)
+
+- User Reviews
+  ![](./screenshots/user_review.png)
+
 **Rest APIs Documentations**
 
 **Screenshot**
